@@ -1,2 +1,2 @@
-# config_files
-Config Files for several tools/programs
+# dotfiles
+Config Files of my tools/programs
