@@ -15,7 +15,7 @@ call vundle#begin('~\.vim\bundle')
 
 "Core Plugins
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'kien/ctrlp.vim'         "Search for anyting from vim
+Plugin 'ctrlpvim/ctrlp.vim'         "Search for anyting from vim
 
 "Main Plugins
 Plugin 'mhinz/vim-startify'
@@ -27,6 +27,13 @@ Plugin 'junegunn/goyo.vim'
 Plugin 'junegunn/limelight.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'dracula/vim', { 'name': 'dracula' }
+Plugin 'felixhummel/setcolors.vim'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'morhetz/gruvbox'
+Plugin 'Yggdroot/indentLine'
+Plugin 'kristijanhusak/vim-hybrid-material'
+Plugin 'ryanoasis/vim-devicons'
 
 "pure vim scripts with no dependencies
 Plugin 'tpope/vim-abolish'
@@ -44,11 +51,8 @@ Plugin 'machakann/vim-swap'
 Plugin 'junegunn/vim-easy-align'        "An alternative is tabular
 Plugin 'tommcdo/vim-exchange'
 Plugin 'pelodelfuego/vim-swoop'         "call SwoopFreezeContext();call SwoopUnFreezeContext() to use with other plugins
-Plugin 'dracula/vim', { 'name': 'dracula' }
 Plugin 'sk1418/Join'                    "[range]Join[!] [separator] [count] [flags]
 Plugin 'matze/vim-move'                 "move selection as whole around
-Plugin 'flazz/vim-colorschemes'
-Plugin 'felixhummel/setcolors.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-repeat'
@@ -60,15 +64,23 @@ Plugin 'xolox/vim-shell'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
 Plugin 'romainl/vim-qf'                 "don't recommend vim-qf to Syntastic/Neomake/ALE users
-
-
+Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plugin 'junegunn/fzf.vim'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'liuchengxu/vim-which-key'
+Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'Raimondi/delimitMate'
+Plugin 'sheerun/vim-polyglot'
 "LSP/autocomplete
 " Plugin 'pylint.vim'
 " Plugin 'psf/black'
 " Plugin 'dense-analysis/ale'
 Plugin 'neoclide/coc.nvim', { 'branch': 'release' }
 Plugin 'jackguo380/vim-lsp-cxx-highlight'
-
+Plugin 'python-rope/ropevim'
+Plugin 'dart-lang/dart-vim-plugin'
+Plugin 'natebosch/vim-lsc'
+Plugin 'natebosch/vim-lsc-dart'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -195,6 +207,16 @@ inoremap <silent><expr> <S-Tab>
       \ pumvisible() ? "\<C-p>" :
       \ <SID>check_back_space() ? "\<S-Tab>" :
       \ coc#refresh()
+
+nmap <leader>gd <plug>(coc-definition)
+nmap <leader>gy <plug>(coc-type-definition)
+nmap <leader>gu <plug>(coc-implementation)
+nmap <leader>gr <plug>(coc-references)
+
+" coc-prettier
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 " Explorer
 let g:coc_explorer_global_presets = {
 \   '.vim': {
@@ -235,45 +257,61 @@ autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | end
 
 "==> ALE
 
-" let g:ale_fix_on_save = 1
-" let g:ale_lint_on_save= 1
-" let g:ale_lint_on_enter = 0
-" let g:ale_sign_error = '>>'
-" let g:ale_sign_warning ='⚠'
+let g:ale_fix_on_save = 1
+let g:ale_lint_on_save= 1
+let g:ale_lint_on_enter = 0
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning ='⚠'
 
-" let g:ale_linters = {
-            " \   'python':     ['pylint'],
-            " \   'javascript': ['eslint'],
-            " \   'vim':        ['vimls'],
-            " \   'cpp':        ['clangtidy',],
-            " \}
-" let g:ale_fixers = {
-  " \   'python': [
-  " \       'add_blank_lines_for_python_control_statements',
-  " \       'black',
-  " \             ],
-  " \   'cpp'   : [
-  " \       'clangtidy',
-  " \             ],
-  " \                }
+let g:ale_linters = {
+            \   'python':     ['pylint'],
+            \   'javascript': ['eslint'],
+            \   'vim':        ['vimls'],
+            \   'cpp':        ['clangtidy',],
+            \}
+let g:ale_fixers = {
+  \   'python': [
+  \       'add_blank_lines_for_python_control_statements',
+  \       'black',
+  \             ],
+  \   'cpp'   : [
+  \       'clangtidy',
+  \             ],
+  \                }
 
-" nmap <silent> <C-l> <Plug>(ale_previous_wrap)
-" nmap <silent> <C-h> <Plug>(ale_next_wrap)
-" let g:ale_set_loclist = 0
-" let g:ale_set_quickfix = 1
-" let g:ale_open_list = 1
+nmap <silent> <C-l> <Plug>(ale_previous_wrap)
+nmap <silent> <C-h> <Plug>(ale_next_wrap)
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:ale_open_list = 1
 " Set this if you want to.
 " This can be useful if you are combining ALE with
 " some other plugin which sets quickfix errors, etc.
-" let g:ale_keep_list_window_open = 1
-" let g:ale_disable_lsp = 1
+let g:ale_keep_list_window_open = 1
+let g:ale_disable_lsp = 1
+
+"==>indentLine
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+"==>simpylfold
+let g:SimpylFold_docstring_preview = 1
+let g:SimpylFold_fold_docstring = 1
+
+"==>rope
+let ropevim_vim_completion=1
+let ropevim_extended_complete=1
+let g:ropevim_goto_def_newwin="tabnew"
+autocmd FileType python setlocal omnifunc=RopeCompleteFunc
+
+
 "----------------options------------------------
 " set UTF encoding
 set enc=utf-8
 set fenc=utf-8
 set termencoding=utf-8
 
-colorscheme dracula
+colorscheme gruvbox
+set hidden
 set noshowmode          "only if a status line plugin is installed
 set smartcase
 set ignorecase
@@ -309,7 +347,11 @@ set shellslash
 " set ttymouse=xtem2
 "set guifont=Hack_NF:h11
 set showtabline=2
+" set foldmethod=syntax
+" set foldcolumn=1
 
+"==>vim-which-key
+source ~/AppData/Local/nvim/which-key.vim 
 "---------------remaps/commands-------------------------
 "To use `ALT+{h,j,k,l}` to navigate windows from any mode:
 :tnoremap <A-h> <C-\><C-N><C-w>h
@@ -336,7 +378,37 @@ nnoremap <leader>e :exe getline(line('.'))<CR>
 command CDC cd %:p:h
 "refresh external changes into file
 nnoremap <F5> :checktime <CR>
+"Quit without closing tab
+command Q :Sayonara!
+"Add semicolon to end of line
+map <c-;> :A ;
+nnoremap <leader>pl :PluginInstall<CR>
 
+" Control-S Save
+map <C-S> <esc>:w<cr>
+" Save + back into insert
+" imap <C-S> <esc>:w<cr>a
+
+" Control-C Copy in visual mode
+vmap <C-C> y
+
+" Toggle Transparency of background
+map <leader>tr :hi Normal guibg=NONE ctermbg=NONE<CR>
+map <leader>op :set background=dark<CR>
+" let t:is_transparent = 0
+" function! Toggle_transparent()
+    " if t:is_transparent == 0
+        " let t:is_transparent = 1
+    " endif
+    " if t:is_transparent == 1
+        " let t:is_tranparent = 0
+        " set background=dark
+    " endif
+" endfunction
+" nnoremap <C-t> : call Toggle_transparent()<CR>
+" Control-V Paste in insert and command mode
+" imap <C-V> <esc>pa
+" cmap <C-V> <C-r>0
 "---------------autocommands-------------------
 "Show relative numbering in only command mode
 augroup every
@@ -346,12 +418,13 @@ augroup every
 augroup END
 
 "Comment togglinng          "Alternative commentary by tpope
-autocmd FileType c,cpp,java,scala let b:comment_leader = '//'
-autocmd FileType sh,ruby,python   let b:comment_leader = '#'
-autocmd FileType conf,fstab       let b:comment_leader = '#'
-autocmd FileType tex              let b:comment_leader = '%'
-autocmd FileType mail             let b:comment_leader = '>'
-autocmd FileType vim              let b:comment_leader = '"'
+autocmd FileType c,cpp,java,json,scala let b:comment_leader = '//'
+autocmd FileType sh,ruby,python,cmake  let b:comment_leader = '#'
+autocmd FileType conf,fstab            let b:comment_leader = '#'
+autocmd FileType tex                   let b:comment_leader = '%'
+autocmd FileType mail                  let b:comment_leader = '>'
+autocmd FileType vim                   let b:comment_leader = '"'
+
 function! CommentToggle()
     execute ':silent! s/\([^ ]\)/' . escape(b:comment_leader,'\/') . ' \1/'
     execute ':silent! s/^\( *\)' . escape(b:comment_leader,'\/') . ' \?' . escape(b:comment_leader,'\/') . ' \?/\1/'
