@@ -73,7 +73,6 @@ Plugin 'tpope/vim-abolish'
 Plugin 'zhimsel/vim-stay'
 Plugin 'wsdjeg/vim-fetch'
 Plugin 'Konfekt/FastFold'
-" Plugin 'kassio/neoterm'
 Plugin 'mhinz/vim-sayonara'
 " Plugin 'tpope/vim-dispatch'
 
@@ -98,7 +97,6 @@ Plugin 'xolox/vim-easytags'
 Plugin 'romainl/vim-qf'                 "don't recommend vim-qf to Syntastic/Neomake/ALE users
 Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plugin 'junegunn/fzf.vim'
-Plugin 'yuki-ycino/fzf-preview.vim', { 'branch': 'release/rpc' }
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'liuchengxu/vim-which-key'
 Plugin 'michaeljsmith/vim-indent-object'
@@ -118,11 +116,10 @@ Plugin 'kana/vim-textobj-entire'
 Plugin 'kana/vim-textobj-indent'
 Plugin 'jeetsukumaran/vim-pythonsense'
 Plugin 'tpope/vim-eunuch'
-Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
 Plugin 'andymass/vim-matchup'
 Plugin 'puremourning/vimspector'
 Plugin 'szw/vim-maximizer'
-Plugin 'dbeniamine/cheat.sh-vim'
 Plugin 'tweekmonster/startuptime.vim'
 Plugin 'thiagoalessio/rainbow_levels.vim'
 Plugin 'RRethy/vim-illuminate'
@@ -135,11 +132,13 @@ Plugin 'haya14busa/incsearch.vim'
 Plugin 'haya14busa/incsearch-fuzzy.vim'
 Plugin 'haya14busa/incsearch-easymotion.vim'
 Plugin 'easymotion/vim-easymotion'
-" Plugin 'windwp/vim-floaterm-repl'
-" Plugin 'thezeroalpha/vim-lf'
-" Plugin 'junegunn/vim-emoji'
-" Plugin 'SirVer/ultisnips'
+Plugin 'SirVer/ultisnips'
+Plugin 'rhysd/wandbox-vim'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'RishabhRD/nvim-cheat.sh'
+Plugin 'RishabhRD/popfix'
 " Plugin 'vim-fat-finger' manually added
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -303,11 +302,7 @@ let g:coc_explorer_global_presets = {
 nmap <space>e :CocCommand explorer<CR>
 nmap <space>f :CocCommand explorer --preset floatingRightside<CR>
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
-"coc-git
 
-let g:addGBlameToVirtualText = true
-
-"==>vimspector
 " nmap <F1> :CocCommand java.debug.vimspector.start<CR>
 function! JavaStartDebugCallback(err, port)
   execute "cexpr! 'Java debug started on port: " . a:port . "'"
@@ -483,6 +478,34 @@ endfunction
 
 noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 
+"==>UltiSnips
+" Trigger configuration. You need to change this to something other than <tab>
+" if you use one of the following:
+let g:UltiSnipsExpandTrigger="<c-s-<space>>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+"==>vimwiki
+
+let taskList = {}
+let taskList.path = '~/workspace/vimwiki/'
+" let taskList.html_template = '~/public_html/template.tpl'
+let taskList.path_html = '~/workspace/vimwiki/'
+let taskList.syntax = 'markdown'
+let taskList.ext =  '.md'
+" let taskList.nested_syntaxes = {'python': 'python', 'c++': 'cpp'}
+
+let g:vimwiki_list = [taskList]
+let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+nmap <space>t <Plug>VimwikiToggleListItem <CR>
+let g:vimwiki_markdown_link_ext = 1
+
+let g:taskwiki_markup_syntax = 'markdown'
+let g:markdown_folding = 1
+
 "----------------options------------------------
 let g:vimspector_base_dir='C:\Users\rajpr\.vim\bundle\vimspector'
 " set UTF encoding
@@ -555,13 +578,13 @@ nnoremap <Leader>vr :source $MYVIMRC<CR>
 "Run current line as a command with '\e'
 nnoremap <leader>e :exe getline(line('.'))<CR>
 " CDC = Change to Directory of Current file
-command CDC cd %:p:h
+command CDF cd %:p:h
 "refresh external changes into file
 nnoremap <F5> :checktime <CR>
 "Quit without closing tab
 command Q :Sayonara!
-"Add semicolon to end of line
-nmap <c-;> :A ;
+"Add semicolon to end of line with <Shift+;>
+nnoremap ; A;<esc>
 nnoremap <leader>pl :PluginInstall<CR>
 
 " Control-S Save
