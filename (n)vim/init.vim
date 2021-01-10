@@ -67,6 +67,7 @@ Plugin 'morhetz/gruvbox'
 Plugin 'Yggdroot/indentLine'        "displaying thin vertical lines at each indentation level for code indented with spaces
 Plugin 'kristijanhusak/vim-hybrid-material' "colorscheme
 Plugin 'ryanoasis/vim-devicons'
+" Plugin 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 "pure vim scripts with no dependencies
 Plugin 'tpope/vim-abolish'
@@ -257,14 +258,14 @@ inoremap <silent><expr> <S-Tab>
 nmap <leader>gd <plug>(coc-definition)
 nmap <leader>gy <plug>(coc-type-definition)
 nmap <leader>gu <plug>(coc-implementation)
-nmap <leader>gr <plug>(coc-references|
+nmap <leader>gr <plug>(coc-references)
 nmap <leader>rn <plug>(coc-rename)
 nmap <A-f> :CocFix<CR>
 nmap <C-A-l> :call CocAction('format')<CR>
 " coc-prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 vmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+
 " Explorer
 let g:coc_explorer_global_presets = {
 \   '.vim': {
@@ -356,16 +357,28 @@ nmap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
 let g:CheatSheetSilent=1
 
 "==>rainbow_levels
-hi RainbowLevel0 ctermbg=240 guibg=#585858
-hi RainbowLevel1 ctermbg=239 guibg=#4e4e4e
-hi RainbowLevel2 ctermbg=238 guibg=#444444
-hi RainbowLevel3 ctermbg=237 guibg=#3a3a3a
-hi RainbowLevel4 ctermbg=236 guibg=#303030
-hi RainbowLevel5 ctermbg=235 guibg=#262626
-hi RainbowLevel6 ctermbg=234 guibg=#1c1c1c
-hi RainbowLevel7 ctermbg=233 guibg=#121212
-hi RainbowLevel8 ctermbg=232 guibg=#080808
-nnoremap <leader>rb :RainbowLevelsToggle <CR>
+function RainbowBackgroundToggle() abort
+    hi RainbowLevel0 ctermbg=240 guibg=#585858
+    hi RainbowLevel1 ctermbg=239 guibg=#4e4e4e
+    hi RainbowLevel2 ctermbg=238 guibg=#444444
+    hi RainbowLevel3 ctermbg=237 guibg=#3a3a3a
+    hi RainbowLevel4 ctermbg=236 guibg=#303030
+    hi RainbowLevel5 ctermbg=235 guibg=#262626
+    hi RainbowLevel6 ctermbg=234 guibg=#1c1c1c
+    hi RainbowLevel7 ctermbg=233 guibg=#121212
+    hi RainbowLevel8 ctermbg=232 guibg=#080808
+    execute ":RainbowLevelsToggle"
+endfunction
+
+function RainbowLevelsToggle() abort
+    for level in range(0, 10, 2)
+      exe 'hi! RainbowLevel'.level.' guifg=magenta'
+      exe 'hi! RainbowLevel'.(level+1).' guifg=cyan'
+    endfor
+    execute ":RainbowLevelsToggle"
+endfunction
+nnoremap <leader>rbf :call RainbowLevelsToggle() <CR>
+nnoremap <leader>rbb :call RainbowBackgroundToggle()<CR>
 
 "==>FZF
 command! -bang -nargs=? -complete=dir Files
@@ -482,8 +495,8 @@ noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 " Trigger configuration. You need to change this to something other than <tab>
 " if you use one of the following:
 let g:UltiSnipsExpandTrigger="<c-s-<space>>"
-" let g:UltiSnipsJumpForwardTrigger="<c-b>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 "
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
@@ -583,7 +596,7 @@ command CDF cd %:p:h
 nnoremap <F5> :checktime <CR>
 "Quit without closing tab
 command Q :Sayonara!
-"Add semicolon to end of line with <Shift+;>
+"Add semicolon to end of line with <;>
 nnoremap ; A;<esc>
 nnoremap <leader>pl :PluginInstall<CR>
 
@@ -599,7 +612,8 @@ imap <C-C> <esc>"+yya
 
 " Control-V Paste in insert and command mode
 imap <C-V> <esc>"+pa
-vmap <C-V> "+pa
+vmap <C-V> "+p
+" paste last yank in commad mode
 cmap <C-V> <C-r>0
 
 " Toggle Transparency of background
@@ -613,8 +627,8 @@ augroup every
   au InsertEnter * set norelativenumber
   au InsertLeave * set relativenumber
 augroup END
-autocmd filetype cpp nmap <F6> :w <bar> !g++ -ulimit -g -Wall -Wno-unused-result -std=c++11   -O2   % -o %:r && %:r < inp.txt > out.txt <CR>
-autocmd filetype c nmap <F6> :w <bar> !gcc -g -O2   % -o %:r && %:r < inp.txt > out.txt <CR>
+autocmd filetype cpp nmap <F6> :w <bar> !g++ -ulimit -g -Wall -Wno-unused-result -std=c++11 % -o %:r && %:r < inp.txt > out.txt <CR>
+autocmd filetype c nmap <F6> :w <bar> !gcc -g  % -o %:r && %:r < inp.txt > out.txt <CR>
 autocmd filetype java nmap <F6> :w <bar> !javac -g % && java -enableassertions %:r < inp.txt > out.txt <CR>
 " to start debug server on port 5005
 autocmd filetype java nmap <S-F6> :w <bar> :FloatermNew java -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=5005,suspend=y %:r
