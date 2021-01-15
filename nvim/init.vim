@@ -1,8 +1,7 @@
-set runtimepath^=~\.vim runtimepath+=~\.vim\after
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
-set runtimepath+=~\.config\nvim
-"If you want to include any previous vim config(all feature may not be compatiblle)
-"source ~/.vimrc
+set runtimepath+=~/.config/nvim
+set backupdir=~/.vim/backups
 
 "Failed attempt to configure powershell as the default inside vim
     "sending commands as string in '!' and vundle uses '&&' in shell commands which is not supported by powershell
@@ -19,13 +18,60 @@ set runtimepath+=~\.config\nvim
 " delays and poor user experience.
 set updatetime=50
 
+"----------------options------------------------
+let g:vimspector_base_dir='C:\Users\rajpr\.vim\bundle\vimspector'
+" set UTF encoding
+set enc=utf-8
+set fenc=utf-8
+set termencoding=utf-8
+set list lcs=tab:\|\ "(here is a space)
+set termguicolors
+" execute ":AirlineToggleWhitespace"
+" hi Quote ctermbg=109 guifg=#83a598
+set hidden
+set noshowmode          "only if a status line plugin is installed
+set smartcase
+set ignorecase
+set incsearch
+set lazyredraw
+set autoindent
+set smartindent
+" configure tabwidth and insert spaces instead of tabs
+set tabstop=4        " tab width is 4 spaces
+set shiftwidth=4     " indent also with 4 spaces
+set expandtab        " expand tabs to spaces
+" wrap lines at 120 chars. 80 is some what antiquated with nowadays displays.
+set textwidth=79
+" turn syntax highlighting on
+set t_Co=256
+syntax on
+"" turn line numbers on
+set number
+" highlight matching braces
+set showmatch
+" intelligent comments
+set comments=sl:/*,mb:\ *,elx:\ */
+set laststatus=2
+"scroll when [count] lines to the border
+set so=5
+"let left right keys to switch to different line at end of line
+set whichwrap=<,>,[,]
+" display tabs as '>---' and trailing spaces as '-'
+set listchars=tab:>-,trail:-
+"let terminal detect mouse input
+set mouse=a
+" set shellslash "plug doesn't worrk with this option set
+" set ttymouse=xtem2
+set showtabline=2
+
+
+let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools']
 "----------------vundle-------------------------
 "set nocompatible   (always in nvim) " be iMproved, required
 filetype off                         " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~\.vim\bundle\Vundle.vim
-call vundle#begin('~\.vim\bundle')
+call plug#begin('~\.vim\plugged')
 " let g:firenvim_config = {
     " \ 'globalSettings': {
         " \ 'alt': 'all',
@@ -46,101 +92,105 @@ call vundle#begin('~\.vim\bundle')
 " let fc['https://.*gmail.com.*'] = { 'takeover': 'never', 'priority': 1 }
 " let fc['https?://.*twitch.tv.*'] = { 'takeover': 'never', 'priority': 1} 
 "Core Plugins
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'ctrlpvim/ctrlp.vim'         "Search for anyting from vim
+Plug 'ctrlpvim/ctrlp.vim'         "Search for anyting from vim
 
 "Main Plugins
-Plugin 'mhinz/vim-startify'
-Plugin 'mbbill/undotree'
-Plugin 'majutsushi/tagbar'
+Plug 'mhinz/vim-startify'
+Plug 'mbbill/undotree'
+Plug 'majutsushi/tagbar'
 
 "visual Plugins
-Plugin 'junegunn/goyo.vim'
-Plugin 'junegunn/limelight.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'dracula/vim', { 'name': 'dracula' }
-Plugin 'felixhummel/setcolors.vim'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'rafi/awesome-vim-colorschemes'
-Plugin 'morhetz/gruvbox'
-Plugin 'Yggdroot/indentLine'        "displaying thin vertical lines at each indentation level for code indented with spaces
-Plugin 'kristijanhusak/vim-hybrid-material' "colorscheme
-Plugin 'ryanoasis/vim-devicons'
-" Plugin 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'felixhummel/setcolors.vim'
+Plug 'sainnhe/gruvbox-material'
+Plug 'sainnhe/sonokai'
+Plug 'christianchiarulli/nvcode-color-schemes.vim'
+Plug 'sainnhe/edge'
+Plug 'Yggdroot/indentLine'        "displaying thin vertical lines at each indentation level for code indented with spaces
+Plug 'ryanoasis/vim-devicons'
+Plug 'rrethy/vim-hexokinase', { 'do': 'make -f hexokinase' }
 
 "pure vim scripts with no dependencies
-Plugin 'tpope/vim-abolish'
-Plugin 'zhimsel/vim-stay'
-Plugin 'wsdjeg/vim-fetch'
-Plugin 'Konfekt/FastFold'
-Plugin 'mhinz/vim-sayonara'
+Plug 'tpope/vim-abolish'
+Plug 'zhimsel/vim-stay'
+Plug 'wsdjeg/vim-fetch'
+Plug 'Konfekt/FastFold'
+Plug 'mhinz/vim-sayonara'
 " Plugin 'tpope/vim-dispatch'
 
 "Helpful Generic Tools
-Plugin 'kshenoy/vim-signature'
-Plugin 'mg979/vim-visual-multi'
-Plugin 'machakann/vim-swap'
-Plugin 'junegunn/vim-easy-align'        "An alternative is tabular
-Plugin 'tommcdo/vim-exchange'
-Plugin 'pelodelfuego/vim-swoop'         "call SwoopFreezeContext();call SwoopUnFreezeContext() to use with other plugins
-Plugin 'sk1418/Join'                    "[range]Join[!] [separator] [count] [flags]
-Plugin 'matze/vim-move'                 "move selection as whole around
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
-Plugin 'airblade/vim-rooter'        "automatically sets project directory using rules in vimrc
+Plug 'kshenoy/vim-signature'
+Plug 'mg979/vim-visual-multi'
+Plug 'machakann/vim-swap'
+Plug 'junegunn/vim-easy-align'        "An alternative is tabular
+Plug 'tommcdo/vim-exchange'
+Plug 'pelodelfuego/vim-swoop'         "call SwoopFreezeContext();call SwoopUnFreezeContext() to use with other plugins
+Plug 'sk1418/Join'                    "[range]Join[!] [separator] [count] [flags]
+Plug 'matze/vim-move'                 "move selection as whole around
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'airblade/vim-rooter'        "automatically sets project directory using rules in vimrc
 
 "Experimental
-Plugin 'qpkorr/vim-bufkill'
-Plugin 'xolox/vim-shell'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
-Plugin 'romainl/vim-qf'                 "don't recommend vim-qf to Syntastic/Neomake/ALE users
-Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plugin 'junegunn/fzf.vim'
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'liuchengxu/vim-which-key'
-Plugin 'michaeljsmith/vim-indent-object'
-Plugin 'Raimondi/delimitMate'
-Plugin 'sheerun/vim-polyglot'
+Plug 'qpkorr/vim-bufkill'
+Plug 'xolox/vim-shell'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-easytags'
+Plug 'romainl/vim-qf'                 "don't recommend vim-qf to Syntastic/Neomake/ALE users
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'tmhedberg/SimpylFold'
+Plug 'liuchengxu/vim-which-key'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'Raimondi/delimitMate'
+" Plug 'sheerun/vim-polyglot'         "Replaced functionality with treesitter
 "LSP/autocomplete
-Plugin 'neoclide/coc.nvim', { 'branch': 'release' }
-Plugin 'jackguo380/vim-lsp-cxx-highlight'
-Plugin 'python-rope/ropevim'
-Plugin 'dart-lang/dart-vim-plugin'
-Plugin 'natebosch/vim-lsc'
-Plugin 'natebosch/vim-lsc-dart'
-Plugin 'wellle/targets.vim'
-Plugin 'kana/vim-textobj-user'
-Plugin 'kana/vim-textobj-line'
-Plugin 'kana/vim-textobj-entire'
-Plugin 'kana/vim-textobj-indent'
-Plugin 'jeetsukumaran/vim-pythonsense'
-Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-fugitive'
-Plugin 'andymass/vim-matchup'
-Plugin 'puremourning/vimspector'
-Plugin 'szw/vim-maximizer'
-Plugin 'tweekmonster/startuptime.vim'
-Plugin 'thiagoalessio/rainbow_levels.vim'
-Plugin 'RRethy/vim-illuminate'
-Plugin 'glacambre/firenvim', { 'do': { _ -> firenvim#install(69) } }
-Plugin 'honza/vim-snippets'
-Plugin 'ptzz/lf.vim'
-Plugin 'rbgrouleff/bclose.vim'
-Plugin 'voldikss/vim-floaterm'
-Plugin 'haya14busa/incsearch.vim'
-Plugin 'haya14busa/incsearch-fuzzy.vim'
-Plugin 'haya14busa/incsearch-easymotion.vim'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'SirVer/ultisnips'
-Plugin 'rhysd/wandbox-vim'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'RishabhRD/nvim-cheat.sh'
-Plugin 'RishabhRD/popfix'
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'jackguo380/vim-lsp-cxx-highlight'
+Plug 'python-rope/ropevim'
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'natebosch/vim-lsc'
+Plug 'natebosch/vim-lsc-dart'
+Plug 'wellle/targets.vim'
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-line'
+Plug 'kana/vim-textobj-entire'
+Plug 'kana/vim-textobj-indent'
+Plug 'jeetsukumaran/vim-pythonsense'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+Plug 'andymass/vim-matchup'
+Plug 'puremourning/vimspector', {'on': 'Vss'}
+Plug 'szw/vim-maximizer'
+Plug 'tweekmonster/startuptime.vim'
+Plug 'thiagoalessio/rainbow_levels.vim'
+" Plug 'RRethy/vim-illuminate'
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(69) } }
+Plug 'honza/vim-snippets'
+Plug 'ptzz/lf.vim'
+Plug 'rbgrouleff/bclose.vim'
+Plug 'voldikss/vim-floaterm'
+Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch-fuzzy.vim'
+Plug 'haya14busa/incsearch-easymotion.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'SirVer/ultisnips'
+Plug 'rhysd/wandbox-vim'
+Plug 'Shougo/vimproc.vim', {'do':'make'}
+Plug 'RishabhRD/nvim-cheat.sh'
+Plug 'RishabhRD/popfix'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'nvim-treesitter/playground'
+Plug 'romgrk/nvim-treesitter-context'
+Plug 'p00f/nvim-ts-rainbow'
+Plug 'nvim-treesitter/nvim-treesitter-refactor'
+Plug 'norcalli/nvim-colorizer.lua'
 " Plugin 'vim-fat-finger' manually added
 
-call vundle#end()            " required
+call plug#end()            " required
 filetype plugin indent on    " required
 
 "----------------Plugin-Options-----------------
@@ -213,7 +263,7 @@ let g:easytags_dynamic_files = 1
 let g:shell_fullscreen_always_on_top = 0
 
 "==>vim-rooter
-let g:rooter_patterns = ['.git', 'CMakeLists.txt', 'Makefile', '*.sln', '.idea', '.CProot']
+let g:rooter_patterns = ['.git', 'CMakeLists.txt', 'Makefile', '*.sln', '.idea', '.cp', '.vim']
 
 "==>airline
 let g:airline_theme='hybrid'
@@ -225,7 +275,7 @@ let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#show_tab_count = 1
+let g:airline#extencions#nabline#show_tab_count = 1
 let g:airline#extensions#tabline#excludes = ['qf', 'vim-plug', 'help', 'diff', 'man', 'fugitive', 'nerdtree', 'tagbar', 'codi']
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#tabline#show_tab_type = 1
@@ -315,6 +365,10 @@ function JavaStartDebug()
 endfunction
 
 nmap <F1> :call JavaStartDebug()<CR>
+
+"coc-gi-git
+nnoremap [c <plug>(coc-git-prevchunk)
+nnoremap ]c <plug>(coc-git-nextchunk)
 "==>indentLine
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
@@ -372,8 +426,8 @@ endfunction
 
 function RainbowLevelsToggle() abort
     for level in range(0, 10, 2)
-      exe 'hi! RainbowLevel'.level.' guifg=magenta'
-      exe 'hi! RainbowLevel'.(level+1).' guifg=cyan'
+      exe 'hi! RainbowLevel'.level.' guibg=dark guifg=magenta'
+      exe 'hi! RainbowLevel'.(level+1).'guibg=dark guifg=cyan'
     endfor
     execute ":RainbowLevelsToggle"
 endfunction
@@ -385,10 +439,10 @@ command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 "==>illuminate
-augroup illuminate_augroup
-        autocmd!
-            autocmd VimEnter * hi illuminatedCurWord cterm=italic gui=italic
-        augroup END
+" augroup illuminate_augroup
+        " autocmd!
+            " autocmd VimEnter * hi illuminatedCurWord cterm=italic gui=italic
+        " augroup END
 
 "==>vim-lf
 nnoremap <leader>f <Plug>LfSplit
@@ -441,7 +495,7 @@ noremap <silent><expr> z? incsearch#go(<SID>config_fuzzyall({'command': '?'}))
 noremap <silent><expr> zg? incsearch#go(<SID>config_fuzzyall({'is_stay': 1}))
 
 "==>easymotion
-map <Leader> <Plug>(easymotion-prefix)
+" map <Leader> <Plug>(easymotion-prefix)
 
 " <Leader>f{char} to move to {char}
 map  <Leader>f <Plug>(easymotion-bd-f)
@@ -501,73 +555,122 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
-"==>vimwiki
+"==>nvim-colorizer
+" DEFAULT_OPTIONS = {
+" 	RGB      = true;         -- #RGB hex codes
+" 	RRGGBB   = true;         -- #RRGGBB hex codes
+" 	names    = true;         -- "Name" codes like Blue
+" 	RRGGBBAA = false;        -- #RRGGBBAA hex codes
+" 	rgb_fn   = false;        -- CSS rgb() and rgba() functions
+" 	hsl_fn   = false;        -- CSS hsl() and hsla() functions
+" 	css      = false;        -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+" 	css_fn   = false;        -- Enable all CSS *functions*: rgb_fn, hsl_fn
+" 	-- Available modes: foreground, background
+" 	mode     = 'background'; -- Set the display mode.
+  " }
+lua require'colorizer'.setup{'*';yml = {RRGGBBAA = true;}; css = { rgb_fn = true; };html = { names = false; } }
+colorscheme nvcode
+"==>treesitter
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    custom_captures = {
+      -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
+      ["foo.bar"] = "Identifier",
+    },
+  },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    },
+  },
+  indent = {
+    enable = true
+  }
+}
+EOF
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 
-let taskList = {}
-let taskList.path = '~/workspace/vimwiki/'
-" let taskList.html_template = '~/public_html/template.tpl'
-let taskList.path_html = '~/workspace/vimwiki/'
-let taskList.syntax = 'markdown'
-let taskList.ext =  '.md'
-" let taskList.nested_syntaxes = {'python': 'python', 'c++': 'cpp'}
+"==>playground
+lua<<EOF
+require "nvim-treesitter.configs".setup {
+  playground = {
+    enable = true,
+    disable = {},
+    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+    persist_queries = false -- Whether the query persists across vim sessions
+  }
+}
+EOF
 
-let g:vimwiki_list = [taskList]
-let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-nmap <space>t <Plug>VimwikiToggleListItem <CR>
-let g:vimwiki_markdown_link_ext = 1
+"==>nvim-ts-rainbow
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  rainbow = {
+    enable = true,
+    disable = {'bash'} -- please disable bash until I figure #1 out
+  }
+}
+EOF
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  refactor = {
+    smart_rename = {
+      enable = true,
+      keymaps = {
+        smart_rename = "grr",
+      },
+    },
+  },
+  navigation = {
+    enable = true,
+    keymaps = {
+      goto_definition = "gnd",
+      list_definitions = "gnD",
+      list_definitions_toc = "gO",
+      goto_next_usage = "<a-*>",
+      goto_previous_usage = "<a-#>",
+    },
+  },
+  highlight_current_scope = { enable = true },
+  highlight_definitions = { enable = true },
+}
+EOF
 
-let g:taskwiki_markup_syntax = 'markdown'
-let g:markdown_folding = 1
+"==>startify
+" returns all modified files of the current git repo
+" `2>/dev/null` makes the command fail quietly, so that when we are not
+" in a git repo, the list will be empty
+function! s:gitModified()
+    let files = systemlist('git ls-files -m 2>/dev/null')
+    return map(files, "{'line': v:val, 'path': v:val}")
+endfunction
 
-"----------------options------------------------
-let g:vimspector_base_dir='C:\Users\rajpr\.vim\bundle\vimspector'
-" set UTF encoding
-set enc=utf-8
-set fenc=utf-8
-set termencoding=utf-8
-set list lcs=tab:\|\ "(here is a space)
-set termguicolors
-colorscheme hybrid_reverse
-" execute ":AirlineToggleWhitespace"
-" hi Quote ctermbg=109 guifg=#83a598
-set hidden
-set noshowmode          "only if a status line plugin is installed
-set smartcase
-set ignorecase
-set incsearch
-set lazyredraw
-set autoindent
-set smartindent
-" configure tabwidth and insert spaces instead of tabs
-set tabstop=4        " tab width is 4 spaces
-set shiftwidth=4     " indent also with 4 spaces
-set expandtab        " expand tabs to spaces
-" wrap lines at 120 chars. 80 is some what antiquated with nowadays displays.
-set textwidth=79
-" turn syntax highlighting on
-set t_Co=256
-syntax on
-"" turn line numbers on
-set number
-" highlight matching braces
-set showmatch
-" intelligent comments
-set comments=sl:/*,mb:\ *,elx:\ */
-set laststatus=2
-"scroll when [count] lines to the border
-set so=5
-"let left right keys to switch to different line at end of line
-set whichwrap=<,>,[,]
-" display tabs as '>---' and trailing spaces as '-'
-set listchars=tab:>-,trail:-
-"let terminal detect mouse input
-set mouse=a
-set shellslash
-" set ttymouse=xtem2
-set showtabline=2
+" same as above, but show untracked files, honouring .gitignore
+function! s:gitUntracked()
+    let files = systemlist('git ls-files -o --exclude-standard 2>/dev/null')
+    return map(files, "{'line': v:val, 'path': v:val}")
+endfunction
 
+let g:startify_lists = [
+        \ { 'type': 'files',     'header': ['   MRU']            },
+        \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
+        \ { 'type': 'sessions',  'header': ['   Sessions']       },
+        \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+        \ { 'type': function('s:gitModified'),  'header': ['   git modified']},
+        \ { 'type': function('s:gitUntracked'), 'header': ['   git untracked']},
+        \ { 'type': 'commands',  'header': ['   Commands']       },
+        \ ]
 
-let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools']
+let g:startify_bookmarks = [ {'i': 'C:\Users\rajpr\workspace\dotfiles\nvim\init.vim'}, 
+            \'~/.bashrc' ]
+
 "---------------remaps/commands-------------------------
 "To use `ALT+{h,j,k,l}` to navigate windows from any mode:
 :tnoremap <A-h> <C-\><C-N><C-w>h
@@ -582,6 +685,7 @@ let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools']
 :nnoremap <A-j> <C-w>j
 :nnoremap <A-k> <C-w>k
 :nnoremap <A-l> <C-w>l
+
 "Folding with spacebar
 nnoremap <space> za
 " Edit vimrc configuration file
@@ -593,12 +697,12 @@ nnoremap <leader>e :exe getline(line('.'))<CR>
 " CDC = Change to Directory of Current file
 command CDF cd %:p:h
 "refresh external changes into file
-nnoremap <F5> :checktime <CR>
+nnoremap <F5> :checktime <bar> :CocCommand git.refresh <CR>
 "Quit without closing tab
 command Q :Sayonara!
 "Add semicolon to end of line with <;>
 nnoremap ; A;<esc>
-nnoremap <leader>pl :PluginInstall<CR>
+nnoremap <leader>pl :PlugInstall<CR>
 
 " Control-S Save
 map <C-S> <esc>:w<cr>
@@ -620,6 +724,9 @@ cmap <C-V> <C-r>0
 map <leader>tr :hi Normal guibg=NONE ctermbg=NONE<CR>
 map <leader>op :set background=dark<CR>
 
+" Open project directory in Windows File Explorer 
+nnoremap <leader>xp :silent! !explorer . <CR>
+
 "---------------autocommands-------------------
 "Show relative numbering in only command mode
 augroup every
@@ -627,7 +734,8 @@ augroup every
   au InsertEnter * set norelativenumber
   au InsertLeave * set relativenumber
 augroup END
-autocmd filetype cpp nmap <F6> :w <bar> !g++ -ulimit -g -Wall -Wno-unused-result -std=c++11 % -o %:r && %:r < inp.txt > out.txt <CR>
+autocmd filetype cpp nmap <F6> :w <bar> FloatermNew g++ -s -O3 % -o release-%:r && release-%:r < inp.txt > out.txt <CR>
+autocmd filetype cpp nmap <S-F6> :w <bar> FloatermNew! g++ -ulimit -ggdb -Og -Wall -Wno-unused-result -std=c++11 % -o debug-%:r && debug-%:r < inp.txt > out.txt <CR>
 autocmd filetype c nmap <F6> :w <bar> !gcc -g  % -o %:r && %:r < inp.txt > out.txt <CR>
 autocmd filetype java nmap <F6> :w <bar> !javac -g % && java -enableassertions %:r < inp.txt > out.txt <CR>
 " to start debug server on port 5005
