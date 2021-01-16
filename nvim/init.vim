@@ -1,7 +1,6 @@
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 set runtimepath+=~/.config/nvim
-set backupdir=~/.vim/backups
 
 "Failed attempt to configure powershell as the default inside vim
     "sending commands as string in '!' and vundle uses '&&' in shell commands which is not supported by powershell
@@ -22,6 +21,8 @@ set updatetime=50
 let g:vimspector_base_dir='C:\Users\rajpr\.vim\bundle\vimspector'
 " set UTF encoding
 set enc=utf-8
+set noswapfile
+set nobackup
 set fenc=utf-8
 set termencoding=utf-8
 set list lcs=tab:\|\ "(here is a space)
@@ -367,8 +368,21 @@ endfunction
 nmap <F1> :call JavaStartDebug()<CR>
 
 "coc-gi-git
-nnoremap [c <plug>(coc-git-prevchunk)
-nnoremap ]c <plug>(coc-git-nextchunk)
+" navigate chunks of current buffer
+nmap [g <Plug>(coc-git-prevchunk)
+nmap ]g <Plug>(coc-git-nextchunk)
+" navigate conflicts of current buffer
+nmap [c <Plug>(coc-git-prevconflict)
+nmap ]c <Plug>(coc-git-nextconflict)
+" show chunk diff at current position
+nmap gs <Plug>(coc-git-chunkinfo)
+" show commit contains current position
+nmap gc <Plug>(coc-git-commit)
+" create text object for git chunks
+omap ig <Plug>(coc-git-chunk-inner)
+xmap ig <Plug>(coc-git-chunk-inner)
+omap ag <Plug>(coc-git-chunk-outer)
+xmap ag <Plug>(coc-git-chunk-outer)
 "==>indentLine
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
