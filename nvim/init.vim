@@ -27,8 +27,6 @@ set fenc=utf-8
 set termencoding=utf-8
 set list lcs=tab:\|\ "(here is a space)
 set termguicolors
-" execute ":AirlineToggleWhitespace"
-" hi Quote ctermbg=109 guifg=#83a598
 set hidden
 set noshowmode          "only if a status line plugin is installed
 set smartcase
