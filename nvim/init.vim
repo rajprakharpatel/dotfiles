@@ -110,7 +110,8 @@ Plug 'christianchiarulli/nvcode-color-schemes.vim'
 Plug 'sainnhe/edge'
 Plug 'Yggdroot/indentLine'        "displaying thin vertical lines at each indentation level for code indented with spaces
 Plug 'ryanoasis/vim-devicons'
-Plug 'rrethy/vim-hexokinase', { 'do': 'make -f hexokinase' }
+Plug 'thiagoalessio/rainbow_levels.vim'
+Plug 'RRethy/vim-illuminate'
 
 "pure vim scripts with no dependencies
 Plug 'tpope/vim-abolish'
@@ -133,19 +134,31 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'airblade/vim-rooter'        "automatically sets project directory using rules in vimrc
 
-"Experimental
-Plug 'qpkorr/vim-bufkill'
+"Target objects
+Plug 'wellle/targets.vim'
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-line'
+Plug 'kana/vim-textobj-entire'
+Plug 'kana/vim-textobj-indent'
+Plug 'jeetsukumaran/vim-pythonsense'
+Plug 'michaeljsmith/vim-indent-object'
+
+
 Plug 'xolox/vim-shell'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-easytags'
+Plug 'andymass/vim-matchup'
+
+"Experimental
+Plug 'qpkorr/vim-bufkill'
 Plug 'romainl/vim-qf'                 "don't recommend vim-qf to Syntastic/Neomake/ALE users
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tmhedberg/SimpylFold'
 Plug 'liuchengxu/vim-which-key'
-Plug 'michaeljsmith/vim-indent-object'
 Plug 'Raimondi/delimitMate'
-" Plug 'sheerun/vim-polyglot'         "Replaced functionality with treesitter
+" Plug 'sheerun/vim-polyglot'         "Replaced functionality with
+" treesitter(prerelease)
 "LSP/autocomplete
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'jackguo380/vim-lsp-cxx-highlight'
@@ -153,20 +166,11 @@ Plug 'python-rope/ropevim'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'natebosch/vim-lsc'
 Plug 'natebosch/vim-lsc-dart'
-Plug 'wellle/targets.vim'
-Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-textobj-line'
-Plug 'kana/vim-textobj-entire'
-Plug 'kana/vim-textobj-indent'
-Plug 'jeetsukumaran/vim-pythonsense'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
-Plug 'andymass/vim-matchup'
-Plug 'puremourning/vimspector', {'on': 'Vss'}
+Plug 'puremourning/vimspector', {'on': '<plug>vimspector#Launch()'}
 Plug 'szw/vim-maximizer'
 Plug 'tweekmonster/startuptime.vim'
-Plug 'thiagoalessio/rainbow_levels.vim'
-" Plug 'RRethy/vim-illuminate'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(69) } }
 Plug 'honza/vim-snippets'
 Plug 'ptzz/lf.vim'
@@ -252,7 +256,6 @@ map <F9> :TagbarToggle<CR>
 
 "==>vim-easytags
 let g:easytags_async=1
-"autocmd FileType python let b:easytags_auto_highlight = 0          "example how to disable highlighting for a filetype
 let g:easytags_file = '~/.vim/tags'
 
 set tags=./tags;
@@ -265,8 +268,6 @@ let g:shell_fullscreen_always_on_top = 0
 let g:rooter_patterns = ['.git', 'CMakeLists.txt', 'Makefile', '*.sln', '.idea', '.cp', '.vim']
 
 "==>airline
-let g:airline_theme='hybrid'
-" let g:airline#extensions#ale#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
 "tabline
@@ -384,15 +385,11 @@ xmap ag <Plug>(coc-git-chunk-outer)
 "==>indentLine
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
+"==>matchup
+let g:matchup_matchparen_offscreen = {'method': 'popup'}
 "==>simpylfold
 let g:SimpylFold_docstring_preview = 1
 let g:SimpylFold_fold_docstring = 1
-
-"==>rope
-let ropevim_vim_completion=1
-let ropevim_extended_complete=1
-let g:ropevim_goto_def_newwin="tabnew"
-autocmd FileType python setlocal omnifunc=RopeCompleteFunc
 
 "==>vim-spector
 source ~/AppData/Local/nvim/which-key.vim 
@@ -418,9 +415,6 @@ nnoremap <leader>d<space> :call vimspector#Continue()<CR>
 nmap <leader>drc <Plug>VimspectorRunToCursor
 nmap <leader>dbp <Plug>VimspectorToggleBreakpoint
 nmap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
-
-"==>cheat
-let g:CheatSheetSilent=1
 
 "==>rainbow_levels
 function RainbowBackgroundToggle() abort
