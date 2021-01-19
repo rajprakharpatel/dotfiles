@@ -62,6 +62,7 @@ set mouse=a
 " set shellslash "plug doesn't worrk with this option set
 " set ttymouse=xtem2
 set showtabline=2
+set colorcolumn=80
 
 
 let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools']
@@ -185,6 +186,7 @@ Plug 'rhysd/wandbox-vim'
 Plug 'Shougo/vimproc.vim', {'do':'make'}
 Plug 'RishabhRD/nvim-cheat.sh'
 Plug 'RishabhRD/popfix'
+Plug 'AndrewRadev/switch.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'nvim-treesitter/playground'
 Plug 'romgrk/nvim-treesitter-context'
