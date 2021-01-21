@@ -90,7 +90,7 @@ call plug#begin('~\.vim\plugged')
 " let fc['https?://instagram.com.*'] = { 'takeover': 'never', 'priority': 1 }
 " let fc['https?://twitter.com.*'] = { 'takeover': 'never', 'priority': 1 }
 " let fc['https://.*gmail.com.*'] = { 'takeover': 'never', 'priority': 1 }
-" let fc['https?://.*twitch.tv.*'] = { 'takeover': 'never', 'priority': 1} 
+" let fc['https?://.*twitch.tv.*'] = { 'takeover': 'never', 'priority': 1}
 "Core Plugins
 Plug 'ctrlpvim/ctrlp.vim'         "Search for anyting from vim
 
@@ -158,8 +158,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'tmhedberg/SimpylFold'
 Plug 'liuchengxu/vim-which-key'
 Plug 'Raimondi/delimitMate'
-" Plug 'sheerun/vim-polyglot'         "Replaced functionality with
-" treesitter(prerelease)
+Plug 'sheerun/vim-polyglot'         "using till treesitter supports more filetypes
+"
 "LSP/autocomplete
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'jackguo380/vim-lsp-cxx-highlight'
@@ -394,7 +394,7 @@ let g:SimpylFold_docstring_preview = 1
 let g:SimpylFold_fold_docstring = 1
 
 "==>vim-spector
-source ~/AppData/Local/nvim/which-key.vim 
+source ~/AppData/Local/nvim/which-key.vim
 
 nnoremap <leader>m :MaximizerToggle!<CR>
 nnoremap <leader>dd :call vimspector#Launch()<CR>
@@ -577,7 +577,7 @@ let g:UltiSnipsEditSplit="vertical"
 " 	mode     = 'background'; -- Set the display mode.
   " }
 lua require'colorizer'.setup{'*';yml = {RRGGBBAA = true;}; css = { rgb_fn = true; };html = { names = false; } }
-colorscheme nvcode
+colorscheme edge
 "==>treesitter
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
@@ -676,7 +676,7 @@ let g:startify_lists = [
         \ { 'type': 'commands',  'header': ['   Commands']       },
         \ ]
 
-let g:startify_bookmarks = [ {'i': 'C:\Users\rajpr\workspace\dotfiles\nvim\init.vim'}, 
+let g:startify_bookmarks = [ {'i': 'C:\Users\rajpr\workspace\dotfiles\nvim\init.vim'},
             \'~/.bashrc' ]
 
 "==>switch
@@ -706,6 +706,10 @@ let g:switch_custom_definitions =
 :nnoremap <A-k> <C-w>k
 :nnoremap <A-l> <C-w>l
 
+" Quick searh syntax
+cmap ;; :%s:::g<Left><Left><Left>
+" Quick mapping to put \(\) in your pattern string
+cmap ;\ \(\)<Left><Left>
 "Folding with spacebar
 nnoremap <space> za
 " Edit vimrc configuration file
@@ -744,7 +748,7 @@ cmap <C-V> <C-r>0
 map <leader>tr :hi Normal guibg=NONE ctermbg=NONE<CR>
 map <leader>op :set background=dark<CR>
 
-" Open project directory in Windows File Explorer 
+" Open project directory in Windows File Explorer
 nnoremap <leader>xp :silent! !explorer . <CR>
 
 "---------------autocommands-------------------
