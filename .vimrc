@@ -1,4 +1,10 @@
-"----------------------------options-------------------------------------------
+"__________                       ____   ____.__         
+"\______   \__ _________   ____   \   \ /   /|__| _____  
+" |     ___/  |  \_  __ \_/ __ \   \   Y   / |  |/     \ 
+" |    |   |  |  /|  | \/\  ___/    \     /  |  |  Y Y  \
+" |____|   |____/ |__|    \_____     \___/   |__|__|_|  /
+"                                                     \/ 
+"------------------------------options-----------------------------------------
 " set UTF encoding
 set updatetime=50
 set enc=utf-8
@@ -39,23 +45,29 @@ set listchars=tab:>-,trail:-
 "let terminal detect mouse input
 set mouse=a
 " set shellslash "plug doesn't worrk with this option set
-" set ttymouse=xtem2
 set showtabline=2
+
+"NERDTree's flavour
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 15
 
 "---------------remaps/commands-------------------------
 "To use `ALT+{h,j,k,l}` to navigate windows from any mode:
-:tnoremap <A-h> <C-\><C-N><C-w>h
-:tnoremap <A-j> <C-\><C-N><C-w>j
-:tnoremap <A-k> <C-\><C-N><C-w>k
-:tnoremap <A-l> <C-\><C-N><C-w>l
-:inoremap <A-h> <C-\><C-N><C-w>h
-:inoremap <A-j> <C-\><C-N><C-w>j
-:inoremap <A-k> <C-\><C-N><C-w>k
-:inoremap <A-l> <C-\><C-N><C-w>l
-:nnoremap <A-h> <C-w>h
-:nnoremap <A-j> <C-w>j
-:nnoremap <A-k> <C-w>k
-:nnoremap <A-l> <C-w>l
+tnoremap <A-h> <C-\><C-N><C-w>h
+tnoremap <A-j> <C-\><C-N><C-w>j
+tnoremap <A-k> <C-\><C-N><C-w>k
+tnoremap <A-l> <C-\><C-N><C-w>l
+inoremap <A-h> <C-\><C-N><C-w>h
+inoremap <A-j> <C-\><C-N><C-w>j
+inoremap <A-k> <C-\><C-N><C-w>k
+inoremap <A-l> <C-\><C-N><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
 
 "Folding with spacebar
 nnoremap <space> za
@@ -73,7 +85,6 @@ nnoremap <F5> :checktime<CR>
 command Q :Sayonara!
 "Add semicolon to end of line with <;>
 nnoremap ; A;<esc>
-nnoremap <leader>pl :PlugInstall<CR>
 
 " Control-S Save
 map <C-S> <esc>:w<cr>

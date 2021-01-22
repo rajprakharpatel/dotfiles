@@ -194,6 +194,7 @@ Plug 'romgrk/nvim-treesitter-context'
 Plug 'p00f/nvim-ts-rainbow'
 Plug 'nvim-treesitter/nvim-treesitter-refactor'
 Plug 'norcalli/nvim-colorizer.lua'
+Plug 'stsewd/fzf-checkout.vim'
 " Plugin 'vim-fat-finger' manually added
 
 call plug#end()            " required
@@ -354,7 +355,6 @@ let g:coc_explorer_global_presets = {
 \   }
 \ }
 nmap <space>e :CocCommand explorer<CR>
-nmap <space>f :CocCommand explorer --preset floatingRightside<CR>
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 
 " nmap <F1> :CocCommand java.debug.vimspector.start<CR>
@@ -446,6 +446,29 @@ nnoremap <leader>rbb :call RainbowBackgroundToggle()<CR>
 "==>FZF
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+nmap <space>f :Files<CR>
+nmap <space>gf :GitFiles<CR>
+
+"==>fzf-checkout
+let g:fzf_checkout_merge_settings = v:false
+let g:fzf_branch_actions = {
+      \ 'checkout': {
+      \   'prompt': 'Checkout> ',
+      \   'execute': 'echo system("{git} checkout {branch}")',
+      \   'multiple': v:false,
+      \   'keymap': 'enter',
+      \   'required': ['branch'],
+      \   'confirm': v:false,
+      \ },
+      \ 'diff': {
+      \   'prompt': 'Diff> ',
+      \   'execute': 'Git diff {branch}',
+      \   'multiple': v:false,
+      \   'keymap': 'ctrl-f',
+      \   'required': ['branch'],
+      \   'confirm': v:false,
+      \ },
+      \}
 
 "==>illuminate
 " augroup illuminate_augroup
