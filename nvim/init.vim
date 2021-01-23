@@ -113,7 +113,6 @@ Plug 'Yggdroot/indentLine'        "displaying thin vertical lines at each indent
 Plug 'ryanoasis/vim-devicons'
 Plug 'thiagoalessio/rainbow_levels.vim'
 Plug 'RRethy/vim-illuminate'
-Plug 'sainnhe/vim-color-forest-night'
 
 "pure vim scripts with no dependencies
 Plug 'tpope/vim-abolish'
@@ -601,7 +600,7 @@ let g:UltiSnipsEditSplit="vertical"
 " 	mode     = 'background'; -- Set the display mode.
   " }
 lua require'colorizer'.setup{'*';yml = {RRGGBBAA = true;}; css = { rgb_fn = true; };html = { names = false; } }
-colorscheme forest-night
+colorscheme nord
 "==>treesitter
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
@@ -753,9 +752,9 @@ nnoremap ; A;<esc>
 nnoremap <leader>pl :PlugInstall<CR>
 
 " Control-S Save
-map <C-S> <esc>:w<cr>
+nmap <C-S> <esc>:w!<cr>
 " Save + back into insert
-imap <C-S> <esc>:w<cr>a
+imap <C-S> <esc>:w!<cr>a
 
 " Control-C Copy to system clipboard
 vmap <C-C> "+y
