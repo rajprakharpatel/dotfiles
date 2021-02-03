@@ -18,7 +18,7 @@ set runtimepath+=~/.config/nvim
 set updatetime=50
 
 "----------------options------------------------
-let g:vimspector_base_dir='C:\Users\rajpr\.vim\bundle\vimspector'
+let g:vimspector_base_dir='C:\Users\rajpr\.vim\plugged\vimspector'
 " set UTF encoding
 set enc=utf-8
 set noswapfile
@@ -40,6 +40,7 @@ set tabstop=4        " tab width is 4 spaces
 set shiftwidth=4     " indent also with 4 spaces
 set expandtab        " expand tabs to spaces
 " wrap lines at 120 chars. 80 is some what antiquated with nowadays displays.
+set nowrap
 set textwidth=79
 " turn syntax highlighting on
 set t_Co=256
@@ -158,18 +159,13 @@ Plug 'junegunn/fzf.vim'
 Plug 'tmhedberg/SimpylFold'
 Plug 'liuchengxu/vim-which-key'
 Plug 'Raimondi/delimitMate'
-Plug 'sheerun/vim-polyglot'         "using till treesitter supports more filetypes
-"
+Plug 'sheerun/vim-polyglot'         "using till treesitter supports more filetypes;
+
 "LSP/autocomplete
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-Plug 'jackguo380/vim-lsp-cxx-highlight'
-Plug 'python-rope/ropevim'
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'natebosch/vim-lsc'
-Plug 'natebosch/vim-lsc-dart'
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile' }
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
-Plug 'puremourning/vimspector', {'on': '<plug>vimspector#Launch()'}
+Plug 'puremourning/vimspector', {'on': 'VS'}
 Plug 'szw/vim-maximizer'
 Plug 'tweekmonster/startuptime.vim'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(69) } }
@@ -194,6 +190,8 @@ Plug 'p00f/nvim-ts-rainbow'
 Plug 'nvim-treesitter/nvim-treesitter-refactor'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'stsewd/fzf-checkout.vim'
+Plug 'vimwiki/vimwiki', {'branch': 'dev'}
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 " Plugin 'vim-fat-finger' manually added
 
 call plug#end()            " required
@@ -308,10 +306,10 @@ inoremap <silent><expr> <S-Tab>
       \ <SID>check_back_space() ? "\<S-Tab>" :
       \ coc#refresh()
 
-nmap <leader>gd <plug>(coc-definition)
-nmap <leader>gy <plug>(coc-type-definition)
-nmap <leader>gu <plug>(coc-implementation)
-nmap <leader>gr <plug>(coc-references)
+nmap gd <plug>(coc-definition)
+nmap gy <plug>(coc-type-definition)
+nmap gu <plug>(coc-implementation)
+nmap gr <plug>(coc-references)
 nmap <leader>rn <plug>(coc-rename)
 nmap <A-f> :CocFix<CR>
 nmap <C-A-l> :call CocAction('format')<CR>
@@ -376,7 +374,7 @@ nmap ]g <Plug>(coc-git-nextchunk)
 nmap [c <Plug>(coc-git-prevconflict)
 nmap ]c <Plug>(coc-git-nextconflict)
 " show chunk diff at current position
-nmap gs <Plug>(coc-git-chunkinfo)
+nmap gi <Plug>(coc-git-chunkinfo)
 " show commit contains current position
 nmap gc <Plug>(coc-git-commit)
 " create text object for git chunks
@@ -476,7 +474,7 @@ let g:fzf_branch_actions = {
         " augroup END
 
 "==>vim-lf
-nnoremap <leader>f <Plug>LfSplit
+nnoremap <leader>lf <Plug>LfSplit
 let g:lf_replace_netrw = 1 "open lf when vim open a directory
 
 "==>floaterm
@@ -600,7 +598,7 @@ let g:UltiSnipsEditSplit="vertical"
 " 	mode     = 'background'; -- Set the display mode.
   " }
 lua require'colorizer'.setup{'*';yml = {RRGGBBAA = true;}; css = { rgb_fn = true; };html = { names = false; } }
-colorscheme nord
+colorscheme aurora
 "==>treesitter
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
@@ -675,38 +673,26 @@ require'nvim-treesitter.configs'.setup {
 EOF
 
 "==>startify
-" returns all modified files of the current git repo
-" `2>/dev/null` makes the command fail quietly, so that when we are not
-" in a git repo, the list will be empty
-function! s:gitModified()
-    let files = systemlist('git ls-files -m 2>/dev/null')
-    return map(files, "{'line': v:val, 'path': v:val}")
-endfunction
-
-" same as above, but show untracked files, honouring .gitignore
-function! s:gitUntracked()
-    let files = systemlist('git ls-files -o --exclude-standard 2>/dev/null')
-    return map(files, "{'line': v:val, 'path': v:val}")
-endfunction
 
 let g:startify_lists = [
+        \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
         \ { 'type': 'files',     'header': ['   MRU']            },
         \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
         \ { 'type': 'sessions',  'header': ['   Sessions']       },
-        \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-        \ { 'type': function('s:gitModified'),  'header': ['   git modified']},
-        \ { 'type': function('s:gitUntracked'), 'header': ['   git untracked']},
         \ { 'type': 'commands',  'header': ['   Commands']       },
         \ ]
 
 let g:startify_bookmarks = [ {'i': 'C:\Users\rajpr\workspace\dotfiles\nvim\init.vim'},
-            \'~/.bashrc' ]
+            \{'b': '~/.bashrc'},
+            \{'p': 'C:\Users\rajpr\OneDrive\Documents\PowerShell\Microsoft.PowerShell_profile.ps1'},
+            \{'v': '~\.vimrc'}]
 
-"==>switch
-nnoremap qs :Switch<CR>
+"==>switch(gs-default)
 let g:switch_custom_definitions =
     \ [
     \   {
+    \     'start': 'stop',
+    \     'stop': 'start',
     \     '\<\(\l\)\(\l\+\(\u\l\+\)\+\)\>': '\=toupper(submatch(1)) . submatch(2)',
     \     '\<\(\u\l\+\)\(\u\l\+\)\+\>': "\\=tolower(substitute(submatch(0), '\\(\\l\\)\\(\\u\\)', '\\1_\\2', 'g'))",
     \     '\<\(\l\+\)\(_\l\+\)\+\>': '\U\0',
@@ -714,6 +700,15 @@ let g:switch_custom_definitions =
     \     '\<\(\l\+\)\(-\l\+\)\+\>': "\\=substitute(submatch(0), '-\\(\\l\\)', '\\u\\1', 'g')",
     \   }
     \ ]
+
+"==>vimwiki
+let g:vimwiki_list = [{'path': '~/Workspace/vimwiki',
+                     \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_global_ext = 0
+
+"==>markdown_preview_vim
+let g:mkdp_filetypes = ['markdown', 'vimwiki']
+nmap <leader>mp <Plug>MarkdownPreviewToggle
 "-------------------------remaps/commands--------------------------------------
 "To use `ALT+{h,j,k,l}` to navigate windows from any mode:
 :tnoremap <A-h> <C-\><C-N><C-w>h
