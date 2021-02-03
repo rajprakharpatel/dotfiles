@@ -2,13 +2,13 @@ AlsoSaveAsKra=false
 AntialiasSelectionOutline=false
 ArtColorSel.ColorSpace=0
 ArtColorSel.InversedSaturation=false
-ArtColorSel.Light=0.5645205851600424
+ArtColorSel.Light=0
 ArtColorSel.LightPieces=11
 ArtColorSel.NumRings=7
 ArtColorSel.RingPieces=12
-ArtColorSel.SelColorH=0.3297543160690571
-ArtColorSel.SelColorS=0.9698311162408016
-ArtColorSel.SelColorX=0.5645205851600424
+ArtColorSel.SelColorH=0
+ArtColorSel.SelColorS=0
+ArtColorSel.SelColorX=0
 ArtColorSel.defaultHueSteps=12
 ArtColorSel.defaultSaturationSteps=7
 ArtColorSel.defaultValueScaleSteps=11
@@ -45,9 +45,9 @@ Krita/Ocio/OcioConfigPath=
 Krita/Ocio/OcioLockColorVisualRepresentation=false
 Krita/Ocio/OcioLutPath=
 Krita/Ocio/UseOcio=false
-LastBackGroundColor=<!DOCTYPE LastBackGroundColor>\n<LastBackGroundColor>\n <RGB space="sRGB-elle-V2-g10.icc" g="0" b="0" r="0"/>\n</LastBackGroundColor>\n
-LastForeGroundColor=<!DOCTYPE LastForeGroundColor>\n<LastForeGroundColor>\n <RGB space="sRGB-elle-V2-srgbtrc.icc" g="0.658823549747467" b="0.0901960805058479" r="0.137254908680916"/>\n</LastForeGroundColor>\n
-LastPreset=b)_Airbrush_Soft
+LastBackGroundColor=<!DOCTYPE LastBackGroundColor>\n<LastBackGroundColor>\n <RGB space="sRGB-elle-V2-g10.icc" r="0" b="0" g="0"/>\n</LastBackGroundColor>\n
+LastForeGroundColor=<!DOCTYPE LastForeGroundColor>\n<LastForeGroundColor>\n <RGB space="sRGB-elle-V2-srgbtrc.icc" r="0" b="0" g="0"/>\n</LastForeGroundColor>\n
+LastPreset=b)_Basic-1
 LineSmoothingDelayDistance=50
 LineSmoothingDistance=50
 LineSmoothingFinishStabilizedCurve=true
@@ -150,8 +150,8 @@ memorySoftLimitPercent=2
 monitorProfile=sRGB-elle-V2-srgbtrc.icc
 monitorProfile/OverrideX11=false
 monitorProfile_1=sRGB-elle-V2-srgbtrc.icc
-moveToolChangedValueX=15
-moveToolChangedValueY=125
+moveToolChangedValueX=143
+moveToolChangedValueY=360
 moveToolUnit=0
 newCursorStyle=0
 newOutlineStyle=2
@@ -206,7 +206,7 @@ onionSkinTintFactor=191
 pasteBehaviour=0
 pixelGridColor=255,255,255
 pixelGridDrawingThreshold=24
-presethistory=y)_Texture_Large_Splat,y)_Texture_Splat,y)_Texture_Starfield,z)_Stamp_Hearts,a)_Eraser_Small,a)_Eraser_Soft,Airbrush_pressure,Airbrush_linear_noisy,a)_Eraser_Circle,b)_Airbrush_Soft
+presethistory=y)_Texture_Splat,y)_Texture_Starfield,z)_Stamp_Hearts,a)_Eraser_Small,a)_Eraser_Soft,Airbrush_pressure,Airbrush_linear_noisy,a)_Eraser_Circle,b)_Airbrush_Soft,b)_Basic-1
 renderIntent=0
 saveSessionOnQuit=false
 scratchpadVisible=true
@@ -238,8 +238,8 @@ HideKrita3Bundle=false
 
 [File Dialogs]
 DontUseNativeFileDialog=false
-OpenDocument=C:/Users/rajpr/Downloads/Wallpapers
-SaveAs=C:/Users/rajpr/OneDrive/Pictures
+OpenDocument=C:/Users/rajpr/Downloads
+SaveAs=C:/Users/rajpr/Downloads
 
 [KisShortcutsDialog Settings]
 Dialog Size=600,480
@@ -591,12 +591,16 @@ File3[$e]=$HOME/Downloads/Wallpapers/dinosaur-minimalism.jpg
 File4[$e]=$HOME/OneDrive/Pictures/Screenshots/greenvim.png
 File5[$e]=$HOME/Downloads/Compressed/SublimeTextIcon/png/1024.png
 File6[$e]=$HOME/Downloads/vim-logo.png
+File7[$e]=$HOME/Downloads/iad.png
+File8[$e]=$HOME/Downloads/iad123.png
 Name1[$e]=test.kra
 Name2[$e]=back.exr
 Name3[$e]=dinosaur-minimalism.jpg
 Name4[$e]=greenvim.png
 Name5[$e]=1024.png
 Name6[$e]=vim-logo.png
+Name7[$e]=iad.png
+Name8[$e]=iad123.png
 
 [SelectedTags]
 kis_paintoppresets=Erasers

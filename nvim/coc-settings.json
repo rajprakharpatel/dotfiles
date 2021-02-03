@@ -1,8 +1,12 @@
 {
   // explorer
   "explorer.width": 30,
+  "explorer.quitOnOpen": true,
+  "explorer.file.showHiddenFiles": true,
   "explorer.icon.enableNerdfont": true,
-  "explorer.previewAction.onHover": "content",
+  "explorer.file.column.clip.copy": "",
+  "explorer.file.column.clip.cut": "",
+  "explorer.previewAction.onHover": "labeling",
   "explorer.keyMappings.global": {
     "<cr>": ["expandable?", "expand", "open"],
     "v": "open:vsplit"
@@ -36,7 +40,7 @@
     "typeParameter": "\uf728",
     "default": "\uf29c"
   },
-  // "clangd.compilationDatabasePath": "C:/Users/rajpr/CLionProjects/Test/cmake-build-debug/",
+  // "clangd.compilationDatabasePath": "path_to_comilecommands.json-folder",
   "signature.target": "float",
   "clangd.semanticHighlighting": true,
   "clangd.fallbackFlags": ["--target=x86_64-w64-windows-gnu"],

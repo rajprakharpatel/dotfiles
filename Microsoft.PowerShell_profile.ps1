@@ -31,7 +31,8 @@ function :q {exit(0)}
 Set-Alias -Name iv -Value ImageViewer
 Set-Alias -Name list -Value Get-ChildItem
 Set-Alias -Name nn -Value nvim
-function nvp {nvim --noplugin}
+Set-Alias -Name tk -Value task
+function nnp {nvim --noplugin}
 
 # Autocompletion for powershell.
 #
@@ -69,3 +70,4 @@ Register-ArgumentCompleter -Native -CommandName 'lf' -ScriptBlock {
    #  Set-Alias ls Get-ChildItemColorFormatWide -option AllScope
 #}
 
+Clear-Host
