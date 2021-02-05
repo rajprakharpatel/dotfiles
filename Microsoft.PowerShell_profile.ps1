@@ -14,6 +14,7 @@ function df { Set-Location C:\Users\rajpr\workspace\dotfiles}
 
 Import-Module PSReadLine
 
+Set-PSReadLineOption -EditMode Vi
 Set-PSReadLineKeyHandler -Key Ctrl+n -Function MenuComplete
 
 Set-PSReadLineOption -HistorySearchCursorMovesToEnd
@@ -23,6 +24,7 @@ Set-PSReadLineKeyHandler -Key Shift+Tab -Function TabCompleteNext
 Set-PSReadLineKeyHandler -Key Tab -Function TabCompletePrevious
 Set-PSReadLineOption -ShowToolTips
 Set-PSReadLineOption -PredictionSource History
+
 
 # Set-PSReadLineOption -Colors @{Prediction = 'DarkGreen'}
 
