@@ -34,6 +34,7 @@ Set-Alias -Name iv -Value ImageViewer
 Set-Alias -Name list -Value Get-ChildItem
 Set-Alias -Name nn -Value nvim
 Set-Alias -Name tk -Value task
+Set-Alias -Name vf -Value vifm
 function nnp {nvim --noplugin}
 
 # Autocompletion for powershell.
