@@ -267,7 +267,7 @@ let g:easytags_dynamic_files = 1
 let g:shell_fullscreen_always_on_top = 0
 
 "==>vim-rooter
-let g:rooter_patterns = ['.git', 'CMakeLists.txt', 'Makefile', '*.sln', '.idea', '.c_root', '.vim']
+let g:rooter_patterns = ['.git', 'CMakeLists.txt', 'Makefile', '*.sln', '.idea', '.nvim_root', '.vim']
 
 "==>airline
 let g:airline_powerline_fonts = 1
@@ -771,21 +771,24 @@ map <leader>op :set background=dark<CR>
 nnoremap <leader>xp :silent! !explorer . <CR>
 
 "---------------autocommands-------------------
-"Show relative numbering in only command mode
+"Don't show relative numbering in Insert mode
 augroup every
   autocmd!
   au InsertEnter * set norelativenumber
   au InsertLeave * set relativenumber
 augroup END
-autocmd filetype cpp nmap <F6> :w <bar> !g++ -s -O3 % -o release-%:r && release-%:r < inp.txt > out.txt <CR>
-autocmd filetype cpp nmap <S-F6> :w <bar> FloatermNew! g++ -ulimit -ggdb -Og -Wall -Wno-unused-result -std=c++11 % -o debug-%:r && debug-%:r < inp.txt > out.txt <CR>
-autocmd filetype c nmap <F6> :w <bar> !gcc -g  % -o %:r && %:r < inp.txt > out.txt <CR>
-autocmd filetype c nmap <S-F6> :w <bar> FloatermNew! gcc -g  % -o %:r && %:r < inp.txt > out.txt <CR>
-autocmd filetype java nmap <F6> :w <bar> !javac -g % && java -enableassertions %:r < inp.txt > out.txt <CR>
-" to start debug server on port 5005
-autocmd filetype java nmap <S-F6> :w <bar> FloatermNew! java -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=5005,suspend=y %:r
-autocmd filetype python nmap <F6> :w <bar> !python % < inp.txt > out.txt <CR>
-autocmd filetype cpp nnoremap <leader>tp 0r ~/.vim/tempelate/tempelate.cpp
+augroup code
+    autocmd!
+  autocmd filetype cpp nmap <F6> :w <bar> !g++ -s -O3 % -o release-%:r && release-%:r < inp.txt > out.txt <CR>
+  autocmd filetype cpp nmap <S-F6> :w <bar> FloatermNew! g++ -ulimit -ggdb -Og -Wall -Wno-unused-result -std=c++11 % -o debug-%:r && debug-%:r < inp.txt > out.txt <CR>
+  autocmd filetype c nmap <F6> :w <bar> !gcc -g  % -o %:r && %:r < inp.txt > out.txt <CR>
+  autocmd filetype c nmap <S-F6> :w <bar> FloatermNew! gcc -g  % -o %:r && %:r < inp.txt > out.txt <CR>
+  autocmd filetype java nmap <F6> :w <bar> !javac -g % && java -enableassertions %:r < inp.txt > out.txt <CR>
+  " to start debug server on port 5005
+  autocmd filetype java nmap <S-F6> :w <bar> FloatermNew! java -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=5005,suspend=y %:r
+  autocmd filetype python nmap <F6> :w <bar> !python % < inp.txt > out.txt <CR>
+  autocmd filetype cpp nnoremap <leader>tp 0r ~/.vim/tempelate/tempelate.cpp
+augroup END
 " let g:vimspector_enable_mappings = 'HUMAN'
 
 "Comment toggling          "Alternative commentary by tpope
