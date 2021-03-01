@@ -239,6 +239,7 @@ let g:rooter_patterns = ['.git', 'CMakeLists.txt', 'Makefile', '*.sln', '.idea',
 "==>airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
+let g:airline_theme = 'night_owl'
 "tabline
 let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -251,6 +252,11 @@ let g:airline#extensions#tabline#show_tab_type = 1
 let g:airline#extensions#tabline#buf_label_first = 0
 
 "==>Coc
+let g:coc_global_extensions = [
+      \'coc-json', 'coc-git', 'coc-vimlsp', 'coc-yaml', 'coc-sh', 'coc-prettier',
+      \'coc-ultisnips', 'coc-tabnine', 'coc-snippets', 'coc-lua', 'coc-floaterm',
+      \'coc-fish', 'coc-explorer', 'coc-discord-rpc', 'coc-clangd', 'coc-browser',
+      \'coc-calc']
 "remap <cr> to make sure it confirms completion when popup menu is visible
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 "To make <cr> select the first completion item and confirm the completion when no item has been selected:
@@ -565,7 +571,7 @@ let g:UltiSnipsEditSplit="vertical"
 " 	mode     = 'background'; -- Set the display mode.
   " }
 lua require'colorizer'.setup{'*';yml = {RRGGBBAA = true;}; css = { rgb_fn = true; };html = { names = false; } }
-colorscheme aurora
+colorscheme nvcode
 "==>treesitter
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
@@ -650,9 +656,11 @@ let g:startify_lists = [
         \ ]
 
 let g:startify_bookmarks = [ {'i': '~/.config/nvim/init.vim'},
-            \{'b': '~/.bashrc'},
+            \{'b': '~/.bashrc-personal'},
             \{'v': '~/.vimrc'},
+            \{'z': '~/.zshrc-personal'},
             \{'f': '~/.config/fish/config.fish'},
+            \{'a': '~/.config/alacritty/alacritty.yml'},
             \{'w': '~/.config/i3/config'}]
 
 "==>switch(gs-default)
@@ -731,8 +739,8 @@ vmap <C-V> "+p
 cmap <C-V> <C-r>0
 
 " Toggle Transparency of background
-map <leader>tr :hi Normal guibg=NONE ctermbg=NONE<CR>
-map <leader>op :set background=dark<CR>
+map <leader>tr :hi Normal guibg=NONE ctermbg=NONE <bar> :set nocursorline <bar> :set colorcolumn=0<CR>
+map <leader>op :set background=dark <bar> :set cursorline <bar> :set colorcolumn=80<CR>
 
 " Open project directory in Windows File Explorer
 nnoremap <leader>xp :silent! !explorer . <CR>
@@ -760,7 +768,7 @@ augroup END
 "Comment toggling          "Alternative commentary by tpope
 autocmd FileType c,cpp,java,json,scala,jsonc let b:comment_leader = '//'
 autocmd FileType sh,ruby,python,cmake,ps1    let b:comment_leader = '#'
-autocmd FileType conf,fstab                  let b:comment_leader = '#'
+autocmd FileType conf,fstab,yaml,fish        let b:comment_leader = '#'
 autocmd FileType tex                         let b:comment_leader = '%'
 autocmd FileType mail                        let b:comment_leader = '>'
 autocmd FileType vim                         let b:comment_leader = '"'
