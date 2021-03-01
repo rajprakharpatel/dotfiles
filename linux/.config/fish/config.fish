@@ -48,8 +48,10 @@ end
 
 function fish_user_key_bindings
   fish_vi_key_bindings
-  bind -M insert \ck forward-bigword
+  bind -M insert \ck end-of-line
   bind -M insert \cn forward-word
+  bind -M insert \ek history-token-search-backward
+  bind -M insert \ej history-token-search-forward
 end
 
 
@@ -123,7 +125,6 @@ alias apt-get='man pacman'
 alias please='sudo'
 alias tb='nc termbin.com 9999'
 alias paru="paru --bottomup"
-
 #Cleanup orphaned packages
 alias cleanup='sudo pacman -Rns (pacman -Qtdq)'
 
@@ -142,8 +143,7 @@ if type "wal" >> /dev/null 2>&1
    cat ~/.cache/wal/sequences
 end
 
-
 ## Run paleofetch if session is interactive
-if status --is-interactive
+if status --is-interactive && ! type -q floaterm
    paleofetch
 end
