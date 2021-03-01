@@ -20,6 +20,9 @@ set ifs "\n"
 # draw borders around columns
 set drawbox
 
+#show dotfiles bydefault
+set hidden
+
 # single column directory view
 # set nopreview
 # set ratios 3

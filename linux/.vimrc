@@ -1,9 +1,9 @@
-"__________                       ____   ____.__         
-"\______   \__ _________   ____   \   \ /   /|__| _____  
-" |     ___/  |  \_  __ \_/ __ \   \   Y   / |  |/     \ 
+"__________                       ____   ____.__
+"\______   \__ _________   ____   \   \ /   /|__| _____
+" |     ___/  |  \_  __ \_/ __ \   \   Y   / |  |/     \
 " |    |   |  |  /|  | \/\  ___/    \     /  |  |  Y Y  \
 " |____|   |____/ |__|    \_____     \___/   |__|__|_|  /
-"                                                     \/ 
+"                                                     \/
 "------------------------------options-----------------------------------------
 " set UTF encoding
 set updatetime=50
@@ -106,11 +106,11 @@ cmap <C-V> <C-r>0
 map <leader>tr :hi Normal guibg=NONE ctermbg=NONE<CR>
 map <leader>op :set background=dark<CR>
 
-" Open project directory in Windows File Explorer 
-nnoremap <leader>xp :silent! !explorer . <CR>
+" Open project directory in Windows File Explorer
+nnoremap <leader>xp :silent! !xdg-open . <CR>
 
 "---------------autocommands-------------------
-"Show relative numbering in only command mode
+"Show relative numbering in only command/normal mode
 augroup every
   autocmd!
   au InsertEnter * set norelativenumber
@@ -129,7 +129,7 @@ autocmd filetype cpp nnoremap <leader>tp 0r ~/.vim/tempelate/tempelate.cpp
 "Comment toggling          "Alternative commentary by tpope
 autocmd FileType c,cpp,java,json,scala,jsonc let b:comment_leader = '//'
 autocmd FileType sh,ruby,python,cmake,ps1    let b:comment_leader = '#'
-autocmd FileType conf,fstab                  let b:comment_leader = '#'
+autocmd FileType conf,fstab,fish,yaml        let b:comment_leader = '#'
 autocmd FileType tex                         let b:comment_leader = '%'
 autocmd FileType mail                        let b:comment_leader = '>'
 autocmd FileType vim                         let b:comment_leader = '"'

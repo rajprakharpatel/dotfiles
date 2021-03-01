@@ -256,7 +256,7 @@ let g:coc_global_extensions = [
       \'coc-json', 'coc-git', 'coc-vimlsp', 'coc-yaml', 'coc-sh', 'coc-prettier',
       \'coc-ultisnips', 'coc-tabnine', 'coc-snippets', 'coc-lua', 'coc-floaterm',
       \'coc-fish', 'coc-explorer', 'coc-discord-rpc', 'coc-clangd', 'coc-browser',
-      \'coc-calc']
+      \'coc-calc', 'coc-pyright', 'coc-java']
 "remap <cr> to make sure it confirms completion when popup menu is visible
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 "To make <cr> select the first completion item and confirm the completion when no item has been selected:

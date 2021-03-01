@@ -43,7 +43,8 @@
   // "clangd.compilationDatabasePath": "path_to_comilecommands.json-folder",
   "signature.target": "float",
   "clangd.semanticHighlighting": true,
-  "clangd.fallbackFlags": ["--target=x86_64-w64-windows-gnu"],
+  // For windows have to set fallback flags
+  // "clangd.fallbackFlags": ["--target=x86_64-w64-windows-gnu"],
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "cpp",
@@ -58,7 +59,7 @@
   "cSpell.userWords": ["cmake", "debugpy", "rajpr"],
   // "python.linting.pep8Enabled": true,
   // "python.linting.flake8Enabled": true,
-  "python.formatting.provider": "autopep8",
+  "python.formatting.provider": "yapf",
   "yaml.hover": true,
   "yaml.schemas": {},
   "yaml.format.enable": true,
