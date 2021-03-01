@@ -660,6 +660,7 @@ let g:startify_bookmarks = [ {'i': '~/.config/nvim/init.vim'},
             \{'v': '~/.vimrc'},
             \{'z': '~/.zshrc-personal'},
             \{'f': '~/.config/fish/config.fish'},
+            \{'l': '~/.config/lf/lfrc'},
             \{'a': '~/.config/alacritty/alacritty.yml'},
             \{'w': '~/.config/i3/config'}]
 

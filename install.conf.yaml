@@ -8,6 +8,23 @@
     ~/.bashrc: linux/.bashrc
     ~/.zshrc: linux/.zshrc
     ~/.vimrc: linux/.vimrc
+    ~/.taskrc: linux/.taskrc
+    ~/.profile: linux/.profile
+    ~/.bash_profile: linux/.bash_profile
+    ~/.bashrc-personal: linux/.bashrc-personal
+    ~/.zshrc-personal: linux/.zshrc-personal
+    ~/.config/alacritty/alacritty.yml: linux/.config/alacritty/alacritty.yml
+    ~/.config/fish/functions/fish_prompt.fish: linux/.config/fish/functions/fish_prompt.fish
+    ~/.config/fish/config.fish: linux/.config/fish/config.fish
+    ~/.config/fish/fish_variables: linux/.config/fish/fish_variables
+    ~/.config/lf/lfrc: linux/.config/lf/lfrc
+    ~/.config/i3/config: linux/.config/i3/config
+
+    ~/.config/nvim/autoload/plug.vim: linux/.config/nvim/autoload/plug.vim
+    ~/.config/nvim/init.vim: linux/.config/nvim/init.vim
+    ~/.config/nvim/coc-settings.json: linux/.config/nvim/coc-settings.json
+
+    ~/.config/polybar/config: linux/.config/polybar/config
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
