@@ -747,8 +747,8 @@ bindsym XF86AudioStop exec --no-startup-id playerctl stop
 #################                          xbacklight                                               #################
 #####################################################################################################################
 
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 20- # decrease screen brightness
 
 
 
@@ -945,7 +945,10 @@ bindsym button8 move right
 # Settings of arcolinux will be applied
 #exec --no-startup-id setxkbmap be
 #exec --no-startup-id setxkbmap us
+# grep -E (ctrl|caps): /usr/share/X11/xkb/rules/base.lst will give possible
+# mappings for ctrl/caps
 exec_always --no-startup-id setxkbmap -option caps:escape
+exec_always --no-startup-id setxkbmap -option altwin:menu_win
 
 
 
