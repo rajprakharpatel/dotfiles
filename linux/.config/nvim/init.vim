@@ -655,14 +655,14 @@ let g:startify_lists = [
         \ { 'type': 'commands',  'header': ['   Commands']       },
         \ ]
 
-let g:startify_bookmarks = [ {'i': '~/.config/nvim/init.vim'},
-            \{'b': '~/.bashrc-personal'},
-            \{'v': '~/.vimrc'},
-            \{'z': '~/.zshrc-personal'},
-            \{'f': '~/.config/fish/config.fish'},
-            \{'l': '~/.config/lf/lfrc'},
-            \{'a': '~/.config/alacritty/alacritty.yml'},
-            \{'w': '~/.config/i3/config'}]
+let g:startify_bookmarks = [ {'i': '~/dotfiles/linux/.config/nvim/init.vim'},
+            \{'b': '~/dotfiles/linux/.bashrc-personal'},
+            \{'v': '~/dotfiles/linux/.vimrc'},
+            \{'z': '~/dotfiles/linux/.zshrc-personal'},
+            \{'f': '~/dotfiles/linux/.config/fish/config.fish'},
+            \{'l': '~/dotfiles/linux/.config/lf/lfrc'},
+            \{'a': '~/dotfiles/linux/.config/alacritty/alacritty.yml'},
+            \{'w': '~/dotfiles/linux/.config/i3/config'}]
 
 "==>switch(gs-default)
 let g:switch_custom_definitions =
