@@ -131,23 +131,23 @@ bindsym $mod+Shift+8 move container to workspace 8; workspace 8
 
 
 #####################################################################################################################
-#################                          3 menu's in arcolinux                                     #################
+#################                          3 menu's in arcolinux                                     ################
 #####################################################################################################################
 
 # start dmenu
-bindsym $mod+shift+d exec --no-startup-id dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
+bindsym $mod+shift+d exec --no-startup-id dmenu_run -i -nb '#191919' -nf '#aed63c' -sb '#aed63c' -sf '#191919' -fn 'Hack Nerd Font Mono:bold:pixelsize=14'
 
 # gmrun
-bindsym mod1+F2 exec --no-startup-id gmrun
+# bindsym mod1+F2 exec --no-startup-id gmrun
 
 # start xfce-appfinder
-bindsym mod1+F3 exec --no-startup-id xfce4-appfinder
+# bindsym mod1+F3 exec --no-startup-id xfce4-appfinder
 
 # start rofi full
-bindsym $mod+F11 exec --no-startup-id rofi -show run -fullscreen -font "Noto Sans 13"
+bindsym $mod+F11 exec --no-startup-id rofi -show run -fullscreen -font "Hack Nerd Font Mono 13"
 
 # start rofi small
-bindsym $mod+F12 exec --no-startup-id rofi -show run -font "Noto Sans 13"
+bindsym mod1+space exec --no-startup-id rofi -show run -font "Hack Nerd Font Mono 13"
 
 
 
@@ -463,16 +463,16 @@ exec_always --no-startup-id numlockx on
 exec --no-startup-id volumeicon
 
 #variety
-#exec --no-startup-id variety
+exec --no-startup-id variety
 
 # clipman
-#exec --no-startup-id xfce4-clipman
+exec --no-startup-id xfce4-clipman
 
 #Conky
 # exec --no-startup-id conky -c ~/.config/i3/system-overview
 
 #feh sets wallpaper
-exec --no-startup-id feh --bg-fill /usr/share/backgrounds/arcolinux/arco-wallpaper.jpg &
+# exec --no-startup-id feh --bg-fill /usr/share/backgrounds/arcolinux/arco-wallpaper.jpg &
 
 #Polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh &
@@ -492,6 +492,9 @@ exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
 #####################################################################################################################
 
 #not workspace related
+
+#Editor
+bindsym $mod+Shift+n exec --no-startup-id xfce4-terminal -e nvim
 
 #ArcoLinux Welcome App
 bindsym control+mod1+w exec --no-startup-id arcolinux-welcome-app
@@ -624,6 +627,7 @@ bindsym Control+Shift+Print exec --no-startup-id gnome-screenshot -i
 
 #floating enabled from some programs - find with xprop
 
+for_window [class="jetbrains-toolbox"] floating enable
 for_window [class="Arcolinux-welcome-app.py"] floating enable
 #for_window [class="Arcolinux-tweak-tool.py"] floating enable
 for_window [class="Bleachbit"] floating disable
@@ -703,7 +707,7 @@ bindsym mod1+Right exec --no-startup-id variety -n
 bindsym mod1+p exec --no-startup-id variety -p
 bindsym mod1+Left exec --no-startup-id variety -p
 # favorite wallpaper
-bindsym mod1+f exec --no-startup-id variety -f
+bindsym $mod+mod1+f exec --no-startup-id variety -f
 # pause wallpaper
 bindsym mod1+Up exec --no-startup-id variety --pause
 # resume wallpaper
@@ -733,10 +737,16 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -D pulse sset Master '
 bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -D pulse sset Master '5%-'"
 bindsym XF86AudioMute exec --no-startup-id "amixer -D pulse set Master toggle"
 #https://github.com/acrisci/playerctl/
-bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
-bindsym XF86AudioNext exec --no-startup-id playerctl next
-bindsym XF86AudioPrev exec --no-startup-id playerctl previous
-bindsym XF86AudioStop exec --no-startup-id playerctl stop
+# bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+# bindsym XF86AudioNext exec --no-startup-id playerctl next
+# bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+# bindsym XF86AudioStop exec --no-startup-id playerctl stop
+
+bindsym mod1+F1 exec --no-startup-id playerctl play-pause
+bindsym mod1+F2 exec --no-startup-id playerctl next
+bindsym mod1+F3 exec --no-startup-id playerctl stop
+bindsym mod1+F4 exec --no-startup-id playerctl previous
+
 #bindsym XF86AudioPlay exec --no-startup-id "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
 #bindsym XF86AudioNext exec --no-startup-id "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 #bindsym XF86AudioPrev exec --no-startup-id "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
@@ -947,8 +957,8 @@ bindsym button8 move right
 #exec --no-startup-id setxkbmap us
 # grep -E (ctrl|caps): /usr/share/X11/xkb/rules/base.lst will give possible
 # mappings for ctrl/caps
-exec_always --no-startup-id setxkbmap -option caps:escape
-exec_always --no-startup-id setxkbmap -option altwin:menu_win
+exec_always --no-startup-id setxkbmap -option caps:escape -option altwin:menu_win
+# exec_always --no-startup-id setxkbmap -option altwin:menu_win
 
 
 
