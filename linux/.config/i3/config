@@ -294,7 +294,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-bindsym $mod+d focus child
+bindsym $mod+c focus child
 
 
 
@@ -496,6 +496,12 @@ exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
 #Editor
 bindsym $mod+Shift+n exec --no-startup-id xfce4-terminal -e nvim
 
+#WhatsApp
+bindsym $mod+Shift+w exec --no-startup-id whatsapp-nativefier
+
+#Discord
+bindsym $mod+d exec --no-startup-id discord
+
 #ArcoLinux Welcome App
 bindsym control+mod1+w exec --no-startup-id arcolinux-welcome-app
 
@@ -503,7 +509,7 @@ bindsym control+mod1+w exec --no-startup-id arcolinux-welcome-app
 bindsym control+mod1+e exec --no-startup-id arcolinux-tweak-tool
 
 #conky
-bindsym $mod+c exec --no-startup-id conky-toggle
+# bindsym $mod+c exec --no-startup-id conky-toggle
 bindsym control+mod1+Next exec --no-startup-id conky-rotate -n
 bindsym control+mod1+Prior exec --no-startup-id conky-rotate -p
 
@@ -626,6 +632,10 @@ bindsym Control+Shift+Print exec --no-startup-id gnome-screenshot -i
 
 
 #floating enabled from some programs - find with xprop
+
+# temp for dev only
+for_window [class="editorGui-guiFrame"] floating enable
+
 
 for_window [class="jetbrains-toolbox"] floating enable
 for_window [class="Arcolinux-welcome-app.py"] floating enable

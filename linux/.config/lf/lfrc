@@ -20,6 +20,12 @@ set ifs "\n"
 # draw borders around columns
 set drawbox
 
+set previewer pistol
+set color256 true
+set icons true
+set ignorecase true
+set smartcase true
+
 #show dotfiles bydefault
 set hidden
 
@@ -230,8 +236,6 @@ map <c-z> $ kill -STOP $PPID
 cmd open-with %"$@" $fx
 map <c-o> push :open-with<space>
 
-set preview
-set previewer "bat"
 
 # select only files or folders in current working directory
 cmd select-files ${{

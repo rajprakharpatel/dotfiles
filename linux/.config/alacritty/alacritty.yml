@@ -89,7 +89,7 @@ scrolling:
 # Font configuration
 font:
   # Normal (roman) font face
-  size: 7.5
+  size: 7.3
   normal:
     # Font family
     #
@@ -280,7 +280,7 @@ font:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.6
+background_opacity: 0.8
 
 #selection:
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
@@ -579,28 +579,28 @@ key_bindings:
   # Print all received window events.
   #print_events: false
 
-colors:
-  primary:
-    background: '0x0a1124'
-    foreground: '0xedc29a'
-  cursor:
-    text:       '0x0a1124'
-    cursor:     '0xedc29a'
-  normal:
-    black:      '0x0a1124'
-    red:        '0x63504E'
-    green:      '0xA33A4E'
-    yellow:     '0xEB3247'
-    blue:       '0xF35743'
-    magenta:    '0xF6A73B'
-    cyan:       '0xFAD42E'
-    white:      '0xedc29a'
-  bright:
-    black:      '0xa5876b'
-    red:        '0x63504E'
-    green:      '0xA33A4E'
-    yellow:     '0xEB3247'
-    blue:       '0xF35743'
-    magenta:    '0xF6A73B'
-    cyan:       '0xFAD42E'
-    white:      '0xedc29a'
+# colors:
+  # primary:
+    # background: '0x0a1124'
+    # foreground: '0xedc29a'
+  # cursor:
+    # text:       '0x0a1124'
+    # cursor:     '0xedc29a'
+  # normal:
+    # black:      '0x0a1124'
+    # red:        '0x63504E'
+    # green:      '0xA33A4E'
+    # yellow:     '0xEB3247'
+    # blue:       '0xF35743'
+    # magenta:    '0xF6A73B'
+    # cyan:       '0xFAD42E'
+    # white:      '0xedc29a'
+  # bright:
+    # black:      '0xa5876b'
+    # red:        '0x63504E'
+    # green:      '0xA33A4E'
+    # yellow:     '0xEB3247'
+    # blue:       '0xF35743'
+    # magenta:    '0xF6A73B'
+    # cyan:       '0xFAD42E'
+    # white:      '0xedc29a'

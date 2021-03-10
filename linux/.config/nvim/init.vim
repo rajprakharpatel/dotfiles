@@ -62,8 +62,6 @@ filetype off                         " required
 call plug#begin('~/.vim/plugged')
 "Core Plugins
 Plug 'ctrlpvim/ctrlp.vim'         "Search for anyting from vim
-
-"Main Plugins
 Plug 'mhinz/vim-startify'
 Plug 'mbbill/undotree'
 Plug 'majutsushi/tagbar'
@@ -82,6 +80,7 @@ Plug 'Yggdroot/indentLine'        "displaying thin vertical lines at each indent
 Plug 'ryanoasis/vim-devicons'
 Plug 'thiagoalessio/rainbow_levels.vim'
 Plug 'RRethy/vim-illuminate'
+Plug 'dylanaraps/wal.vim'
 
 "pure vim scripts with no dependencies
 Plug 'tpope/vim-abolish'
@@ -127,7 +126,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'tmhedberg/SimpylFold'
 Plug 'liuchengxu/vim-which-key'
 Plug 'Raimondi/delimitMate'
-Plug 'sheerun/vim-polyglot'         "using till treesitter supports more filetypes;
+" Plug 'sheerun/vim-polyglot'         "using till treesitter supports more filetypes(only pwsh left);
 
 "LSP/autocomplete
 Plug 'neoclide/coc.nvim', {'branch': 'release' }
@@ -158,7 +157,7 @@ Plug 'p00f/nvim-ts-rainbow'
 Plug 'nvim-treesitter/nvim-treesitter-refactor'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'stsewd/fzf-checkout.vim'
-Plug 'vimwiki/vimwiki', {'branch': 'dev'}
+" Plug 'vimwiki/vimwiki', {'branch': 'dev'}
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 " Plugin 'vim-fat-finger' manually added
 
@@ -256,7 +255,8 @@ let g:coc_global_extensions = [
       \'coc-json', 'coc-git', 'coc-vimlsp', 'coc-yaml', 'coc-sh', 'coc-prettier',
       \'coc-ultisnips', 'coc-tabnine', 'coc-snippets', 'coc-lua', 'coc-floaterm',
       \'coc-fish', 'coc-explorer', 'coc-discord-rpc', 'coc-clangd', 'coc-browser',
-      \'coc-calc', 'coc-pyright', 'coc-java']
+      \'coc-calc', 'coc-pyright', 'coc-java', 'coc-github', 'coc-gitignore',
+      \'coc-grammarly', 'coc-spell-checker', 'coc-cspell-dicts']
 "remap <cr> to make sure it confirms completion when popup menu is visible
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 "To make <cr> select the first completion item and confirm the completion when no item has been selected:
@@ -350,7 +350,8 @@ nmap ]c <Plug>(coc-git-nextconflict)
 " show chunk diff at current position
 nmap gi <Plug>(coc-git-chunkinfo)
 " show commit contains current position
-nmap gc <Plug>(coc-git-commit)
+nmap gcc <Plug>(coc-git-commit)
+nmap gcs :CocCommand git.chunkStage<CR>
 " create text object for git chunks
 omap ig <Plug>(coc-git-chunk-inner)
 xmap ig <Plug>(coc-git-chunk-inner)
@@ -734,7 +735,7 @@ nmap <C-C> "+yy
 imap <C-C> <esc>"+yya
 
 " Control-V Paste in insert and command mode
-imap <C-V> <esc>"+pa
+" imap <C-V> <esc>"+pa
 vmap <C-V> "+p
 " paste last yank in commad mode
 cmap <C-V> <C-r>0
@@ -769,14 +770,14 @@ augroup END
 "Comment toggling          "Alternative commentary by tpope
 autocmd FileType c,cpp,java,json,scala,jsonc let b:comment_leader = '//'
 autocmd FileType sh,ruby,python,cmake,ps1    let b:comment_leader = '#'
-autocmd FileType conf,fstab,yaml,fish        let b:comment_leader = '#'
+autocmd FileType conf,fstab,yaml,fish,toml   let b:comment_leader = '#'
 autocmd FileType tex                         let b:comment_leader = '%'
 autocmd FileType mail                        let b:comment_leader = '>'
 autocmd FileType vim                         let b:comment_leader = '"'
 
 function! CommentToggle()
-    execute ':silent! s/\([^ ]\)/' . escape(b:comment_leader,'\/') . ' \1/'
-    execute ':silent! s/^\( *\)' . escape(b:comment_leader,'\/') . ' \?' . escape(b:comment_leader,'\/') . ' \?/\1/'
+    execute ':silent! s/\([^ ]\)/' . escape(b:comment_leader,'\/') . ' \1/' | nohlsearch
+    execute ':silent! s/^\( *\)' . escape(b:comment_leader,'\/') . ' \?' . escape(b:comment_leader,'\/') . ' \?/\1/' | nohlsearch
 endfunction
 map <c-/> :call CommentToggle()<ESC><CR>
 map <c-_> :call CommentToggle()<ESC><CR>

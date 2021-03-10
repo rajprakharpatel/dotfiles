@@ -6,7 +6,10 @@ alias cls=clear
 alias nn=nvim
 
 export LC_CTYPE="en_IN.utf8"
+[[ -s "/home/rajprakhar/.sdkman/bin/sdkman-init.sh" ]] && source "/home/rajprakhar/.sdkman/bin/sdkman-init.sh"
+PATH=$PATH:/home/rajprakhar/.jdks/corretto-1.8.0_282/bin
 
 eval "$(fasd --init auto)"
 _fasd_bash_hook_cmd_complete v m j o
 
+source $HOME/bash_completion.d/gradle-completion.bash

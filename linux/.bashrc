@@ -235,3 +235,7 @@ ex ()
 [[ -f ~/.bashrc-personal ]] && . ~/.bashrc-personal
 
 neofetch
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/rajprakhar/.sdkman"
+[[ -s "/home/rajprakhar/.sdkman/bin/sdkman-init.sh" ]] && source "/home/rajprakhar/.sdkman/bin/sdkman-init.sh"

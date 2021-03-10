@@ -5,6 +5,8 @@ set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 ## Source .profile to apply its values
 source ~/.profile
 
+# set PATH $PATH:/lib/jvm/java-15-openjdk/bin
+set PATH $PATH:/home/rajprakhar/.jdks/corretto-1.8.0_282/bin
 
 ## Add ~/.local/bin to PATH
 if test -d ~/.local/bin
@@ -16,7 +18,7 @@ end
 
 ## Starship prompt
 source ("/usr/bin/starship" init fish --print-full-init | psub)
-
+# starship init fish | source
 
 ## Functions needed for !! and !$ https://github.com/oh-my-fish/plugin-bang-bang
 function __history_previous_command
@@ -79,12 +81,12 @@ end
 
 
 ## Useful aliases
-# Replace ls with exa
-alias ls='exa -al --color=always --group-directories-first' # preferred listing
-alias la='exa -a --color=always --group-directories-first'  # all files and dirs
-alias ll='exa -l --color=always --group-directories-first'  # long format
-alias lt='exa -aT --color=always --group-directories-first' # tree listing
-alias l.="exa -a | egrep '^\.'"
+# Replace ls with exa or lsd or colorls
+alias ls='colorls -al --color=always --group-directories-first' # preferred listing
+alias la='colorls -a --color=always --group-directories-first'  # all files and dirs
+alias ll='colorls -l --color=always --group-directories-first'  # long format
+# alias lt='exa -aT --color=always --group-directories-first' # tree listing
+alias l.="lsd -a | egrep '^\.'"
 
 # Replace some more things with better alternatives
 [ ! -x /usr/bin/bat ] && [ -x /usr/bin/cat ] && alias cat='bat'
@@ -139,9 +141,9 @@ alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 
 
 ## Import colorscheme from 'wal' asynchronously
-if type "wal" >> /dev/null 2>&1
-   cat ~/.cache/wal/sequences
-end
+# if type "wal" >> /dev/null 2>&1
+   # cat ~/.cache/wal/sequences
+# end
 
 ## Run paleofetch if session is interactive
 if status --is-interactive && ! type -q floaterm

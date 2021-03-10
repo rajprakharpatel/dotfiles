@@ -94,10 +94,10 @@ imap <C-S> <esc>:w<cr>a
 " Control-C Copy to system clipboard
 vmap <C-C> "+y
 nmap <C-C> "+yy
-imap <C-C> <esc>"+yya
+" imap <C-C> <esc>"+yya
 
 " Control-V Paste in insert and command mode
-imap <C-V> <esc>"+pa
+" imap <C-V> <esc>"+pa
 vmap <C-V> "+p
 " paste last yank in commad mode
 cmap <C-V> <C-r>0
@@ -141,8 +141,6 @@ endfunction
 map <c-/> :call CommentToggle()<ESC><CR>
 map <c-_> :call CommentToggle()<ESC><CR>
 "Comment toggling
-
-let g:python3_host_prog='C:\Users\rajpr\Anaconda3/python.EXE'
 
 let s:default_path = escape(&path, '\ ') " store default value of 'path'
 " Always add the current file's directory to the path and tags list if not
