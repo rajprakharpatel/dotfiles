@@ -1,6 +1,7 @@
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 set runtimepath+=~/.config/nvim
+set shell=/usr/bin/bash
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -285,6 +286,10 @@ nmap gy <plug>(coc-type-definition)
 nmap gu <plug>(coc-implementation)
 nmap gr <plug>(coc-references)
 nmap <leader>rn <plug>(coc-rename)
+nmap <leader>ca <plug>(coc-codeaction)
+nmap gl <plug>(coc-codelens-action)
+nmap <leader>lk <Plug>(coc-openlink)
+nmap gn <plug>(coc-diagnostic-next)
 nmap <A-f> :CocFix<CR>
 nmap <C-A-l> :call CocAction('format')<CR>
 " coc-prettier

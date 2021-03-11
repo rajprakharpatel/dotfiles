@@ -1,5 +1,9 @@
 #!usr/bin bash
 
+# if command -v floaterm &> /dev/null
+# then
+    # fish
+# fi
 alias :e=vim
 alias :q=exit
 alias cls=clear

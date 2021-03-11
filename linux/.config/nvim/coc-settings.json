@@ -86,7 +86,15 @@
     "python"
   ],
   "git.enableGutters": true,
-  "cSpell.userWords": ["cmake", "debugpy", "rajpr", "rajprakhar"],
+  "cSpell.userWords": [
+    "cmake",
+    "debugpy",
+    "floaterm",
+    "pyright",
+    "rajpr",
+    "rajprakhar",
+    "ultisnips"
+  ],
   // "python.linting.pep8Enabled": true,
   // "python.linting.flake8Enabled": true,
   "python.formatting.provider": "yapf",

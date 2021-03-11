@@ -233,8 +233,10 @@ ex ()
 #in there. They will not be overwritten by skel.
 
 [[ -f ~/.bashrc-personal ]] && . ~/.bashrc-personal
-
-neofetch
+if ! command -v floaterm &> /dev/null
+then
+    neofetch
+fi
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/rajprakhar/.sdkman"
