@@ -113,9 +113,9 @@ Plug 'jeetsukumaran/vim-pythonsense'
 Plug 'michaeljsmith/vim-indent-object'
 
 
-Plug 'xolox/vim-shell'
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-easytags'
+" Plug 'xolox/vim-shell'
+" Plug 'xolox/vim-misc'
+" Plug 'xolox/vim-easytags'
 Plug 'andymass/vim-matchup'
 
 "Experimental
@@ -144,7 +144,7 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'easymotion/vim-easymotion'
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 Plug 'rhysd/wandbox-vim'
 Plug 'Shougo/vimproc.vim', {'do':'make'}
 Plug 'RishabhRD/nvim-cheat.sh'
@@ -157,6 +157,8 @@ Plug 'p00f/nvim-ts-rainbow'
 Plug 'nvim-treesitter/nvim-treesitter-refactor'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'stsewd/fzf-checkout.vim'
+" Plug 'davewongillies/vim-gradle'
+Plug 'hdiniz/vim-gradle',
 " Plug 'vimwiki/vimwiki', {'branch': 'dev'}
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 " Plugin 'vim-fat-finger' manually added
@@ -251,12 +253,13 @@ let g:airline#extensions#tabline#show_tab_type = 1
 let g:airline#extensions#tabline#buf_label_first = 0
 
 "==>Coc
+"coc-ultisnips or separate plugin sirver/ultisnips have some extra features
 let g:coc_global_extensions = [
       \'coc-json', 'coc-git', 'coc-vimlsp', 'coc-yaml', 'coc-sh', 'coc-prettier',
-      \'coc-ultisnips', 'coc-tabnine', 'coc-snippets', 'coc-lua', 'coc-floaterm',
+      \'coc-tabnine', 'coc-snippets', 'coc-lua', 'coc-floaterm',
       \'coc-fish', 'coc-explorer', 'coc-discord-rpc', 'coc-clangd', 'coc-browser',
       \'coc-calc', 'coc-pyright', 'coc-java', 'coc-github', 'coc-gitignore',
-      \'coc-grammarly', 'coc-spell-checker', 'coc-cspell-dicts']
+      \'coc-grammarly', 'coc-spell-checker', 'coc-cspell-dicts', 'coc-groovy']
 "remap <cr> to make sure it confirms completion when popup menu is visible
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 "To make <cr> select the first completion item and confirm the completion when no item has been selected:
@@ -554,11 +557,12 @@ noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 
 "==>UltiSnips
 " Trigger configuration. You need to change this to something other than <tab>
-" if you use one of the following:
-let g:UltiSnipsExpandTrigger="<c-s-<space>>"
+" if you use one of completion plugins
+let g:UltiSnipsExpandTrigger="<s-l>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 "
+
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
@@ -745,6 +749,7 @@ vmap <C-V> "+p
 cmap <C-V> <C-r>0
 
 " Toggle Transparency of background
+execute ':hi Normal guibg=NONE ctermbg=NONE | :set nocursorline | :set colorcolumn=0'
 map <leader>tr :hi Normal guibg=NONE ctermbg=NONE <bar> :set nocursorline <bar> :set colorcolumn=0<CR>
 map <leader>op :set background=dark <bar> :set cursorline <bar> :set colorcolumn=80<CR>
 
