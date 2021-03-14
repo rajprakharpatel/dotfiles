@@ -7,6 +7,7 @@ source ~/.profile
 
 # set PATH $PATH:/lib/jvm/java-15-openjdk/bin
 set PATH $PATH:/home/rajprakhar/.jdks/corretto-1.8.0_282/bin
+set PATH $PATH:/home/rajprakhar/.bin
 
 ## Add ~/.local/bin to PATH
 if test -d ~/.local/bin
