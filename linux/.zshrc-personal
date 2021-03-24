@@ -6,9 +6,9 @@ alias nn=nvim
 plugins+=(gradle-completion)
 PATH=$PATH:/home/rajprakhar/.jdks/corretto-1.8.0_282/bin
 
-eval "$(fasd --init auto)"
+eval "$(direnv hook bash)"
 
-[[ -s "/home/rajprakhar/.sdkman/bin/sdkman-init.sh" ]] && source "/home/rajprakhar/.sdkman/bin/sdkman-init.sh"
+eval "$(fasd --init auto)"
 
 lfcd () {
     tmp="$(mktemp)"
@@ -63,3 +63,7 @@ _zlf_handler() {
     zle -R
 }
 zle -N _zlf_handler
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/rajprakhar/.sdkman"
+[[ -s "/home/rajprakhar/.sdkman/bin/sdkman-init.sh" ]] && source "/home/rajprakhar/.sdkman/bin/sdkman-init.sh"

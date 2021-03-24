@@ -95,11 +95,12 @@
     "rajprakhar",
     "ultisnips"
   ],
+  "java.format.onType.enabled": true,
   // "python.linting.pep8Enabled": true,
   // "python.linting.flake8Enabled": true,
   "python.formatting.provider": "yapf",
   "yaml.hover": true,
   "yaml.schemas": {},
   "yaml.format.enable": true,
-  "git.addGBlameToVirtualText": true
+  "git.addGBlameToVirtualText": false
 }

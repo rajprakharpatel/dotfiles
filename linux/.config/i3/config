@@ -566,7 +566,7 @@ bindsym --release $mod+Escape exec xkill
 #workspace 1 related
 bindsym $mod+F1 exec --no-startup-id exo-open --launch webbrowser;focus
 #qwerty/azerty conflict with w
-bindsym $mod+w exec --no-startup-id exo-open --launch webbrowser;focus
+bindsym $mod+w exec --no-startup-id brave;focus;
 bindsym control+mod1+f exec --no-startup-id firefox;focus
 bindsym control+mod1+v exec --no-startup-id vivaldi-stable;focus
 bindsym control+mod1+g exec --no-startup-id chromium;focus
@@ -608,7 +608,7 @@ bindsym $mod+F9 exec --no-startup-id evolution;focus
 
 #workspace 10 related
 bindsym $mod+F10 exec --no-startup-id spotify
-bindsym control+mod1+s exec --no-startup-id spotify
+# bindsym control+s exec --no-startup-id spotify
 
 #scratchpad workspace
 bindsym $mod+Shift+minus move scratchpad
@@ -824,7 +824,7 @@ popup_during_fullscreen smart
 # want it
 
 
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 2
 gaps inner 5
 gaps outer 5
 #smart_gaps on
@@ -902,7 +902,7 @@ bindsym control+mod1+o exec --no-startup-id ~/.config/i3/scripts/picom-toggle.sh
 
     # Window color settings
     # class                 border  backgr. text    indicator
-    client.focused          #6790EB #6790EB #e5e5e5 #6790EB
+    client.focused          #ffcfaf #ffcfaf #e5e5e5 #ffcfaf
     client.unfocused        #222222 #222222 #aaaaaa #222222
     client.focused_inactive #222222 #222222 #a9a9a9 #222222
     client.placeholder      #222222 #222222 #aaaaaa #222222

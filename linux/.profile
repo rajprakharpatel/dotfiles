@@ -5,6 +5,7 @@ alias cls clear
 alias :e nvim
 alias nn nvim
 alias tk task
+alias lc lfcd
 
 export LC_CTYPE="en_IN.utf8"
 export EDITOR=nvim
@@ -12,6 +13,7 @@ export VISUAL=nvim
 export OPENER=thunar
 export JAVA_HOME=/lib/jvm/java-15-openjdk
 # export JAVA_HOME=/home/rajprakhar/.jdks/corretto-1.8.0_282
+
 # ln=:\  add below for links icon not necessary as a different color
 # identifies links
 export LF_ICONS="\

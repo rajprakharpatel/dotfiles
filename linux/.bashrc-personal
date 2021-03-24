@@ -17,3 +17,12 @@ eval "$(fasd --init auto)"
 _fasd_bash_hook_cmd_complete v m j o
 
 source $HOME/bash_completion.d/gradle-completion.bash
+eval "$(direnv hook bash)"
+if command -v floaterm &>/dev/null; then
+    fish
+fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+

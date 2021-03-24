@@ -128,6 +128,7 @@ autocmd filetype cpp nnoremap <leader>tp 0r ~/.vim/tempelate/tempelate.cpp
 
 "Comment toggling          "Alternative commentary by tpope
 autocmd FileType c,cpp,java,json,scala,jsonc let b:comment_leader = '//'
+autocmd FileType groovy                      let b:comment_leader = '//'
 autocmd FileType sh,ruby,python,cmake,ps1    let b:comment_leader = '#'
 autocmd FileType conf,fstab,fish,yaml        let b:comment_leader = '#'
 autocmd FileType tex                         let b:comment_leader = '%'

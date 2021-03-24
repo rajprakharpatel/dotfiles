@@ -5,9 +5,9 @@ set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 ## Source .profile to apply its values
 source ~/.profile
 
-# set PATH $PATH:/lib/jvm/java-15-openjdk/bin
-set PATH $PATH:/home/rajprakhar/.jdks/corretto-1.8.0_282/bin
-set PATH $PATH:/home/rajprakhar/.bin
+set -gx PATH /lib/jvm/java-15-openjdk/bin $PATH
+# set PATH /home/rajprakhar/.jdks/corretto-1.8.0_282/bin $PATH
+set -gx PATH /home/rajprakhar/.bin $PATH
 
 ## Add ~/.local/bin to PATH
 if test -d ~/.local/bin
@@ -57,6 +57,48 @@ function fish_user_key_bindings
   bind -M insert \ej history-token-search-forward
 end
 
+# Function for printing a column (splits input on whitespace)
+# ex: echo 1 2 3 | coln 3
+# output: 3
+function coln
+    while read -l input
+        echo $input | awk '{print $'$argv[1]'}'
+    end
+end
+
+# Function for printing a row
+# ex: seq 3 | rown 3
+# output: 3
+function rown --argument index
+    sed -n "$index p"
+end
+
+# Function for ignoring the first 'n' lines
+# ex: seq 10 | skip 5
+# results: prints everything but the first 5 lines
+function skip --argument n
+    tail +(math 1 + $n)
+end
+
+# Function for taking the first 'n' lines
+# ex: seq 10 | take 5
+# results: prints only the first 5 lines
+function take --argument number
+    head -$number
+end
+
+# Function for org-agenda
+function org-search -d "send a search string to org-mode"
+    set -l output (/usr/bin/emacsclient -a "" -e "(message \"%s\" (mapconcat #'substring-no-properties \
+        (mapcar #'org-link-display-format \
+        (org-ql-query \
+        :select #'org-get-heading \
+        :from  (org-agenda-files) \
+        :where (org-ql--query-string-to-sexp \"$argv\"))) \
+        \"
+    \"))")
+    printf $output
+end
 
 ## Fish command history
 function history
@@ -104,9 +146,9 @@ alias psmem10='ps auxf | sort -nr -k 4 | head -10'
 alias upd='sudo reflector --latest 5 --age 2 --fastest 5 --protocol https --sort rate --save /etc/pacman.d/mirrorlist && cat /etc/pacman.d/mirrorlist && sudo pacman -Syu && fish_update_completions && sudo updatedb'
 alias ..='cd ..'
 alias ...='cd ../..'
-alias ....='cd ../../..'
-alias .....='cd ../../../..'
-alias ......='cd ../../../../..'
+alias .3='cd ../../..'
+alias .4='cd ../../../..'
+alias .5='cd ../../../../..'
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
@@ -128,8 +170,20 @@ alias apt-get='man pacman'
 alias please='sudo'
 alias tb='nc termbin.com 9999'
 alias paru="paru --bottomup"
+
+# switch between shells
+# I do not recommend switching default SHELL from bash.
+alias tobash="sudo chsh $USER -s /bin/bash && echo 'Now log out.'"
+alias tozsh="sudo chsh $USER -s /bin/zsh && echo 'Now log out.'"
+alias tofish="sudo chsh $USER -s /bin/fish && echo 'Now log out.'"
+
+
 #Cleanup orphaned packages
 alias cleanup='sudo pacman -Rns (pacman -Qtdq)'
+
+#Get top process eating memory
+alias psmem='ps auxf | sort -nr -k 4'
+alias psmem10='ps auxf | sort -nr -k 4 | head -10'
 
 #get the error messages from journalctl
 alias jctl="journalctl -p 3 -xb"
@@ -146,7 +200,11 @@ alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
    # cat ~/.cache/wal/sequences
 # end
 
-## Run paleofetch if session is interactive
+direnv hook fish | source
+set -g direnv_fish_mode disable_arrow    # trigger direnv at prompt only, this is similar functionality to the original behavior
+
+## Run paleofetch if session is interactive and not inside floaterm
 if status --is-interactive && ! type -q floaterm
-   paleofetch
+   # paleofetch
+   colorscript random | skip 1
 end
