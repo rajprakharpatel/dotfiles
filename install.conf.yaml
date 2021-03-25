@@ -25,6 +25,7 @@
     ~/.config/nvim/coc-settings.json: linux/.config/nvim/coc-settings.json
 
     ~/.config/polybar/config: linux/.config/polybar/config
+    ~/.config/starship.toml: linux/.config/starship.toml
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]

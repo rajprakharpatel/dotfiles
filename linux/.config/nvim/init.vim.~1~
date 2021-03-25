@@ -2,13 +2,6 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 set runtimepath+=~/.config/nvim
 
-" set shell=/bin/bash
-
-let $JAR="/home/rajprakhar/.config/coc/extensions/coc-java-data/server/plugins/org.eclipse.equinox.launcher.gtk.linux.x86_64_1.2.100.v20210209-1541.jar"
-let $GRADLE_HOME="$HOME/.gradle"
-let $JAVA_HOME = '/lib/jvm/java-15-openjdk'
-let $JDTLS_CONFIG="/home/rajprakhar/.config/coc/extensions/coc-java-data/server/config_linux"
-let $WORKSPACE="$HOME/workspace"
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=50
@@ -76,8 +69,8 @@ Plug 'majutsushi/tagbar'
 "visual Plugins
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'felixhummel/setcolors.vim'
 Plug 'sainnhe/gruvbox-material'
 Plug 'sainnhe/sonokai'
@@ -87,7 +80,7 @@ Plug 'Yggdroot/indentLine'        "displaying thin vertical lines at each indent
 Plug 'ryanoasis/vim-devicons'
 Plug 'thiagoalessio/rainbow_levels.vim'
 Plug 'RRethy/vim-illuminate'
-Plug 'norcalli/nvim-colorizer.lua'
+Plug 'dylanaraps/wal.vim'
 
 "pure vim scripts with no dependencies
 Plug 'tpope/vim-abolish'
@@ -109,7 +102,6 @@ Plug 'matze/vim-move'                 "move selection as whole around
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'airblade/vim-rooter'        "automatically sets project directory using rules in vimrc
-Plug 'Raimondi/delimitMate'
 
 "Target objects
 Plug 'wellle/targets.vim'
@@ -121,90 +113,62 @@ Plug 'jeetsukumaran/vim-pythonsense'
 Plug 'michaeljsmith/vim-indent-object'
 
 
-"Ctags generation
 " Plug 'xolox/vim-shell'
 " Plug 'xolox/vim-misc'
 " Plug 'xolox/vim-easytags'
 Plug 'andymass/vim-matchup'
 
-"Searching & navigating
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'liuchengxu/vim-which-key'
-Plug 'voldikss/vim-floaterm'
-Plug 'haya14busa/incsearch.vim'
-Plug 'haya14busa/incsearch-fuzzy.vim'
-Plug 'haya14busa/incsearch-easymotion.vim'
-Plug 'easymotion/vim-easymotion'
-Plug 'stsewd/fzf-checkout.vim'
-
-"Experimental Nightly
+"Experimental
 Plug 'qpkorr/vim-bufkill'
 Plug 'romainl/vim-qf'                 "don't recommend vim-qf to Syntastic/Neomake/ALE users
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'tmhedberg/SimpylFold'
+Plug 'liuchengxu/vim-which-key'
+Plug 'Raimondi/delimitMate'
 " Plug 'sheerun/vim-polyglot'         "using till treesitter supports more filetypes(only pwsh left);
 
+"LSP/autocomplete
+Plug 'neoclide/coc.nvim', {'branch': 'release' }
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'puremourning/vimspector', {'on': 'VS'}
 Plug 'szw/vim-maximizer'
 Plug 'tweekmonster/startuptime.vim'
-" Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'honza/vim-snippets'
 Plug 'ptzz/lf.vim'
 Plug 'rbgrouleff/bclose.vim'
-Plug 'SirVer/ultisnips'
+Plug 'voldikss/vim-floaterm'
+Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch-fuzzy.vim'
+Plug 'haya14busa/incsearch-easymotion.vim'
+Plug 'easymotion/vim-easymotion'
+" Plug 'SirVer/ultisnips'
 Plug 'rhysd/wandbox-vim'
 Plug 'Shougo/vimproc.vim', {'do':'make'}
 Plug 'RishabhRD/nvim-cheat.sh'
 Plug 'RishabhRD/popfix'
 Plug 'AndrewRadev/switch.vim'
-"LSP/autocomplete
-" Plug 'neoclide/coc.nvim', {'branch': 'release' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'nvim-treesitter/playground'
 Plug 'romgrk/nvim-treesitter-context'
 Plug 'p00f/nvim-ts-rainbow'
 Plug 'nvim-treesitter/nvim-treesitter-refactor'
+Plug 'norcalli/nvim-colorizer.lua'
+Plug 'stsewd/fzf-checkout.vim'
+" Plug 'davewongillies/vim-gradle'
 Plug 'hdiniz/vim-gradle',
+" Plug 'vimwiki/vimwiki', {'branch': 'dev'}
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 " Plugin 'vim-fat-finger' manually added
-" nvim-lspconfig
-Plug 'neovim/nvim-lspconfig'
-" Plug 'nvim-lua/completion-nvim'
-Plug 'hrsh7th/nvim-compe'
-Plug 'hrsh7th/vim-vsnip'
-Plug 'onsails/lspkind-nvim'
-Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
-Plug 'kyazdani42/nvim-web-devicons' " lua
-Plug 'mfussenegger/nvim-jdtls'
+
 call plug#end()            " required
 filetype plugin indent on    " required
 
 "----------------Plugin-Options-----------------
 
-"nvim-lspconfig
-luafile ~/.config/nvim/nv-lspconfig.lua
 
-if has('nvim-0.5')
-  augroup lsp
-    au!
-    au FileType java lua require('jdtls').start_or_attach({cmd = {'java-lsp.sh'}})
-  augroup end
-endif
-"nvim-compe
-set shortmess+=c
-luafile ~/.config/nvim/nvim-compe.lua
-inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm({ 'keys': "\<Plug>delimitMateCR", 'mode': '' })
-inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
-
-"To make <cr> select the first completion item and confirm the completion when no item has been selected:
-inoremap <expr> <cr> pumvisible() ? compe#confirm({'keys': "\<C-n>", 'mode': '' }) :"\<C-g>u\<CR>"
-
-" Galaxyline
-luafile ~/.config/nvim/nv-galaxyline.lua
 "==>vim-move
 let g:move_key_modifier = 'C'
 
@@ -260,115 +224,146 @@ autocmd! User GoyoLeave Limelight!
 "==>tag-bar
 map <F9> :TagbarToggle<CR>
 
+"==>vim-easytags
+let g:easytags_async=1
+let g:easytags_file = '~/.vim/tags'
+
+set tags=./tags;
+let g:easytags_dynamic_files = 1
+
+"==>vim-shell
+let g:shell_fullscreen_always_on_top = 0
+
 "==>vim-rooter
 let g:rooter_patterns = ['.git', 'CMakeLists.txt', 'Makefile', '*.sln', '.idea', '.nvim_root', '.vim']
 
-"Coc
+"==>airline
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
+let g:airline_theme = 'night_owl'
+"tabline
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extencions#nabline#show_tab_count = 1
+let g:airline#extensions#tabline#excludes = ['qf', 'vim-plug', 'help', 'diff', 'man', 'fugitive', 'nerdtree', 'tagbar', 'codi']
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#tabline#show_tab_type = 1
+let g:airline#extensions#tabline#buf_label_first = 0
+
+"==>Coc
+"coc-ultisnips or separate plugin sirver/ultisnips have some extra features
+let g:coc_global_extensions = [
+      \'coc-json', 'coc-git', 'coc-vimlsp', 'coc-yaml', 'coc-sh', 'coc-prettier',
+      \'coc-tabnine', 'coc-snippets', 'coc-lua', 'coc-floaterm',
+      \'coc-fish', 'coc-explorer', 'coc-discord-rpc', 'coc-clangd', 'coc-browser',
+      \'coc-calc', 'coc-pyright', 'coc-java', 'coc-github', 'coc-gitignore',
+      \'coc-grammarly', 'coc-spell-checker', 'coc-cspell-dicts', 'coc-groovy']
 "remap <cr> to make sure it confirms completion when popup menu is visible
-" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 "To make <cr> select the first completion item and confirm the completion when no item has been selected:
-" inoremap <expr> <cr> pumvisible() ? coc#_select_confirm() :"\<C-g>u\<CR>"
+inoremap <expr> <cr> pumvisible() ? coc#_select_confirm() :"\<C-g>u\<CR>"
 " nnoremap <silent> K :call <SID>show_documentation()<CR>
-" autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 " use <tab> for trigger completion and navigate to the next complete item
-" function! s:check_back_space() abort
-      " let col = col('.') - 1
-        " return !col || getline('.')[col - 1]  =~ '\s'
-    " endfunction
+function! s:check_back_space() abort
+      let col = col('.') - 1
+        return !col || getline('.')[col - 1]  =~ '\s'
+    endfunction
 
-" inoremap <silent><expr> <Tab>
-      " \ pumvisible() ? "\<C-n>" :
-      " \ <SID>check_back_space() ? "\<Tab>" :
-      " \ coc#refresh()
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
 
 
-" inoremap <silent><expr> <S-Tab>
-      " \ pumvisible() ? "\<C-p>" :
-      " \ <SID>check_back_space() ? "\<S-Tab>" :
-      " \ coc#refresh()
+inoremap <silent><expr> <S-Tab>
+      \ pumvisible() ? "\<C-p>" :
+      \ <SID>check_back_space() ? "\<S-Tab>" :
+      \ coc#refresh()
 
-" nmap gd <plug>(coc-definition)
-" nmap gy <plug>(coc-type-definition)
-" nmap gu <plug>(coc-implementation)
-" nmap gr <plug>(coc-references)
-" nmap <leader>rn <plug>(coc-rename)
-" nmap <leader>ca <plug>(coc-codeaction)
-" nmap gl <plug>(coc-codelens-action)
-" nmap <leader>lk <Plug>(coc-openlink)
-" nmap gn <plug>(coc-diagnostic-next)
-" nmap <A-f> :CocFix<CR>
-" nmap <C-A-l> :call CocAction('format')<CR>
+nmap gd <plug>(coc-definition)
+nmap gy <plug>(coc-type-definition)
+nmap gu <plug>(coc-implementation)
+nmap gr <plug>(coc-references)
+nmap <leader>rn <plug>(coc-rename)
+nmap <leader>ca <plug>(coc-codeaction)
+nmap gl <plug>(coc-codelens-action)
+nmap <leader>lk <Plug>(coc-openlink)
+nmap gn <plug>(coc-diagnostic-next)
+nmap <A-f> :CocFix<CR>
+nmap <C-A-l> :call CocAction('format')<CR>
 " coc-prettier
-" command! -nargs=0 Prettier :CocCommand prettier.formatFile
-" vmap <leader>f  <Plug>(coc-format-selected)
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+vmap <leader>f  <Plug>(coc-format-selected)
 
 " Explorer
-" let g:coc_explorer_global_presets = {
-" \   '.vim': {
-" \     'root-uri': '~/.vim',
-" \   },
-" \   'tab': {
-" \     'position': 'tab',
-" \     'quit-on-open': v:true,
-" \   },
-" \   'floating': {
-" \     'position': 'floating',
-" \     'open-action-strategy': 'sourceWindow',
-" \   },
-" \   'floatingTop': {
-" \     'position': 'floating',
-" \     'floating-position': 'center-top',
-" \     'open-action-strategy': 'sourceWindow',
-" \   },
-" \   'floatingLeftside': {
-" \     'position': 'floating',
-" \     'floating-position': 'left-center',
-" \     'floating-width': 50,
-" \     'open-action-strategy': 'sourceWindow',
-" \   },
-" \   'floatingRightside': {
-" \     'position': 'floating',
-" \     'floating-position': 'right-center',
-" \     'floating-width': 50,
-" \     'open-action-strategy': 'sourceWindow',
-" \   },
-" \   'simplify': {
-" \     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
-" \   }
-" \ }
-" nmap <space>e :CocCommand explorer<CR>
-" autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
+let g:coc_explorer_global_presets = {
+\   '.vim': {
+\     'root-uri': '~/.vim',
+\   },
+\   'tab': {
+\     'position': 'tab',
+\     'quit-on-open': v:true,
+\   },
+\   'floating': {
+\     'position': 'floating',
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\   'floatingTop': {
+\     'position': 'floating',
+\     'floating-position': 'center-top',
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\   'floatingLeftside': {
+\     'position': 'floating',
+\     'floating-position': 'left-center',
+\     'floating-width': 50,
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\   'floatingRightside': {
+\     'position': 'floating',
+\     'floating-position': 'right-center',
+\     'floating-width': 50,
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\   'simplify': {
+\     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
+\   }
+\ }
+nmap <space>e :CocCommand explorer<CR>
+autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 
 " nmap <F1> :CocCommand java.debug.vimspector.start<CR>
-" function! JavaStartDebugCallback(err, port)
-  " execute "cexpr! 'Java debug started on port: " . a:port . "'"
-  " call vimspector#LaunchWithSettings({ "configuration": "Java Attach", "AdapterPort": a:port })
-" endfunction
+function! JavaStartDebugCallback(err, port)
+  execute "cexpr! 'Java debug started on port: " . a:port . "'"
+  call vimspector#LaunchWithSettings({ "configuration": "Java Attach", "AdapterPort": a:port })
+endfunction
 
-" function JavaStartDebug()
-  " call CocActionAsync('runCommand', 'vscode.java.startDebugSession', function('JavaStartDebugCallback'))
-" endfunction
+function JavaStartDebug()
+  call CocActionAsync('runCommand', 'vscode.java.startDebugSession', function('JavaStartDebugCallback'))
+endfunction
 
-" nmap <F1> :call JavaStartDebug()<CR>
+nmap <F1> :call JavaStartDebug()<CR>
 
 "coc-gi-git
 " navigate chunks of current buffer
-" nmap [g <Plug>(coc-git-prevchunk)
-" nmap ]g <Plug>(coc-git-nextchunk)
+nmap [g <Plug>(coc-git-prevchunk)
+nmap ]g <Plug>(coc-git-nextchunk)
 " navigate conflicts of current buffer
-" nmap [c <Plug>(coc-git-prevconflict)
-" nmap ]c <Plug>(coc-git-nextconflict)
+nmap [c <Plug>(coc-git-prevconflict)
+nmap ]c <Plug>(coc-git-nextconflict)
 " show chunk diff at current position
-" nmap gi <Plug>(coc-git-chunkinfo)
+nmap gi <Plug>(coc-git-chunkinfo)
 " show commit contains current position
-" nmap gcc <Plug>(coc-git-commit)
-" nmap gcs :CocCommand git.chunkStage<CR>
+nmap gcc <Plug>(coc-git-commit)
+nmap gcs :CocCommand git.chunkStage<CR>
 " create text object for git chunks
-" omap ig <Plug>(coc-git-chunk-inner)
-" xmap ig <Plug>(coc-git-chunk-inner)
-" omap ag <Plug>(coc-git-chunk-outer)
-" xmap ag <Plug>(coc-git-chunk-outer)
-
+omap ig <Plug>(coc-git-chunk-inner)
+xmap ig <Plug>(coc-git-chunk-inner)
+omap ag <Plug>(coc-git-chunk-outer)
+xmap ag <Plug>(coc-git-chunk-outer)
 "==>indentLine
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
@@ -454,10 +449,10 @@ let g:fzf_branch_actions = {
       \}
 
 "==>illuminate
-augroup illuminate_augroup
-        autocmd!
-            autocmd VimEnter * hi illuminatedCurWord cterm=italic gui=italic
-        augroup END
+" augroup illuminate_augroup
+        " autocmd!
+            " autocmd VimEnter * hi illuminatedCurWord cterm=italic gui=italic
+        " augroup END
 
 "==>vim-lf
 nnoremap <leader>lf <Plug>LfSplit
@@ -479,7 +474,7 @@ hi Floaterm guibg=black
 hi FloatermBorder guibg=orange guifg=cyan
 hi FloatermNC guibg=gray
 
-" command! LF FloatermNew lf
+command! LF FloatermNew lf
 
 "==>incsearch.vim
 " Implemented in easymotion below
@@ -563,7 +558,7 @@ noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 "==>UltiSnips
 " Trigger configuration. You need to change this to something other than <tab>
 " if you use one of completion plugins
-let g:UltiSnipsExpandTrigger="<c-l>"
+let g:UltiSnipsExpandTrigger="<s-l>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 "
@@ -788,7 +783,6 @@ autocmd FileType conf,fstab,yaml,fish,toml   let b:comment_leader = '#'
 autocmd FileType tex                         let b:comment_leader = '%'
 autocmd FileType mail                        let b:comment_leader = '>'
 autocmd FileType vim                         let b:comment_leader = '"'
-autocmd FileType lua                         let b:comment_leader = '--'
 
 function! CommentToggle()
     execute ':silent! s/\([^ ]\)/' . escape(b:comment_leader,'\/') . ' \1/' | nohlsearch

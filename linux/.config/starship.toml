@@ -1,0 +1,111 @@
+format = "$all"
+
+add_new_line = false
+
+[line_break]
+disabled = false
+
+[battery]
+full_symbol = "🔋"
+charging_symbol = "🔌"
+discharging_symbol = "⚡"
+
+[[battery.display]]
+threshold = 30
+style = "bold red"
+
+[character]
+error_symbol = "[✖](bold red) "
+
+[cmd_duration]
+min_time = 5_000  # Show command duration over 10,000 milliseconds (=5 sec)
+format = " took [$duration]($style)"
+
+[directory]
+truncation_length = 5
+format = "[$path]($style)[$lock_symbol]($lock_style) "
+
+[git_branch]
+format = " [$symbol$branch]($style) "
+symbol = ""
+style = "bold yellow"
+
+[git_commit]
+commit_hash_length = 8
+symbol = "ﰖ"
+style = "bold white"
+
+[git_state]
+progress_divider = " of "
+
+[git_status]
+conflicted = "⚔️ "
+ahead = " ×${count}"
+behind = " ×${count}"
+diverged = " ×${ahead_count} ×${behind_count}"
+untracked = "🛤️  ×${count}"
+stashed = "📦 "
+modified = " ×${count}"
+staged = "🗃️ ×${count}"
+renamed = "凜 ×${count}"
+deleted = "🗑️  ×${count}"
+style = "bright-white"
+format = "$all_status$ahead_behind"
+
+[hostname]
+ssh_only = false
+format = "<[$hostname]($style)>"
+trim_at = "-"
+style = "bold dimmed white"
+disabled = true
+
+[julia]
+format = "[$symbol$version]($style) "
+symbol = "ஃ "
+style = "bold green"
+
+[package]
+disabled = true
+
+# [env_var]
+# variable = "SHELL"
+# default = "unknown shell"
+
+[golang]
+symbol = ""
+
+[memory_usage]
+format = "[${ram}( | ${swap})]($style) "
+show_percentage = true
+show_swap = true
+threshold = 50
+style = "bold dimmed white"
+disabled = false
+
+[python]
+symbol = ""
+format = "[$symbol $version]($style) "
+style = "bold green"
+
+[time]
+disabled = false
+format = '🕙$time($style) '
+time_format = "%T"
+style = "bright-white"
+# utc_time_offset = "+5:30"
+time_range = "22:00:00-14:00:00"
+
+[shlvl]
+disabled = false
+# format = "$shlvl level(s) down"
+threshold = 4
+
+[lua]
+format = "via [ $version](bold blue) "
+
+[java]
+style = "bold red"
+
+[username]
+style_user = "bold dimmed blue"
+show_always = false

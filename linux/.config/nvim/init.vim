@@ -2,6 +2,13 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 set runtimepath+=~/.config/nvim
 
+" set shell=/bin/bash
+
+let $JAR="/home/rajprakhar/.config/coc/extensions/coc-java-data/server/plugins/org.eclipse.equinox.launcher.gtk.linux.x86_64_1.2.100.v20210209-1541.jar"
+let $GRADLE_HOME="$HOME/.gradle"
+let $JAVA_HOME = '/lib/jvm/java-15-openjdk'
+let $JDTLS_CONFIG="/home/rajprakhar/.config/coc/extensions/coc-java-data/server/config_linux"
+let $WORKSPACE="$HOME/workspace"
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=50
@@ -61,7 +68,6 @@ filetype off                         " required
 " set the runtime path to include Vundle and initialize
 call plug#begin('~/.vim/plugged')
 "Core Plugins
-Plug 'ctrlpvim/ctrlp.vim'         "Search for anyting from vim
 Plug 'mhinz/vim-startify'
 Plug 'mbbill/undotree'
 Plug 'majutsushi/tagbar'
@@ -69,8 +75,8 @@ Plug 'majutsushi/tagbar'
 "visual Plugins
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 Plug 'felixhummel/setcolors.vim'
 Plug 'sainnhe/gruvbox-material'
 Plug 'sainnhe/sonokai'
@@ -80,7 +86,7 @@ Plug 'Yggdroot/indentLine'        "displaying thin vertical lines at each indent
 Plug 'ryanoasis/vim-devicons'
 Plug 'thiagoalessio/rainbow_levels.vim'
 Plug 'RRethy/vim-illuminate'
-Plug 'dylanaraps/wal.vim'
+Plug 'norcalli/nvim-colorizer.lua'
 
 "pure vim scripts with no dependencies
 Plug 'tpope/vim-abolish'
@@ -102,6 +108,7 @@ Plug 'matze/vim-move'                 "move selection as whole around
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'airblade/vim-rooter'        "automatically sets project directory using rules in vimrc
+Plug 'Raimondi/delimitMate'
 
 "Target objects
 Plug 'wellle/targets.vim'
@@ -113,69 +120,132 @@ Plug 'jeetsukumaran/vim-pythonsense'
 Plug 'michaeljsmith/vim-indent-object'
 
 
+"Ctags generation
 " Plug 'xolox/vim-shell'
 " Plug 'xolox/vim-misc'
 " Plug 'xolox/vim-easytags'
 Plug 'andymass/vim-matchup'
 
-"Experimental
-Plug 'qpkorr/vim-bufkill'
-Plug 'romainl/vim-qf'                 "don't recommend vim-qf to Syntastic/Neomake/ALE users
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'tmhedberg/SimpylFold'
-Plug 'liuchengxu/vim-which-key'
-Plug 'Raimondi/delimitMate'
-" Plug 'sheerun/vim-polyglot'         "using till treesitter supports more filetypes(only pwsh left);
-
-"LSP/autocomplete
-Plug 'neoclide/coc.nvim', {'branch': 'release' }
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fugitive'
-Plug 'puremourning/vimspector', {'on': 'VS'}
-Plug 'szw/vim-maximizer'
-Plug 'tweekmonster/startuptime.vim'
-Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-Plug 'honza/vim-snippets'
-Plug 'ptzz/lf.vim'
-Plug 'rbgrouleff/bclose.vim'
+"Searching & navigating
+" Plug 'liuchengxu/vim-which-key'
 Plug 'voldikss/vim-floaterm'
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'easymotion/vim-easymotion'
-" Plug 'SirVer/ultisnips'
+
+"Experimental Nightly
+Plug 'qpkorr/vim-bufkill'
+Plug 'romainl/vim-qf'                 "don't recommend vim-qf to Syntastic/Neomake/ALE users
+Plug 'tmhedberg/SimpylFold'
+" Plug 'sheerun/vim-polyglot'         "using till treesitter supports more filetypes(only pwsh left);
+
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+" Plug 'puremourning/vimspector', {'on': 'VS'}
+Plug 'szw/vim-maximizer'
+Plug 'tweekmonster/startuptime.vim'
+" Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+Plug 'honza/vim-snippets'
+Plug 'ptzz/lf.vim'
+Plug 'rbgrouleff/bclose.vim'
+Plug 'SirVer/ultisnips'
 Plug 'rhysd/wandbox-vim'
 Plug 'Shougo/vimproc.vim', {'do':'make'}
 Plug 'RishabhRD/nvim-cheat.sh'
 Plug 'RishabhRD/popfix'
 Plug 'AndrewRadev/switch.vim'
+"LSP/autocomplete
+" Plug 'neoclide/coc.nvim', {'branch': 'release' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'nvim-treesitter/playground'
 Plug 'romgrk/nvim-treesitter-context'
 Plug 'p00f/nvim-ts-rainbow'
 Plug 'nvim-treesitter/nvim-treesitter-refactor'
-Plug 'norcalli/nvim-colorizer.lua'
-Plug 'stsewd/fzf-checkout.vim'
-" Plug 'davewongillies/vim-gradle'
 Plug 'hdiniz/vim-gradle',
-" Plug 'vimwiki/vimwiki', {'branch': 'dev'}
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 " Plugin 'vim-fat-finger' manually added
+" nvim-lspconfig
+Plug 'neovim/nvim-lspconfig'
+" Plug 'nvim-lua/completion-nvim'
+Plug 'hrsh7th/nvim-compe'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'onsails/lspkind-nvim'
+Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
+Plug 'kyazdani42/nvim-web-devicons' " lua
+Plug 'mfussenegger/nvim-jdtls'
 
+" Telescope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-media-files.nvim'
+Plug 'nvim-telescope/telescope-symbols.nvim'
+Plug 'fhill2/telescope-ultisnips.nvim'
+Plug 'gbrlsnchs/telescope-lsp-handlers.nvim'
 call plug#end()            " required
 filetype plugin indent on    " required
 
 "----------------Plugin-Options-----------------
 
+"Telescope
+" Find files using Telescope command-line sugar.
+" nnoremap <leader>ff <cmd>Telescope find_files<cr>
+" nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+" nnoremap <leader>fb <cmd>Telescope buffers<cr>
+" nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
+" Using lua functions
+nnoremap <space>br <cmd>lua require('telescope.builtin').file_browser()<cr>
+nnoremap <c-p> <cmd>lua require('telescope.builtin').find_files({ prompt_prefix=🔍 })<cr>
+nnoremap <space>g <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <space>b <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <space>h <cmd>lua require('telescope.builtin').help_tags()<cr>
+nnoremap <space>gf <cmd>lua require('telescope.builtin').git()<cr>
+nnoremap <space>gb <cmd>lua require('telescope.builtin').git_branches()<cr>
+nnoremap <space>gbc <cmd>lua require('telescope.builtin').git_bcommits()<cr>
+nnoremap <space>ts <cmd>lua require('telescope.builtin').treesitter()<cr>
+nnoremap <space>p <cmd>lua require('telescope.builtin').builtin(require('telescope.themes').get_dropdown({windblend = 10}))<cr>
+nnoremap <space>p <cmd>lua require('telescope.builtin').builtin()<cr>
+nnoremap <space>r <cmd>lua require('telescope.builtin').reloader()<cr>
+nnoremap <space>s <cmd>lua require'telescope.builtin'.symbols{}<cr>
+nnoremap <space>m <cmd>lua require('telescope').extensions.media_files.media_files(require('telescope.themes').get_dropdown({windblend = 10}))<cr>
+nnoremap <space>u <cmd>lua require'telescope'.extensions.ultisnips.ultisnips(require('telescope.themes').get_dropdown({windblend = 10}))<cr>
+lua require('telescope').load_extension('lsp_handlers')
+lua require('telescope').load_extension('media_files')
+lua require('telescope').load_extension('ultisnips')
+
+"nvim-lspconfig
+
+luafile ~/.config/nvim/nv-lspconfig.lua
+" luafile ~/.config/nvim/jdtls_setup.lua
+luafile ~/.config/nvim/lua-lspconfig.lua
+
+if has('nvim-0.5')
+  augroup lsp
+    au!
+    au FileType java lua require('jdtls').start_or_attach({cmd = {'java-lsp.sh'}})
+  augroup end
+endif
+"nvim-compe
+set shortmess+=c
+luafile ~/.config/nvim/nvim-compe.lua
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm({ 'keys': "\<Plug>delimitMateCR", 'mode': '' })
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+
+"To make <cr> select the first completion item and confirm the completion when no item has been selected:
+inoremap <expr> <cr> pumvisible() ? compe#confirm({'keys': "\<C-n>", 'mode': '' }) :"\<C-g>u\<CR>"
+
+" Galaxyline
+luafile ~/.config/nvim/nv-galaxyline.lua
 "==>vim-move
 let g:move_key_modifier = 'C'
 
 "==>easy-align
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
-
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
@@ -224,146 +294,115 @@ autocmd! User GoyoLeave Limelight!
 "==>tag-bar
 map <F9> :TagbarToggle<CR>
 
-"==>vim-easytags
-let g:easytags_async=1
-let g:easytags_file = '~/.vim/tags'
-
-set tags=./tags;
-let g:easytags_dynamic_files = 1
-
-"==>vim-shell
-let g:shell_fullscreen_always_on_top = 0
-
 "==>vim-rooter
 let g:rooter_patterns = ['.git', 'CMakeLists.txt', 'Makefile', '*.sln', '.idea', '.nvim_root', '.vim']
 
-"==>airline
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
-let g:airline_theme = 'night_owl'
-"tabline
-let g:airline#extensions#tabline#show_buffers = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extencions#nabline#show_tab_count = 1
-let g:airline#extensions#tabline#excludes = ['qf', 'vim-plug', 'help', 'diff', 'man', 'fugitive', 'nerdtree', 'tagbar', 'codi']
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-let g:airline#extensions#tabline#show_tab_type = 1
-let g:airline#extensions#tabline#buf_label_first = 0
-
-"==>Coc
-"coc-ultisnips or separate plugin sirver/ultisnips have some extra features
-let g:coc_global_extensions = [
-      \'coc-json', 'coc-git', 'coc-vimlsp', 'coc-yaml', 'coc-sh', 'coc-prettier',
-      \'coc-tabnine', 'coc-snippets', 'coc-lua', 'coc-floaterm',
-      \'coc-fish', 'coc-explorer', 'coc-discord-rpc', 'coc-clangd', 'coc-browser',
-      \'coc-calc', 'coc-pyright', 'coc-java', 'coc-github', 'coc-gitignore',
-      \'coc-grammarly', 'coc-spell-checker', 'coc-cspell-dicts', 'coc-groovy']
+"Coc
 "remap <cr> to make sure it confirms completion when popup menu is visible
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 "To make <cr> select the first completion item and confirm the completion when no item has been selected:
-inoremap <expr> <cr> pumvisible() ? coc#_select_confirm() :"\<C-g>u\<CR>"
+" inoremap <expr> <cr> pumvisible() ? coc#_select_confirm() :"\<C-g>u\<CR>"
 " nnoremap <silent> K :call <SID>show_documentation()<CR>
-autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+" autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 " use <tab> for trigger completion and navigate to the next complete item
-function! s:check_back_space() abort
-      let col = col('.') - 1
-        return !col || getline('.')[col - 1]  =~ '\s'
-    endfunction
+" function! s:check_back_space() abort
+      " let col = col('.') - 1
+        " return !col || getline('.')[col - 1]  =~ '\s'
+    " endfunction
 
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
-      \ coc#refresh()
+" inoremap <silent><expr> <Tab>
+      " \ pumvisible() ? "\<C-n>" :
+      " \ <SID>check_back_space() ? "\<Tab>" :
+      " \ coc#refresh()
 
 
-inoremap <silent><expr> <S-Tab>
-      \ pumvisible() ? "\<C-p>" :
-      \ <SID>check_back_space() ? "\<S-Tab>" :
-      \ coc#refresh()
+" inoremap <silent><expr> <S-Tab>
+      " \ pumvisible() ? "\<C-p>" :
+      " \ <SID>check_back_space() ? "\<S-Tab>" :
+      " \ coc#refresh()
 
-nmap gd <plug>(coc-definition)
-nmap gy <plug>(coc-type-definition)
-nmap gu <plug>(coc-implementation)
-nmap gr <plug>(coc-references)
-nmap <leader>rn <plug>(coc-rename)
-nmap <leader>ca <plug>(coc-codeaction)
-nmap gl <plug>(coc-codelens-action)
-nmap <leader>lk <Plug>(coc-openlink)
-nmap gn <plug>(coc-diagnostic-next)
-nmap <A-f> :CocFix<CR>
-nmap <C-A-l> :call CocAction('format')<CR>
+" nmap gd <plug>(coc-definition)
+" nmap gy <plug>(coc-type-definition)
+" nmap gu <plug>(coc-implementation)
+" nmap gr <plug>(coc-references)
+" nmap <leader>rn <plug>(coc-rename)
+" nmap <leader>ca <plug>(coc-codeaction)
+" nmap gl <plug>(coc-codelens-action)
+" nmap <leader>lk <Plug>(coc-openlink)
+" nmap gn <plug>(coc-diagnostic-next)
+" nmap <A-f> :CocFix<CR>
+" nmap <C-A-l> :call CocAction('format')<CR>
 " coc-prettier
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
-vmap <leader>f  <Plug>(coc-format-selected)
+" command! -nargs=0 Prettier :CocCommand prettier.formatFile
+" vmap <leader>f  <Plug>(coc-format-selected)
 
 " Explorer
-let g:coc_explorer_global_presets = {
-\   '.vim': {
-\     'root-uri': '~/.vim',
-\   },
-\   'tab': {
-\     'position': 'tab',
-\     'quit-on-open': v:true,
-\   },
-\   'floating': {
-\     'position': 'floating',
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'floatingTop': {
-\     'position': 'floating',
-\     'floating-position': 'center-top',
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'floatingLeftside': {
-\     'position': 'floating',
-\     'floating-position': 'left-center',
-\     'floating-width': 50,
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'floatingRightside': {
-\     'position': 'floating',
-\     'floating-position': 'right-center',
-\     'floating-width': 50,
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'simplify': {
-\     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
-\   }
-\ }
-nmap <space>e :CocCommand explorer<CR>
-autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
+" let g:coc_explorer_global_presets = {
+" \   '.vim': {
+" \     'root-uri': '~/.vim',
+" \   },
+" \   'tab': {
+" \     'position': 'tab',
+" \     'quit-on-open': v:true,
+" \   },
+" \   'floating': {
+" \     'position': 'floating',
+" \     'open-action-strategy': 'sourceWindow',
+" \   },
+" \   'floatingTop': {
+" \     'position': 'floating',
+" \     'floating-position': 'center-top',
+" \     'open-action-strategy': 'sourceWindow',
+" \   },
+" \   'floatingLeftside': {
+" \     'position': 'floating',
+" \     'floating-position': 'left-center',
+" \     'floating-width': 50,
+" \     'open-action-strategy': 'sourceWindow',
+" \   },
+" \   'floatingRightside': {
+" \     'position': 'floating',
+" \     'floating-position': 'right-center',
+" \     'floating-width': 50,
+" \     'open-action-strategy': 'sourceWindow',
+" \   },
+" \   'simplify': {
+" \     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
+" \   }
+" \ }
+" nmap <space>e :CocCommand explorer<CR>
+" autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 
 " nmap <F1> :CocCommand java.debug.vimspector.start<CR>
-function! JavaStartDebugCallback(err, port)
-  execute "cexpr! 'Java debug started on port: " . a:port . "'"
-  call vimspector#LaunchWithSettings({ "configuration": "Java Attach", "AdapterPort": a:port })
-endfunction
+" function! JavaStartDebugCallback(err, port)
+  " execute "cexpr! 'Java debug started on port: " . a:port . "'"
+  " call vimspector#LaunchWithSettings({ "configuration": "Java Attach", "AdapterPort": a:port })
+" endfunction
 
-function JavaStartDebug()
-  call CocActionAsync('runCommand', 'vscode.java.startDebugSession', function('JavaStartDebugCallback'))
-endfunction
+" function JavaStartDebug()
+  " call CocActionAsync('runCommand', 'vscode.java.startDebugSession', function('JavaStartDebugCallback'))
+" endfunction
 
-nmap <F1> :call JavaStartDebug()<CR>
+" nmap <F1> :call JavaStartDebug()<CR>
 
 "coc-gi-git
 " navigate chunks of current buffer
-nmap [g <Plug>(coc-git-prevchunk)
-nmap ]g <Plug>(coc-git-nextchunk)
+" nmap [g <Plug>(coc-git-prevchunk)
+" nmap ]g <Plug>(coc-git-nextchunk)
 " navigate conflicts of current buffer
-nmap [c <Plug>(coc-git-prevconflict)
-nmap ]c <Plug>(coc-git-nextconflict)
+" nmap [c <Plug>(coc-git-prevconflict)
+" nmap ]c <Plug>(coc-git-nextconflict)
 " show chunk diff at current position
-nmap gi <Plug>(coc-git-chunkinfo)
+" nmap gi <Plug>(coc-git-chunkinfo)
 " show commit contains current position
-nmap gcc <Plug>(coc-git-commit)
-nmap gcs :CocCommand git.chunkStage<CR>
+" nmap gcc <Plug>(coc-git-commit)
+" nmap gcs :CocCommand git.chunkStage<CR>
 " create text object for git chunks
-omap ig <Plug>(coc-git-chunk-inner)
-xmap ig <Plug>(coc-git-chunk-inner)
-omap ag <Plug>(coc-git-chunk-outer)
-xmap ag <Plug>(coc-git-chunk-outer)
+" omap ig <Plug>(coc-git-chunk-inner)
+" xmap ig <Plug>(coc-git-chunk-inner)
+" omap ag <Plug>(coc-git-chunk-outer)
+" xmap ag <Plug>(coc-git-chunk-outer)
+
 "==>indentLine
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
@@ -375,27 +414,27 @@ let g:SimpylFold_fold_docstring = 1
 
 "==>vim-spector
 
-nnoremap <leader>m :MaximizerToggle!<CR>
-nnoremap <leader>dd :call vimspector#Launch()<CR>
-nnoremap <leader>dc :call GotoWindow(g:vimspector_session_windows.code)<CR>
-nnoremap <leader>dt :call GotoWindow(g:vimspector_session_windows.tagpage)<CR>
-nnoremap <leader>dv :call GotoWindow(g:vimspector_session_windows.variables)<CR>
-nnoremap <leader>dw :call GotoWindow(g:vimspector_session_windows.watches)<CR>
-nnoremap <leader>ds :call GotoWindow(g:vimspector_session_windows.stack_trace)<CR>
-nnoremap <leader>do :call GotoWindow(g:vimspector_session_windows.output)<CR>
-nnoremap <leader>de :call vimspector#Reset()<CR>
+" nnoremap <leader>m :MaximizerToggle!<CR>
+" nnoremap <leader>dd :call vimspector#Launch()<CR>
+" nnoremap <leader>dc :call GotoWindow(g:vimspector_session_windows.code)<CR>
+" nnoremap <leader>dt :call GotoWindow(g:vimspector_session_windows.tagpage)<CR>
+" nnoremap <leader>dv :call GotoWindow(g:vimspector_session_windows.variables)<CR>
+" nnoremap <leader>dw :call GotoWindow(g:vimspector_session_windows.watches)<CR>
+" nnoremap <leader>ds :call GotoWindow(g:vimspector_session_windows.stack_trace)<CR>
+" nnoremap <leader>do :call GotoWindow(g:vimspector_session_windows.output)<CR>
+" nnoremap <leader>de :call vimspector#Reset()<CR>
 
-nnoremap <leader>dtcb :call vimspector#CleanLineBreakpoint()<CR>
+" nnoremap <leader>dtcb :call vimspector#CleanLineBreakpoint()<CR>
 
-nmap <leader>dl <Plug>VimspectorStepInto
-nmap <leader>dj <Plug>VimspectorStepOver
-nmap <leader>dk <Plug>VimspectorStepOut
-nmap <leader>d_ <Plug>VimspectorRestart
-nnoremap <leader>d<space> :call vimspector#Continue()<CR>
+" nmap <leader>dl <Plug>VimspectorStepInto
+" nmap <leader>dj <Plug>VimspectorStepOver
+" nmap <leader>dk <Plug>VimspectorStepOut
+" nmap <leader>d_ <Plug>VimspectorRestart
+" nnoremap <leader>d<space> :call vimspector#Continue()<CR>
 
-nmap <leader>drc <Plug>VimspectorRunToCursor
-nmap <leader>dbp <Plug>VimspectorToggleBreakpoint
-nmap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
+" nmap <leader>drc <Plug>VimspectorRunToCursor
+" nmap <leader>dbp <Plug>VimspectorToggleBreakpoint
+" nmap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
 
 "==>rainbow_levels
 function RainbowBackgroundToggle() abort
@@ -422,10 +461,10 @@ nnoremap <leader>rbf :call RainbowLevelsToggle() <CR>
 nnoremap <leader>rbb :call RainbowBackgroundToggle()<CR>
 
 "==>FZF
-command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-nmap <space>f :Files<CR>
-nmap <space>gf :GitFiles<CR>
+" command! -bang -nargs=? -complete=dir Files
+    " \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+" nmap <space>f :Files<CR>
+" nmap <space>gf :GitFiles<CR>
 
 "==>fzf-checkout
 let g:fzf_checkout_merge_settings = v:false
@@ -449,10 +488,10 @@ let g:fzf_branch_actions = {
       \}
 
 "==>illuminate
-" augroup illuminate_augroup
-        " autocmd!
-            " autocmd VimEnter * hi illuminatedCurWord cterm=italic gui=italic
-        " augroup END
+augroup illuminate_augroup
+        autocmd!
+            autocmd VimEnter * hi illuminatedCurWord cterm=italic gui=italic
+        augroup END
 
 "==>vim-lf
 nnoremap <leader>lf <Plug>LfSplit
@@ -474,7 +513,7 @@ hi Floaterm guibg=black
 hi FloatermBorder guibg=orange guifg=cyan
 hi FloatermNC guibg=gray
 
-command! LF FloatermNew lf
+" command! LF FloatermNew lf
 
 "==>incsearch.vim
 " Implemented in easymotion below
@@ -558,7 +597,7 @@ noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 "==>UltiSnips
 " Trigger configuration. You need to change this to something other than <tab>
 " if you use one of completion plugins
-let g:UltiSnipsExpandTrigger="<s-l>"
+let g:UltiSnipsExpandTrigger="<c-l>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 "
@@ -775,6 +814,7 @@ augroup code
   autocmd filetype python nmap <F6> :w <bar> !python % < inp.txt > out.txt <CR>
   autocmd filetype cpp nnoremap <leader>tp 0r ~/.vim/tempelate/tempelate.cpp
 augroup END
+nnoremap <S-F5> :w <bar> FloatermNew! ./make_run.sh <CR>
 
 "Comment toggling          "Alternative commentary by tpope
 autocmd FileType c,cpp,java,json,scala,jsonc let b:comment_leader = '//'
@@ -783,6 +823,7 @@ autocmd FileType conf,fstab,yaml,fish,toml   let b:comment_leader = '#'
 autocmd FileType tex                         let b:comment_leader = '%'
 autocmd FileType mail                        let b:comment_leader = '>'
 autocmd FileType vim                         let b:comment_leader = '"'
+autocmd FileType lua                         let b:comment_leader = '--'
 
 function! CommentToggle()
     execute ':silent! s/\([^ ]\)/' . escape(b:comment_leader,'\/') . ' \1/' | nohlsearch
