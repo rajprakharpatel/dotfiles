@@ -1,10 +1,6 @@
-alias :e=vim
-alias :q=exit
-alias cls=clear
-alias nn=nvim
-
+#!/bin/zsh
+. ~/.profile
 plugins+=(gradle-completion)
-PATH=$PATH:/home/rajprakhar/.jdks/corretto-1.8.0_282/bin
 
 eval "$(direnv hook bash)"
 

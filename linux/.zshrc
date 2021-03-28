@@ -322,3 +322,4 @@ ex ()
 
 $+commands[floaterm] && neofetch
 clear
+export PATH=$HOME/.config/nvcode/utils/bin:$PATH

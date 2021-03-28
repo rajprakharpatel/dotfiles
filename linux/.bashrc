@@ -1,4 +1,4 @@
-#!/usr/bin bash
+#!/usr/bin/bash
 
 #
 # ~/.bashrc
@@ -242,3 +242,4 @@ fi
 export SDKMAN_DIR="/home/rajprakhar/.sdkman"
 [[ -s "/home/rajprakhar/.sdkman/bin/sdkman-init.sh" ]] && source "/home/rajprakhar/.sdkman/bin/sdkman-init.sh"
 
+export PATH=$HOME/.config/nvcode/utils/bin:$PATH

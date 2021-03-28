@@ -33,6 +33,8 @@ set smartindent
 " configure tabwidth and insert spaces instead of tabs
 set tabstop=4        " tab width is 4 spaces
 set shiftwidth=4     " indent also with 4 spaces
+au FileType cpp,c set shiftwidth=2
+au FileType cpp,c set tabstop=2
 set expandtab        " expand tabs to spaces
 " wrap lines at 120 chars. 80 is some what antiquated with nowadays displays.
 set nowrap
@@ -67,21 +69,19 @@ filetype off                         " required
 
 " set the runtime path to include Vundle and initialize
 call plug#begin('~/.vim/plugged')
-"Core Plugins
+"Plugins
 Plug 'mhinz/vim-startify'
 Plug 'mbbill/undotree'
 Plug 'majutsushi/tagbar'
 
 "visual Plugins
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
+" Plug 'junegunn/goyo.vim'
+" Plug 'junegunn/limelight.vim'
 Plug 'felixhummel/setcolors.vim'
-Plug 'sainnhe/gruvbox-material'
-Plug 'sainnhe/sonokai'
+" Plug 'sainnhe/gruvbox-material'
+" Plug 'sainnhe/sonokai'
 Plug 'christianchiarulli/nvcode-color-schemes.vim'
-Plug 'sainnhe/edge'
+" Plug 'sainnhe/edge'
 Plug 'Yggdroot/indentLine'        "displaying thin vertical lines at each indentation level for code indented with spaces
 Plug 'ryanoasis/vim-devicons'
 Plug 'thiagoalessio/rainbow_levels.vim'
@@ -138,11 +138,9 @@ Plug 'easymotion/vim-easymotion'
 Plug 'qpkorr/vim-bufkill'
 Plug 'romainl/vim-qf'                 "don't recommend vim-qf to Syntastic/Neomake/ALE users
 Plug 'tmhedberg/SimpylFold'
-" Plug 'sheerun/vim-polyglot'         "using till treesitter supports more filetypes(only pwsh left);
 
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
-" Plug 'puremourning/vimspector', {'on': 'VS'}
 Plug 'szw/vim-maximizer'
 Plug 'tweekmonster/startuptime.vim'
 " Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
@@ -155,24 +153,21 @@ Plug 'Shougo/vimproc.vim', {'do':'make'}
 Plug 'RishabhRD/nvim-cheat.sh'
 Plug 'RishabhRD/popfix'
 Plug 'AndrewRadev/switch.vim'
-"LSP/autocomplete
-" Plug 'neoclide/coc.nvim', {'branch': 'release' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-Plug 'nvim-treesitter/playground'
+" Plug 'nvim-treesitter/playground'
 Plug 'romgrk/nvim-treesitter-context'
 Plug 'p00f/nvim-ts-rainbow'
-Plug 'nvim-treesitter/nvim-treesitter-refactor'
+" Plug 'nvim-treesitter/nvim-treesitter-refactor'
 Plug 'hdiniz/vim-gradle',
-" Plugin 'vim-fat-finger' manually added
 " nvim-lspconfig
 Plug 'neovim/nvim-lspconfig'
-" Plug 'nvim-lua/completion-nvim'
 Plug 'hrsh7th/nvim-compe'
 Plug 'hrsh7th/vim-vsnip'
+Plug 'tzachar/compe-tabnine', { 'do': './install.sh' }
 Plug 'onsails/lspkind-nvim'
 Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
-Plug 'kyazdani42/nvim-web-devicons' " lua
 Plug 'mfussenegger/nvim-jdtls'
+Plug 'RishabhRD/nvim-lsputils'
 
 " Telescope
 Plug 'nvim-lua/popup.nvim'
@@ -182,17 +177,54 @@ Plug 'nvim-telescope/telescope-media-files.nvim'
 Plug 'nvim-telescope/telescope-symbols.nvim'
 Plug 'fhill2/telescope-ultisnips.nvim'
 Plug 'gbrlsnchs/telescope-lsp-handlers.nvim'
+" Org-Mode and other utilities
+Plug 'jceb/vim-orgmode'
+Plug 'vim-scripts/utl.vim'
+Plug 'itchyny/calendar.vim'
+Plug 'chrisbra/NrrwRgn'
+" lua explorer
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
 call plug#end()            " required
 filetype plugin indent on    " required
 
 "----------------Plugin-Options-----------------
 
+"""""""""""""""""""
+"  nvim-lsputils  "
+"""""""""""""""""""
+lua <<EOF
+vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
+vim.lsp.handlers['textDocument/references'] = require'lsputil.locations'.references_handler
+vim.lsp.handlers['textDocument/definition'] = require'lsputil.locations'.definition_handler
+vim.lsp.handlers['textDocument/declaration'] = require'lsputil.locations'.declaration_handler
+vim.lsp.handlers['textDocument/typeDefinition'] = require'lsputil.locations'.typeDefinition_handler
+vim.lsp.handlers['textDocument/implementation'] = require'lsputil.locations'.implementation_handler
+vim.lsp.handlers['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
+vim.lsp.handlers['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
+EOF
+
+"""""""""""""""
+"  nvim-tree  "
+"""""""""""""""
+let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache', 'log.json' ] "empty by default
+let g:nvim_tree_auto_open = 1 "0 by default, opens the tree when typing `vim $DIR` or `vim`
+let g:nvim_tree_auto_close = 1 "0 by default, closes the tree when it's the last window
+let g:nvim_tree_auto_ignore_ft = ['startify', 'dashboard'] "empty by default, don't auto open tree on specific filetypes.
+let g:nvim_tree_follow = 1 "0 by default, this option allows the cursor to be updated when entering a buffer
+let g:nvim_tree_indent_markers = 1 "0 by default, this option shows indent markers when folders are open
+let g:nvim_tree_git_hl = 1 "0 by default, will enable file highlight for git attributes (can be used without the icons).
+let g:nvim_tree_root_folder_modifier = ':.' "This is the default. See :help filename-modifiers for more options
+let g:nvim_tree_tab_open = 1 "0 by default, will open the tree when entering a new tab and the tree was previously open
+
+nnoremap <space>e :NvimTreeToggle<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <leader>n :NvimTreeFindFile<CR>
+" a list of groups can be found at `:help nvim_tree_highlight`
+highlight NvimTreeFolderIcon guibg=blue
+
+
 "Telescope
-" Find files using Telescope command-line sugar.
-" nnoremap <leader>ff <cmd>Telescope find_files<cr>
-" nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-" nnoremap <leader>fb <cmd>Telescope buffers<cr>
-" nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " Using lua functions
 nnoremap <space>br <cmd>lua require('telescope.builtin').file_browser()<cr>
@@ -220,12 +252,15 @@ luafile ~/.config/nvim/nv-lspconfig.lua
 " luafile ~/.config/nvim/jdtls_setup.lua
 luafile ~/.config/nvim/lua-lspconfig.lua
 
-if has('nvim-0.5')
-  augroup lsp
-    au!
-    au FileType java lua require('jdtls').start_or_attach({cmd = {'java-lsp.sh'}})
-  augroup end
-endif
+" augroup lsp
+  " au!
+  " au FileType java lua require('jdtls').start_or_attach({cmd = {'java-lsp.sh'}})
+" augroup end
+" augroup jdtls_lsp
+    " autocmd!
+    " autocmd FileType java lua require'jdtls_setup'.setup()
+" augroup end
+
 "nvim-compe
 set shortmess+=c
 luafile ~/.config/nvim/nvim-compe.lua
@@ -236,7 +271,7 @@ inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
 inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
 "To make <cr> select the first completion item and confirm the completion when no item has been selected:
-inoremap <expr> <cr> pumvisible() ? compe#confirm({'keys': "\<C-n>", 'mode': '' }) :"\<C-g>u\<CR>"
+inoremap <expr> <cr> pumvisible() ? compe#confirm({'keys': "\<C-n>\<cr>", 'mode': '' }) :"\<C-g>u\<CR>"
 
 " Galaxyline
 luafile ~/.config/nvim/nv-galaxyline.lua
@@ -413,8 +448,8 @@ let g:SimpylFold_docstring_preview = 1
 let g:SimpylFold_fold_docstring = 1
 
 "==>vim-spector
-
 " nnoremap <leader>m :MaximizerToggle!<CR>
+
 " nnoremap <leader>dd :call vimspector#Launch()<CR>
 " nnoremap <leader>dc :call GotoWindow(g:vimspector_session_windows.code)<CR>
 " nnoremap <leader>dt :call GotoWindow(g:vimspector_session_windows.tagpage)<CR>
@@ -495,7 +530,7 @@ augroup illuminate_augroup
 
 "==>vim-lf
 nnoremap <leader>lf <Plug>LfSplit
-let g:lf_replace_netrw = 1 "open lf when vim open a directory
+" let g:lf_replace_netrw = 1 "open lf when vim open a directory
 
 "==>floaterm
 " let g:floaterm_shell = sh
