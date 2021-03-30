@@ -1,6 +1,6 @@
 #!/bin/zsh
 . ~/.profile
-plugins+=(gradle-completion)
+plugins+=(gradle-completion autojump)
 
 eval "$(direnv hook bash)"
 
@@ -63,3 +63,6 @@ zle -N _zlf_handler
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/rajprakhar/.sdkman"
 [[ -s "/home/rajprakhar/.sdkman/bin/sdkman-init.sh" ]] && source "/home/rajprakhar/.sdkman/bin/sdkman-init.sh"
+
+[[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
+

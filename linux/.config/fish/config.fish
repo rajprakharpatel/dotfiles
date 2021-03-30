@@ -209,3 +209,10 @@ if status --is-interactive && ! type -q floaterm
    # paleofetch
    colorscript random | skip 1
 end
+
+begin
+    set --local AUTOJUMP_PATH /usr/share/fish/completions/autojump.fish
+    if test -e $AUTOJUMP_PATH
+        source $AUTOJUMP_PATH
+    end
+end

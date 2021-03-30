@@ -320,6 +320,5 @@ ex ()
 
 [[ -f ~/.zshrc-personal ]] && . ~/.zshrc-personal
 
-$+commands[floaterm] && neofetch
+# $+commands[floaterm] && neofetch
 clear
-export PATH=$HOME/.config/nvcode/utils/bin:$PATH
