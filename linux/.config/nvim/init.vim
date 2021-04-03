@@ -143,7 +143,7 @@ Plug 'tweekmonster/startuptime.vim'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'honza/vim-snippets'
 Plug 'ptzz/lf.vim'
-Plug 'rbgrouleff/bclose.vim'
+Plug 'rbgrouleff/bclose.vim'          "close buffer not window <leder>bd
 Plug 'voldikss/vim-floaterm'
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'

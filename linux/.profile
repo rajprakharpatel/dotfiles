@@ -11,20 +11,24 @@ export LC_CTYPE="en_IN.utf8"
 export EDITOR=nvim
 export VISUAL=nvim
 export OPENER=thunar
-export JAVA_HOME=/lib/jvm/java-15-openjdk
+# export JAVA_HOME=/lib/jvm/java-15-openjdk
 export PATH="$HOME/.emacs.d/bin:$PATH"
 export PATH="/usr/x86_64-w64-mingw32/bin:$PATH"
-export PATH="$HOME/.config/nvim/utils/bin:$PATH"
+export PATH="$HOME/.config/nvim/scripts:$PATH"
+export PATH="$HOME/.sdkman/candidates/java/current/bin:$PATH"
+export PATH="$HOME/.luarocks/bin:$PATH"
+export PATH="$HOME/.local/share/gem/ruby/2.7.0/bin:$PATH"
+export JAVA_HOME="$HOME/.sdkman/candidates/java/current"
 # export PATH=/home/rajprakhar/.jdks/corretto-1.8.0_282/bin/
 # export JAVA_HOME=/home/rajprakhar/.jdks/corretto-1.8.0_282
 
-# ln=:\  add below for links icon not necessary as a different color
+# ln=:\  ex=:\ fi=:\ add below for links icon not necessary as a different color
 # identifies links
 export LF_ICONS="\
 di=:\
-fi=:\
 or=:\
 ex=:\
+fi=:\
 *.vimrc=:\
 *.viminfo=:\
 *.gitignore=:\

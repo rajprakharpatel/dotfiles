@@ -8,7 +8,6 @@
     ~/.bashrc: linux/.bashrc
     ~/.zshrc: linux/.zshrc
     ~/.vimrc: linux/.vimrc
-    ~/.taskrc: linux/.taskrc
     ~/.profile: linux/.profile
     ~/.bash_profile: linux/.bash_profile
     ~/.bashrc-personal: linux/.bashrc-personal
@@ -19,13 +18,9 @@
     ~/.config/fish/fish_variables: linux/.config/fish/fish_variables
     ~/.config/lf/lfrc: linux/.config/lf/lfrc
     ~/.config/i3/config: linux/.config/i3/config
-
-    ~/.config/nvim/autoload/plug.vim: linux/.config/nvim/autoload/plug.vim
-    ~/.config/nvim/init.vim: linux/.config/nvim/init.vim
-    ~/.config/nvim/coc-settings.json: linux/.config/nvim/coc-settings.json
-
     ~/.config/polybar/config: linux/.config/polybar/config
     ~/.config/starship.toml: linux/.config/starship.toml
+    ~/.gitconfig: linux/.gitconfig
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]

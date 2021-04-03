@@ -1,3 +1,4 @@
+# Req : xclip, pistol
 # interpreter for shell commands (needs to be POSIX compatible)
 set shell sh
 
@@ -20,7 +21,7 @@ set ifs "\n"
 # draw borders around columns
 set drawbox
 
-set previewer pistol
+set previewer bat
 set color256 true
 set icons true
 set ignorecase true

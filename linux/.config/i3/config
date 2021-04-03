@@ -756,10 +756,10 @@ bindsym XF86AudioMute exec --no-startup-id "amixer -D pulse set Master toggle"
 # bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 # bindsym XF86AudioStop exec --no-startup-id playerctl stop
 
-bindsym mod1+F1 exec --no-startup-id playerctl play-pause
-bindsym mod1+F2 exec --no-startup-id playerctl next
-bindsym mod1+F3 exec --no-startup-id playerctl stop
-bindsym mod1+F4 exec --no-startup-id playerctl previous
+bindsym mod1+F5 exec --no-startup-id playerctl play-pause
+bindsym mod1+F8 exec --no-startup-id playerctl next
+bindsym mod1+F7 exec --no-startup-id playerctl stop
+bindsym mod1+F6 exec --no-startup-id playerctl previous
 
 #bindsym XF86AudioPlay exec --no-startup-id "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
 #bindsym XF86AudioNext exec --no-startup-id "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
