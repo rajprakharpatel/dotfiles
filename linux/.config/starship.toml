@@ -1,6 +1,6 @@
 format = "$all"
 
-add_new_line = false
+add_newline = false
 
 [line_break]
 disabled = false
@@ -32,11 +32,9 @@ style = "bold yellow"
 
 [git_commit]
 commit_hash_length = 8
-symbol = "ﰖ"
 style = "bold white"
 
 [git_state]
-progress_divider = " of "
 
 [git_status]
 conflicted = "⚔️ "
@@ -76,8 +74,6 @@ symbol = ""
 
 [memory_usage]
 format = "[${ram}( | ${swap})]($style) "
-show_percentage = true
-show_swap = true
 threshold = 50
 style = "bold dimmed white"
 disabled = false

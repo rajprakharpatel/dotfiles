@@ -1,3 +1,5 @@
 [user]
 	email = rajprakhar2000@gmail.com
 	name = rajprakhar
+[credential]
+	helper = store

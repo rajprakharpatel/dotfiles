@@ -125,9 +125,12 @@ end
 
 ## Useful aliases
 # Replace ls with exa or lsd or colorls
-alias ls='colorls -al --color=always --group-directories-first' # preferred listing
-alias la='colorls -a --color=always --group-directories-first'  # all files and dirs
-alias ll='colorls -l --color=always --group-directories-first'  # long format
+# alias ls='lsd -al --color=always --group-directories-first' # preferred listing
+# alias la='lsd -a --color=always --group-directories-first'  # all files and dirs
+# alias ll='lsd -l --color=always --group-directories-first'  # long format
+alias ls='lsd -al --color=always --group-dirs' # preferred listing
+alias la='lsd -a --color=always --group-dirs'  # all files and dirs
+alias ll='lsd -l --color=always --group-dirs'  # long format
 # alias lt='exa -aT --color=always --group-directories-first' # tree listing
 alias l.="lsd -a | egrep '^\.'"
 
