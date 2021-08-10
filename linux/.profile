@@ -19,6 +19,7 @@ export PATH="$HOME/.sdkman/candidates/java/current/bin:$PATH"
 export PATH="$HOME/.luarocks/bin:$PATH"
 export PATH="$HOME/.local/share/gem/ruby/2.7.0/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 export JAVA_HOME="$HOME/.sdkman/candidates/java/current"
 
 # ln=:\  ex=:\ fi=:\ add below for links icon not necessary as a different color
