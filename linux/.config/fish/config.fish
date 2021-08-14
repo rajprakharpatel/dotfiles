@@ -210,7 +210,8 @@ set -g direnv_fish_mode disable_arrow    # trigger direnv at prompt only, this i
 ## Run paleofetch if session is interactive and not inside floaterm
 if status --is-interactive && ! type -q floaterm
    # paleofetch
-   colorscript random | skip 1
+   # colorscript random | skip 1
+  pokemon-colorscripts -r
 end
 
 begin

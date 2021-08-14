@@ -21,6 +21,9 @@
     ~/.config/polybar/config: linux/.config/polybar/config
     ~/.config/starship.toml: linux/.config/starship.toml
     ~/.gitconfig: linux/.gitconfig
+    ~/.doom.d/config.el: linux/.doom.d/config.el
+    ~/.doom.d/init.el: linux/.doom.d/init.el
+    ~/.doom.d/packages.el: linux/.doom.d/packages.el
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
