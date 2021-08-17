@@ -97,7 +97,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: Hack Nerd Font Mono
+    family: SauceCodePro Nerd Font
     style: Regular
 
     # The `style` can be specified to pick a specific face.
@@ -109,7 +109,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Hack Nerd Font Mono
+    family: SauceCodePro Nerd Font
     style: Bold
 
     # The `style` can be specified to pick a specific face.
@@ -121,7 +121,7 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Hack Nerd Font Mono
+    family: SauceCodePro Nerd Font
     style: Italic
 
     # The `style` can be specified to pick a specific face.
@@ -133,7 +133,7 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family:  Hack Nerd Font
+    family: SauceCodePro Nerd Font
     style: Bold Italic
 
     # The `style` can be specified to pick a specific face.

@@ -3,3 +3,5 @@
 	name = rajprakhar
 [credential]
 	helper = store
+[init]
+	defaultBranch = main
