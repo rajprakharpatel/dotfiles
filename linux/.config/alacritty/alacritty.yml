@@ -139,7 +139,7 @@ font:
     # The `style` can be specified to pick a specific face.
     #style: Bold Italic
 
-  # Point size
+    # Point size
     size: 7.5
 
   # Offset is the extra space around each character. `offset.y` can be thought of
@@ -166,89 +166,89 @@ font:
 
 # Colors (Tomorrow Night)
 #colors:
-  # Default colors
-  #primary:
-  #  background: '#1d1f21'
-  #  foreground: '#c5c8c6'
+# Default colors
+#primary:
+#  background: '#1d1f21'
+#  foreground: '#c5c8c6'
 
-    # Bright and dim foreground colors
-    #
-    # The dimmed foreground color is calculated automatically if it is not present.
-    # If the bright foreground color is not set, or `draw_bold_text_with_bright_colors`
-    # is `false`, the normal foreground color will be used.
-    #dim_foreground: '#828482'
-    #bright_foreground: '#eaeaea'
+# Bright and dim foreground colors
+#
+# The dimmed foreground color is calculated automatically if it is not present.
+# If the bright foreground color is not set, or `draw_bold_text_with_bright_colors`
+# is `false`, the normal foreground color will be used.
+#dim_foreground: '#828482'
+#bright_foreground: '#eaeaea'
 
-  # Cursor colors
-  #
-  # Colors which should be used to draw the terminal cursor. If these are
-  # unset, the cursor color will be the inverse of the cell color.
-  #cursor:
-  #  text: '#000000'
-  #  cursor: '#ffffff'
+# Cursor colors
+#
+# Colors which should be used to draw the terminal cursor. If these are
+# unset, the cursor color will be the inverse of the cell color.
+#cursor:
+#  text: '#000000'
+#  cursor: '#ffffff'
 
-  # Vi mode cursor colors
-  #
-  # Colors for the cursor when the vi mode is active. If these are unset, the
-  # cursor color will be the inverse of the cell color.
-  #vi_mode_cursor:
-  #  text: '#000000'
-  #  cursor: '#ffffff'
+# Vi mode cursor colors
+#
+# Colors for the cursor when the vi mode is active. If these are unset, the
+# cursor color will be the inverse of the cell color.
+#vi_mode_cursor:
+#  text: '#000000'
+#  cursor: '#ffffff'
 
-  # Selection colors
-  #
-  # Colors which should be used to draw the selection area. If selection
-  # background is unset, selection color will be the inverse of the cell colors.
-  # If only text is unset the cell text color will remain the same.
-  #selection:
-  #  text: '#eaeaea'
-  #  background: '#404040'
+# Selection colors
+#
+# Colors which should be used to draw the selection area. If selection
+# background is unset, selection color will be the inverse of the cell colors.
+# If only text is unset the cell text color will remain the same.
+#selection:
+#  text: '#eaeaea'
+#  background: '#404040'
 
-  # Normal colors
-  # normal:
-  #  black:   '#1d1f21'
-  #  red:     '#cc6666'
-  #  green:   '#b5bd68'
-  #  yellow:  '#f0c674'
-  #  blue:    '#81a2be'
-  #  magenta: '#b294bb'
-  #  cyan:    '#8abeb7'
-  #  white:   '#c5c8c6'
+# Normal colors
+# normal:
+#  black:   '#1d1f21'
+#  red:     '#cc6666'
+#  green:   '#b5bd68'
+#  yellow:  '#f0c674'
+#  blue:    '#81a2be'
+#  magenta: '#b294bb'
+#  cyan:    '#8abeb7'
+#  white:   '#c5c8c6'
 
-  # Bright colors
-  #bright:
-  #  black:   '#666666'
-  #  red:     '#d54e53'
-  #  green:   '#b9ca4a'
-  #  yellow:  '#e7c547'
-  #  blue:    '#7aa6da'
-  #  magenta: '#c397d8'
-  #  cyan:    '#70c0b1'
-  #  white:   '#eaeaea'
+# Bright colors
+#bright:
+#  black:   '#666666'
+#  red:     '#d54e53'
+#  green:   '#b9ca4a'
+#  yellow:  '#e7c547'
+#  blue:    '#7aa6da'
+#  magenta: '#c397d8'
+#  cyan:    '#70c0b1'
+#  white:   '#eaeaea'
 
-  # Dim colors
-  #
-  # If the dim colors are not set, they will be calculated automatically based
-  # on the `normal` colors.
-  #dim:
-  #  black:   '#131415'
-  #  red:     '#864343'
-  #  green:   '#777c44'
-  #  yellow:  '#9e824c'
-  #  blue:    '#556a7d'
-  #  magenta: '#75617b'
-  #  cyan:    '#5b7d78'
-  #  white:   '#828482'
+# Dim colors
+#
+# If the dim colors are not set, they will be calculated automatically based
+# on the `normal` colors.
+#dim:
+#  black:   '#131415'
+#  red:     '#864343'
+#  green:   '#777c44'
+#  yellow:  '#9e824c'
+#  blue:    '#556a7d'
+#  magenta: '#75617b'
+#  cyan:    '#5b7d78'
+#  white:   '#828482'
 
-  # Indexed Colors
-  #
-  # The indexed colors include all colors from 16 to 256.
-  # When these are not set, they're filled with sensible defaults.
-  #
-  # Example:
-  #   `- { index: 16, color: '#ff00ff' }`
-  #
-  #indexed_colors: []
+# Indexed Colors
+#
+# The indexed colors include all colors from 16 to 256.
+# When these are not set, they're filled with sensible defaults.
+#
+# Example:
+#   `- { index: 16, color: '#ff00ff' }`
+#
+#indexed_colors: []
 
 # Visual Bell
 #
@@ -280,12 +280,12 @@ font:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: .97
+background_opacity: .77
 
 #selection:
-  #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+#semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
 
-  # When set to `true`, selected text will be copied to the primary clipboard.
+# When set to `true`, selected text will be copied to the primary clipboard.
 save_to_clipboard: true
 
 # Allow terminal applications to change Alacritty's window title.
@@ -524,61 +524,59 @@ mouse:
 # If the same trigger is assigned to multiple actions, all of them are executed
 # at once.
 key_bindings:
-    # (Windows, Linux, and BSD only)
-  - { key: Escape,   mods: Shift,         action: ToggleViMode     }
-  - { key: V,        mods: Control|Shift, action: Paste            }
-  - { key: C,        mods: Control|Shift, action: Copy             }
-  - { key: Insert,   mods: Shift,         action: PasteSelection   }
-  - { key: Key0,     mods: Control,       action: ResetFontSize    }
-  - { key: Equals,   mods: Control,       action: IncreaseFontSize }
-  - { key: Plus,     mods: Control,       action: IncreaseFontSize }
-  - { key: Minus,    mods: Control,       action: DecreaseFontSize }
-  - { key: Minus,    mods: Control,       action: DecreaseFontSize }
-
-
+  # (Windows, Linux, and BSD only)
+  - { key: Escape, mods: Shift, action: ToggleViMode }
+  - { key: V, mods: Control|Shift, action: Paste }
+  - { key: C, mods: Control|Shift, action: Copy }
+  - { key: Insert, mods: Shift, action: PasteSelection }
+  - { key: Key0, mods: Control, action: ResetFontSize }
+  - { key: Equals, mods: Control, action: IncreaseFontSize }
+  - { key: Plus, mods: Control, action: IncreaseFontSize }
+  - { key: Minus, mods: Control, action: DecreaseFontSize }
+  - { key: Minus, mods: Control, action: DecreaseFontSize }
 #debug:
-  # Display the time it takes to redraw each frame.
-  #render_timer: false
+# Display the time it takes to redraw each frame.
+#render_timer: false
 
-  # Keep the log file after quitting Alacritty.
-  #persistent_logging: false
+# Keep the log file after quitting Alacritty.
+#persistent_logging: false
 
-  # Log level
-  #
-  # Values for `log_level`:
-  #   - None
-  #   - Error
-  #   - Warn
-  #   - Info
-  #   - Debug
-  #   - Trace
-  #log_level: Warn
+# Log level
+#
+# Values for `log_level`:
+#   - None
+#   - Error
+#   - Warn
+#   - Info
+#   - Debug
+#   - Trace
+#log_level: Warn
 
-  # Print all received window events.
-  #print_events: false
+# Print all received window events.
+#print_events: false
 
 # colors:
-  # primary:
-    # background: '0x0a1124'
-    # foreground: '0xedc29a'
-  # cursor:
-    # text:       '0x0a1124'
-    # cursor:     '0xedc29a'
-  # normal:
-    # black:      '0x0a1124'
-    # red:        '0x63504E'
-    # green:      '0xA33A4E'
-    # yellow:     '0xEB3247'
-    # blue:       '0xF35743'
-    # magenta:    '0xF6A73B'
-    # cyan:       '0xFAD42E'
-    # white:      '0xedc29a'
-  # bright:
-    # black:      '0xa5876b'
-    # red:        '0x63504E'
-    # green:      '0xA33A4E'
-    # yellow:     '0xEB3247'
-    # blue:       '0xF35743'
-    # magenta:    '0xF6A73B'
-    # cyan:       '0xFAD42E'
-    # white:      '0xedc29a'
+# primary:
+# background: '0x0a1124'
+# foreground: '0xedc29a'
+# cursor:
+# text:       '0x0a1124'
+# cursor:     '0xedc29a'
+# normal:
+# black:      '0x0a1124'
+# red:        '0x63504E'
+# green:      '0xA33A4E'
+# yellow:     '0xEB3247'
+# blue:       '0xF35743'
+# magenta:    '0xF6A73B'
+# cyan:       '0xFAD42E'
+# white:      '0xedc29a'
+# bright:
+# black:      '0xa5876b'
+# red:        '0x63504E'
+# green:      '0xA33A4E'
+# yellow:     '0xEB3247'
+# blue:       '0xF35743'
+# magenta:    '0xF6A73B'
+# cyan:       '0xFAD42E'
+# white:      '0xedc29a'
