@@ -7,10 +7,15 @@ alias nn=nvim
 alias tk=task
 alias lc=lfcd
 
+export AMD_VULKAN_ICD=RADV
+export BROWSER=brave
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+export MAIL=kmail
+export TERM=xterm
 export LC_CTYPE="en_IN.utf8"
 export EDITOR=nvim
-export VISUAL=nvim
-export OPENER=thunar
+export VISUAL=emacsclient
+export OPENER=dolphin
 # export JAVA_HOME=/lib/jvm/java-15-openjdk
 export PATH="$HOME/.emacs.d/bin:$PATH"
 export PATH="/usr/x86_64-w64-mingw32/bin:$PATH"

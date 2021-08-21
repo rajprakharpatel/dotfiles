@@ -2,12 +2,20 @@
 set fish_greeting
 set VIRTUAL_ENV_DISABLE_PROMPT "1"
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
-## Source .profile to apply its values
-source ~/.profile
 
-set -gx PATH /lib/jvm/java-15-openjdk/bin $PATH
-# set PATH /home/rajprakhar/.jdks/corretto-1.8.0_282/bin $PATH
-set -gx PATH /home/rajprakhar/.bin $PATH
+## Export variable need for qt-theme
+if type "qtile" >> /dev/null 2>&1
+   set -x QT_QPA_PLATFORMTHEME "qt5ct"
+end
+
+# Set settings for https://github.com/franciscolourenco/done
+set -U __done_min_cmd_duration 10000
+set -U __done_notification_urgency_level low
+
+## Source .profile to apply its values
+if test -f ~/.profile
+  source ~/.profile
+end
 
 ## Add ~/.local/bin to PATH
 if test -d ~/.local/bin
@@ -16,12 +24,22 @@ if test -d ~/.local/bin
     end
 end
 
+# Add depot_tools to PATH
+if test -d ~/Applications/depot_tools
+    if not contains -- ~/Applications/depot_tools $PATH
+        set -p PATH ~/Applications/depot_tools
+    end
+end
+
 
 ## Starship prompt
-source ("/usr/bin/starship" init fish --print-full-init | psub)
+if status --is-interactive
+  source ("/usr/bin/starship" init fish --print-full-init | psub)
+end
 # starship init fish | source
 
-## Functions needed for !! and !$ https://github.com/oh-my-fish/plugin-bang-bang
+## Functions
+# Functions needed for !! and !$ https://github.com/oh-my-fish/plugin-bang-bang
 function __history_previous_command
   switch (commandline -t)
   case "!"
@@ -100,7 +118,7 @@ function org-search -d "send a search string to org-mode"
     printf $output
 end
 
-## Fish command history
+# Fish command history
 function history
     builtin history --show-time='%F %T '
 end
@@ -135,7 +153,8 @@ alias ll='lsd -l --color=always --group-dirs first'  # long format
 alias l.="lsd -a | egrep '^\.'"
 
 # Replace some more things with better alternatives
-[ ! -x /usr/bin/bat ] && [ -x /usr/bin/cat ] && alias cat='bat'
+[ ! -x /usr/bin/bat ] && [ -x /usr/bin/cat ] && alias cat='bat --style header --style rules --style snip --style changes --style header'
+[ ! -x /usr/bin/yay ] && [ -x /usr/bin/paru ] && alias yay='paru'
 
 # Common use
 alias aup="pamac upgrade --aur"
@@ -144,14 +163,18 @@ alias fixpacman="sudo rm /var/lib/pacman/db.lck"
 alias tarnow='tar -acf '
 alias untar='tar -zxvf '
 alias wget='wget -c '
+alias rmpkg="sudo pacman -Rdd"
 alias psmem='ps auxf | sort -nr -k 4'
 alias psmem10='ps auxf | sort -nr -k 4 | head -10'
-alias upd='sudo reflector --latest 5 --age 2 --fastest 5 --protocol https --sort rate --save /etc/pacman.d/mirrorlist && cat /etc/pacman.d/mirrorlist && sudo pacman -Syu && fish_update_completions && sudo updatedb'
+alias upd='/usr/bin/update'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
@@ -160,7 +183,6 @@ alias egrep='egrep --color=auto'
 alias hw='hwinfo --short'                                   # Hardware Info
 alias big="expac -H M '%m\t%n' | sort -h | nl"              # Sort installed packages according to size in MB (expac must be installed)
 alias gitpkg='pacman -Q | grep -i "\-git" | wc -l'			# List amount of -git packages
-alias oni='/win_shada/workspace/Projects/oni2/_esy/release/store/b/oni2-121ad58e/install/default/bin/Oni2'
 
 # Get fastest mirrors 
 alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist" 
@@ -185,19 +207,11 @@ alias tofish="sudo chsh $USER -s /bin/fish && echo 'Now log out.'"
 #Cleanup orphaned packages
 alias cleanup='sudo pacman -Rns (pacman -Qtdq)'
 
-#Get top process eating memory
-alias psmem='ps auxf | sort -nr -k 4'
-alias psmem10='ps auxf | sort -nr -k 4 | head -10'
-
-#get the error messages from journalctl
+# Get the error messages from journalctl
 alias jctl="journalctl -p 3 -xb"
 
 #Recent Installed Packages
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
-
-# Replace yay with paru
-[ ! -x /usr/bin/yay ] && [ -x /usr/bin/paru ] && alias yay='paru'
-
 
 ## Import colorscheme from 'wal' asynchronously
 # if type "wal" >> /dev/null 2>&1
@@ -207,7 +221,7 @@ alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 direnv hook fish | source
 set -g direnv_fish_mode disable_arrow    # trigger direnv at prompt only, this is similar functionality to the original behavior
 
-## Run paleofetch if session is interactive and not inside floaterm
+## Run fetch if session is interactive and not inside floaterm
 if status --is-interactive && ! type -q floaterm
    # paleofetch
    # colorscript random | skip 1

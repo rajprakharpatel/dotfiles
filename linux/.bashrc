@@ -14,6 +14,21 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Load starship prompt if starship is installed
+if  [ -x /usr/bin/starship ]; then
+    __main() {
+        local major="${BASH_VERSINFO[0]}"
+        local minor="${BASH_VERSINFO[1]}"
+
+        if ((major > 4)) || { ((major == 4)) && ((minor >= 1)); }; then
+            source <("/usr/bin/starship" init bash --print-full-init)
+        else
+            source /dev/stdin <<<"$("/usr/bin/starship" init bash --print-full-init)"
+        fi
+    }
+    __main
+    unset -f __main
+fi
 export HISTCONTROL=ignoreboth:erasedups
 
 PS1='[\u@\h \W]\$ '
@@ -245,18 +260,6 @@ ex ()
     echo "'$1' is not a valid file"
   fi
 }
-
-#arcolinux applications
-alias att="arcolinux-tweak-tool"
-alias adt="arcolinux-desktop-trasher"
-alias abl="arcolinux-betterlockscreen"
-alias agm="arcolinux-get-mirrors"
-alias amr="arcolinux-mirrorlist-rank-info"
-alias aom="arcolinux-osbeck-as-mirror"
-alias ars="arcolinux-reflector-simple"
-alias atm="arcolinux-tellme"
-alias avs="arcolinux-vbox-share"
-alias awa="arcolinux-welcome-app"
 
 #remove
 alias rmgitcache="rm -r ~/.cache/git"

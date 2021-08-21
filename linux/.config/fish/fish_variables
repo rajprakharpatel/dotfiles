@@ -1,5 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR __done_min_cmd_duration:10000
+SETUVAR __done_notification_urgency_level:low
 SETUVAR __fish_initialized:3100
 SETUVAR _fisher_plugins:reitzig/sdkman\x2dfor\x2dfish\x40v1\x2e4\x2e0
 SETUVAR _fisher_reitzig_2F_sdkman_2D_for_2D_fish_40_v1_2E_34_2E_30__files:/home/rajprakhar/\x2econfig/fish/functions/sdk\x2efish\x1e/home/rajprakhar/\x2econfig/fish/conf\x2ed/sdk\x2efish\x1e/home/rajprakhar/\x2econfig/fish/completions/sdk\x2efish
