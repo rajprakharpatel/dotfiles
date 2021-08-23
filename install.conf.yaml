@@ -25,6 +25,7 @@
     ~/.doom.d/init.el: linux/.doom.d/init.el
     ~/.doom.d/packages.el: linux/.doom.d/packages.el
     ~/.gitconfig: linux/.gitconfig
+    ~/.xprofile: linux/.xprofile
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]

@@ -9,7 +9,7 @@ export SDKMAN_DIR="/home/rajprakhar/.sdkman"
 eval "$(fasd --init auto)"
 _fasd_bash_hook_cmd_complete v m j o
 
-source "$HOME/bash_completion.d/gradle-completion.bash"
+[[ -s "$HOME/bash_completion.d/gradle-completion.bash" ]] && source "$HOME/bash_completion.d/gradle-completion.bash"
 eval "$(direnv hook bash)"
 
 if command -v floaterm &>/dev/null; then
@@ -17,8 +17,7 @@ if command -v floaterm &>/dev/null; then
 fi
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[[ -s "/usr/share/nvm/init-nvm.sh" ]] && source /usr/share/nvm/init-nvm.sh
 
 [[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
 

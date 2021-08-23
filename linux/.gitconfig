@@ -5,3 +5,13 @@
 	helper = store
 [init]
 	defaultBranch = main
+[diff]
+    tool = nvr
+[difftool "nvr"]
+    cmd = nvr -s -d $LOCAL $REMOTE
+[merge]
+    tool = nvr
+[mergetool "nvr"]
+    cmd = nvr -s -d $LOCAL $BASE $REMOTE $MERGED -c 'wincmd J | wincmd ='
+[core]
+	editor = nvr --remote-wait-silent

@@ -2,7 +2,7 @@
 
 alias :q=exit
 alias cls=clear
-alias :e=nvim
+alias :e=vim
 alias nn=nvim
 alias tk=task
 alias lc=lfcd
@@ -14,7 +14,7 @@ export MAIL=kmail
 export TERM=xterm
 export LC_CTYPE="en_IN.utf8"
 export EDITOR=nvim
-export VISUAL=emacsclient
+export VISUAL="emacsclient -nc"
 export OPENER=dolphin
 # export JAVA_HOME=/lib/jvm/java-15-openjdk
 export PATH="$HOME/.emacs.d/bin:$PATH"
@@ -25,6 +25,7 @@ export PATH="$HOME/.luarocks/bin:$PATH"
 export PATH="$HOME/.local/share/gem/ruby/2.7.0/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.nvm/versions/node/v16.7.0/bin:$PATH"
 export JAVA_HOME="$HOME/.sdkman/candidates/java/current"
 
 # ln=:\  ex=:\ fi=:\ add below for links icon not necessary as a different color

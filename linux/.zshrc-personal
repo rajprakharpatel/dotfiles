@@ -66,3 +66,4 @@ export SDKMAN_DIR="/home/rajprakhar/.sdkman"
 
 [[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
 
+[[ -s "/usr/share/nvm/init-nvm.sh" ]] && & source /usr/share/nvm/init-nvm.sh
