@@ -238,7 +238,7 @@ alias xd="ls /usr/share/xsessions"
 # # usage: ex <file>
 ex ()
 {
-  if [ -f $1 ] ; then
+  if [ -f "$1" ] ; then
     case $1 in
       *.tar.bz2)   tar xjf $1   ;;
       *.tar.gz)    tar xzf $1   ;;
@@ -270,7 +270,7 @@ alias personal='cp -Rf /personal/* ~'
 #create a file called .bashrc-personal and put all your personal aliases
 #in there. They will not be overwritten by skel.
 
-[[ -f ~/.bashrc-personal ]] && . ~/.bashrc-personal
+[[ -f ~/.bashrc-personal ]] && . "$HOME/.bashrc-personal"
 
 # reporting tools - install when not installed
 # install neofetch

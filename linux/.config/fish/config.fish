@@ -231,6 +231,22 @@ end
 begin
     set --local AUTOJUMP_PATH /usr/share/fish/completions/autojump.fish
     if test -e $AUTOJUMP_PATH
-        source $AUTOJUMP_PATH
+      source $AUTOJUMP_PATH
     end
+end
+
+begin
+  set --local SDK_PATH "$HOME/.sdkman/bin/sdkman-init.sh"
+  if test -e $SDK_PATH
+    bass source $SDK_PATH
+  end
+end
+
+begin
+  if test -e "/usr/share/nvm/init-nvm.sh"
+    bass source "/usr/share/nvm/init-nvm.sh"
+  end
+  function nvm
+    bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
+  end
 end
