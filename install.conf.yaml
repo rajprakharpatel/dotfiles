@@ -13,7 +13,7 @@
     ~/.bashrc-personal: linux/.bashrc-personal
     ~/.zshrc-personal: linux/.zshrc-personal
     ~/.config/alacritty/alacritty.yml: linux/.config/alacritty/alacritty.yml
-    ~/.config/fish/functions/fish_prompt.fish: linux/.config/fish/functions/fish_prompt.fish
+    # ~/.config/fish/functions/fish_prompt.fish: linux/.config/fish/functions/fish_prompt.fish
     ~/.config/fish/config.fish: linux/.config/fish/config.fish
     ~/.config/fish/fish_variables: linux/.config/fish/fish_variables
     ~/.config/lf/lfrc: linux/.config/lf/lfrc
@@ -26,6 +26,7 @@
     ~/.doom.d/packages.el: linux/.doom.d/packages.el
     ~/.gitconfig: linux/.gitconfig
     ~/.xprofile: linux/.xprofile
+    ~/.config/fish/fish_plugins: linux/.config/fish/fish_plugins
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]

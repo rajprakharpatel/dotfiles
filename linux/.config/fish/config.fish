@@ -33,9 +33,9 @@ end
 
 
 ## Starship prompt
-if status --is-interactive
-  source ("/usr/bin/starship" init fish --print-full-init | psub)
-end
+# if status --is-interactive
+  # source ("/usr/bin/starship" init fish --print-full-init | psub)
+# end
 # starship init fish | source
 
 ## Functions
@@ -235,18 +235,18 @@ begin
     end
 end
 
-begin
-  set --local SDK_PATH "$HOME/.sdkman/bin/sdkman-init.sh"
-  if test -e $SDK_PATH
-    bass source $SDK_PATH
-  end
-end
+# begin
+  # set --local SDK_PATH "$HOME/.sdkman/bin/sdkman-init.sh"
+  # if test -e $SDK_PATH
+    # bass source $SDK_PATH
+  # end
+# end
 
-begin
-  if test -e "/usr/share/nvm/init-nvm.sh"
-    bass source "/usr/share/nvm/init-nvm.sh"
-  end
-  function nvm
-    bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
-  end
-end
+# begin
+  # if test -e "/usr/share/nvm/init-nvm.sh"
+    # bass source "/usr/share/nvm/init-nvm.sh"
+  # end
+  # function nvm
+    # bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
+  # end
+# end

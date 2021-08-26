@@ -7,6 +7,8 @@ alias nn=nvim
 alias tk=task
 alias lc=lfcd
 
+export LC_CTYPE="en_IN.utf8"
+export SDKMAN_DIR="$HOME/.sdkman"
 export AMD_VULKAN_ICD=RADV
 export BROWSER=brave
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
