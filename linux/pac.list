@@ -32,7 +32,7 @@ calligra 3.2.1-19
 candy-icons-git r673.98c1771-1
 chaotic-keyring 20210617-1
 chaotic-mirrorlist 20210716-1
-cmake 3.21.1-1
+cmake 3.21.2-2
 cmake-language-server 0.1.2-3
 colord-kde 0.5.0-3
 cool-retro-term 1.1.1-2
@@ -104,6 +104,7 @@ glibc 2.33-5
 gnome-firmware 3.36.0-2
 gnome-keyring 1:40.0-1
 gnu-netcat 0.7.1-8
+gotop 4.1.2-1
 gparted 1.3.1-1
 grep 3.6-1
 groff 1.22.4-6
@@ -115,7 +116,7 @@ gstreamer-meta 1-1
 gwe 0.15.3-1
 gwenview 21.08.0-1
 gzip 1.10-3
-htop 3.0.5-1
+htim-git 1:3.0.6-1
 inetutils 2.1-1
 input-devices-support 1-2
 intel-compute-runtime 21.21.19914-1
@@ -127,6 +128,7 @@ ipw2100-fw 1.3-10
 ipw2200-fw 3.1-8
 jdk8-openjdk 8.u292-1
 jfsutils 1.1.15-7
+joe 4.6-2
 kaccounts-providers 21.08.0-1
 kamoso 21.08.0-1
 kapman 21.08.0-1
@@ -165,7 +167,7 @@ kwin 5.22.4-1
 kwin-scripts-forceblur 0.5-1
 kwrited 5.22.4-1
 latte-dock-git 0.10.0.r31.geb95f2ef-1
-lazygit 0.28.2-1
+lazygit 0.29-1
 lf 24-1
 lhasa 0.3.1-3
 lib32-libva-intel-driver 2.4.1-1
@@ -214,7 +216,7 @@ mdadm 4.1-2
 memtest86+ 5.31b-1
 mercurial 5.8.1-1
 mesa-vdpau 21.2.1-1
-micro 2.0.10-1
+micro 2.0.10-2
 mkinitcpio-nfs-utils 0.3-7
 mkinitcpio-openswap 0.1.0-3
 mkinitcpio-systemd-tool 36-1
@@ -224,6 +226,7 @@ mtools 1:4.0.35-1
 muccadoro 1.0.1-1
 mycli 1.24.1-1
 mysql-workbench 8.0.26-1
+nauty 27r1-2
 ncdu 1.16-1
 neofetch-git 7.1.0.r63.g6dd85d67-1
 neovim-nightly-bin 0.6.0+dev+164+g50b30de20-1
@@ -242,7 +245,7 @@ nvidia-settings 470.63.01-1
 nvidia-utils 470.63.01-1
 nvm 0.38.0-2
 obs-studio 27.0.1-2
-oh-my-zsh-git r6114.c47ac2d86-1
+oh-my-zsh-git r6117.3f0672ff9-1
 okteta 1:0.26.6-1
 okular 21.08.0-1
 opencl-mesa 21.2.1-1
@@ -366,7 +369,7 @@ vulkan-mesa-layers 21.2.1-1
 vulkan-radeon 21.2.1-1
 vulkan-swrast 21.2.1-1
 which 2.21-5
-wireshark-qt 3.4.7-1
+wireshark-qt 3.4.8-1
 xclip 0.13-3
 xcursor-sweet 20200612-1
 xdg-desktop-portal 1.8.1-1
