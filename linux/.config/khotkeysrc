@@ -1005,6 +1005,7 @@ Theme[$d]
 AnimationDurationFactor[$d]
 ColorScheme[$d]
 LookAndFeelPackage[$d]
+SingleClick[$d]
 contrast[$d]
 widgetStyle[$d]
 

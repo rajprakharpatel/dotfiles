@@ -8,17 +8,32 @@ OpenGLIsUnsafe=false
 [Desktops]
 Id_1=1a831ee1-83fa-455a-aa49-81ac9129a9e4
 Id_2=ece4b158-9b1e-4b8c-8a25-909cf77858af
-Name_1=Desktop
-Name_2=Offscreen
-Number=2
-Rows=1
+Id_3=229685c8-e28d-4eb3-9b27-48fee97a667d
+Id_4=233a7372-50a6-45af-a87a-4d0e60655e63
+Id_5=185ec0b6-f17c-4562-b01c-5bbdfcbdc74c
+Id_6=96031ce1-1117-4365-901c-1153fbc67c64
+Name_1=Main
+Name_2=Workspace
+Name_3=Tasks
+Name_4=Media
+Name_5=Teams
+Name_6=Hidden
+Number=6
+Rows=2
 
 [Effect-Blur]
-NoiseStrength=0
+BlurStrength=4
+NoiseStrength=6
 
 [Effect-CoverSwitch]
 TabBox=true
 zPosition=815
+
+[Effect-Cube]
+BorderActivate=1
+
+[Effect-DimInactive]
+Strength=10
 
 [Effect-Glide]
 Duration=90
@@ -27,21 +42,37 @@ InRotationAngle=0
 OutDistance=35
 OutRotationAngle=0
 
+[Effect-PresentWindows]
+BorderActivateAll=3,7
+
 [Effect-Wobbly]
 Drag=85
 Stiffness=10
 WobblynessLevel=1
 
+[Effect-kwin4_effect_translucency]
+MoveResize=88
+
+[ElectricBorders]
+BottomLeft=ShowDesktop
+
 [ModifierOnlyShortcuts]
 Meta=org.kde.lattedock,/Latte,org.kde.LatteDock,activateLauncherMenu
 
+[MouseBindings]
+CommandAllWheel=Above/Below
+
 [Plugins]
 blurEnabled=true
+contrastEnabled=true
 coverswitchEnabled=true
+cubeEnabled=true
 cubeslideEnabled=true
+diminactiveEnabled=true
+fallapartEnabled=true
 flipswitchEnabled=true
 force-decorations-gtk3Enabled=false
-forceblurEnabled=true
+forceblurEnabled=false
 glideEnabled=true
 hide-titlesEnabled=false
 highlightwindowEnabled=true
@@ -52,10 +83,11 @@ kwin4_effect_fadeEnabled=false
 kwin4_effect_squashEnabled=false
 kwin4_effect_translucencyEnabled=false
 kwin4_effect_windowapertureEnabled=false
-lattewindowcolorsEnabled=true
+lattewindowcolorsEnabled=false
 magiclampEnabled=true
 minimizeallEnabled=false
 slideEnabled=false
+slidebackEnabled=true
 synchronizeskipswitcherEnabled=false
 videowallEnabled=false
 wobblywindowsEnabled=true
@@ -71,6 +103,7 @@ directionalKeyFocus=true
 enableFloatingLayout=true
 enableQuarterLayout=true
 limitTileWidth=true
+pollMouseXdotool=true
 screenGapBottom=5
 screenGapLeft=5
 screenGapRight=5
@@ -83,12 +116,13 @@ LayoutName=coverswitch
 TouchBorderActivate=9
 
 [Windows]
+AutoRaise=true
 AutoRaiseInterval=350
 BorderlessMaximizedWindows=true
 DelayFocusInterval=0
 FocusPolicy=FocusFollowsMouse
 FocusStealingPreventionLevel=2
-GeometryTip=true
+SnapOnlyWhenOverlapping=true
 
 [org.kde.kdecoration2]
 ButtonsOnLeft=XAI
