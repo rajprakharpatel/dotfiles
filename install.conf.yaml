@@ -15,7 +15,7 @@
     ~/.config/alacritty/alacritty.yml: linux/.config/alacritty/alacritty.yml
     # ~/.config/fish/functions/fish_prompt.fish: linux/.config/fish/functions/fish_prompt.fish
     ~/.config/fish/config.fish: linux/.config/fish/config.fish
-    ~/.config/fish/fish_variables: linux/.config/fish/fish_variables
+    ~/.config/fish/fish_plugins: linux/.config/fish/fish_plugins
     ~/.config/lf/lfrc: linux/.config/lf/lfrc
     # ~/.config/i3/config: linux/.config/i3/config
     # ~/.config/polybar/config: linux/.config/polybar/config
@@ -26,7 +26,9 @@
     ~/.doom.d/packages.el: linux/.doom.d/packages.el
     ~/.gitconfig: linux/.gitconfig
     ~/.xprofile: linux/.xprofile
-    ~/.config/fish/fish_plugins: linux/.config/fish/fish_plugins
+    ~/.config/kglobalshortcutsrc: linux/.config/kglobalshortcutsrc
+    ~/.config/khotkeysrc: linux/.config/khotkeysrc
+    ~/.config/kwinrc: linux/.config/kwinrc
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
