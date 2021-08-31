@@ -57,7 +57,7 @@ MoveResize=88
 BottomLeft=ShowDesktop
 
 [ModifierOnlyShortcuts]
-Meta=org.kde.lattedock,/Latte,org.kde.LatteDock,activateLauncherMenu
+Meta=org.kde.plasmashell,/PlasmaShell,org.kde.PlasmaShell,activateLauncherMenu
 
 [MouseBindings]
 CommandAllWheel=Above/Below
@@ -104,7 +104,7 @@ enableFloatingLayout=true
 enableQuarterLayout=true
 limitTileWidth=true
 pollMouseXdotool=true
-screenGapBottom=5
+screenGapBottom=25
 screenGapLeft=5
 screenGapRight=5
 screenGapTop=5
@@ -112,7 +112,6 @@ tileLayoutGap=5
 
 [TabBox]
 BorderActivate=9
-LayoutName=coverswitch
 TouchBorderActivate=9
 
 [Windows]
@@ -127,5 +126,3 @@ SnapOnlyWhenOverlapping=true
 [org.kde.kdecoration2]
 ButtonsOnLeft=XAI
 ButtonsOnRight=
-library=org.kde.kwin.aurorae
-theme=__aurorae__svg__Sweet-Dark

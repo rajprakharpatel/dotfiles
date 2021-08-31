@@ -317,7 +317,7 @@ _launch=Meta+E,Meta+E,Dolphin
 [org.kde.krunner.desktop]
 RunClipboard=Alt+Shift+F2,Alt+Shift+F2,Run command on clipboard contents
 _k_friendly_name=KRunner
-_launch=Alt+Space\tAlt+F2\tSearch,Alt+Space\tAlt+F2\tSearch,KRunner
+_launch=\tAlt+F2\tSearch,Alt+Space\tAlt+F2\tSearch,KRunner
 
 [org.kde.plasma.emojier.desktop]
 _k_friendly_name=Emoji Selector
@@ -361,6 +361,7 @@ activate task manager entry 6=,Meta+6,Activate Task Manager Entry 6
 activate task manager entry 7=,Meta+7,Activate Task Manager Entry 7
 activate task manager entry 8=,Meta+8,Activate Task Manager Entry 8
 activate task manager entry 9=,Meta+9,Activate Task Manager Entry 9
+activate widget 16=Alt+Space,none,Activate Menu 11 Widget
 manage activities=,Meta+Q,Show Activity Switcher
 next activity=Meta+Tab,Meta+Tab,Walk through activities
 previous activity=Meta+Shift+Tab,Meta+Shift+Tab,Walk through activities (Reverse)
@@ -378,6 +379,15 @@ kcm-lookandfeel=,,Global Theme
 kcm-users=,,Users
 powerdevilprofilesconfig=,,Energy Saving
 screenlocker=,,Screen Locking
+
+[variety.desktop]
+History=,,History
+Next=Alt+N,,Next
+PauseResume=,,Pause / Resume
+Preferences=,,Preferences
+Previous=Alt+Shift+N,,Previous
+_k_friendly_name=Variety
+_launch=,,Variety
 
 [yakuake]
 _k_friendly_name=Yakuake
