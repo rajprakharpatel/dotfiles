@@ -1,5 +1,6 @@
 [ActivityManager]
 _k_friendly_name=Activity Manager
+switch-to-activity-0aadd59d-9271-49bb-93ac-f9f9393dcc68=none,none,Switch to activity "Default"
 switch-to-activity-5f63b5d5-3eb2-4a3d-a119-7d6dd4f94325=none,none,Switch to activity "Default"
 
 [Alacritty.desktop]
@@ -8,7 +9,7 @@ _k_friendly_name=Alacritty
 _launch=Meta+Return,,Alacritty
 
 [KDE Keyboard Layout Switcher]
-Switch keyboard layout to English (India, with rupee)=,none,Switch keyboard layout to English (India\\, with rupee)
+Switch keyboard layout to English (India, with rupee)=none,none,Switch keyboard layout to English (India\\, with rupee)
 Switch to Next Keyboard Layout=Ctrl+Alt+K,none,Switch to Next Keyboard Layout
 _k_friendly_name=Keyboard Layout Switcher
 
@@ -334,7 +335,7 @@ _launch=Print,Print,Launch Spectacle
 
 [org.kde.yakuake.desktop]
 _k_friendly_name=Yakuake
-_launch=F8,,Yakuake
+_launch=,,Yakuake
 
 [org_kde_powerdevil]
 Decrease Keyboard Brightness=Keyboard Brightness Down,Keyboard Brightness Down,Decrease Keyboard Brightness
@@ -350,7 +351,7 @@ Turn Off Screen=,none,Turn Off Screen
 _k_friendly_name=Power Management
 
 [plasmashell]
-_k_friendly_name=Plasma
+_k_friendly_name=Activity switching
 activate task manager entry 1=,Meta+1,Activate Task Manager Entry 1
 activate task manager entry 10=,Meta+0,Activate Task Manager Entry 10
 activate task manager entry 2=,Meta+2,Activate Task Manager Entry 2
@@ -391,4 +392,4 @@ _launch=,,Variety
 
 [yakuake]
 _k_friendly_name=Yakuake
-toggle-window-state=F12,F12,Open/Retract Yakuake
+toggle-window-state=F8,F12,Open/Retract Yakuake

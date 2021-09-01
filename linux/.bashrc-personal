@@ -4,12 +4,12 @@ source "$HOME/.profile"
 
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-eval "$(fasd --init auto)"
-_fasd_bash_hook_cmd_complete v m j o
+# eval "$(fasd --init auto)"
+# _fasd_bash_hook_cmd_complete v m j o
 
 [[ -s "$HOME/bash_completion.d/gradle-completion.bash" ]] && source "$HOME/bash_completion.d/gradle-completion.bash"
 
-eval "$(direnv hook bash)"
+# eval "$(direnv hook bash)"
 
 if command -v floaterm &>/dev/null; then
     fish

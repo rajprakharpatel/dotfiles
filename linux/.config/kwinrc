@@ -61,6 +61,13 @@ Meta=org.kde.plasmashell,/PlasmaShell,org.kde.PlasmaShell,activateLauncherMenu
 
 [MouseBindings]
 CommandAllWheel=Above/Below
+CommandTitlebarWheel=Above/Below
+
+[NightColor]
+Active=true
+LatitudeAuto=26.4969
+LongitudeAuto=80.3246
+NightTemperature=4400
 
 [Plugins]
 blurEnabled=true

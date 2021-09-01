@@ -218,8 +218,8 @@ alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
    # cat ~/.cache/wal/sequences
 # end
 
-direnv hook fish | source
-set -g direnv_fish_mode disable_arrow    # trigger direnv at prompt only, this is similar functionality to the original behavior
+# direnv hook fish | source
+# set -g direnv_fish_mode disable_arrow    # trigger direnv at prompt only, this is similar functionality to the original behavior
 
 ## Run fetch if session is interactive and not inside floaterm
 if status --is-interactive && ! type -q floaterm
