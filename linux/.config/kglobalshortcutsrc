@@ -43,7 +43,10 @@ display=Display\tMeta+P,Display\tMeta+P,Switch Display
 [khotkeys]
 _k_friendly_name=Custom Shortcuts Service
 {333be27b-9a95-47f0-968f-8199b2e75c8f}=Ctrl+Alt+T,none,Launch Konsole
+{54407f70-bed2-4777-ba58-0d85f1b65636}=Alt+N,none,varietyNext
+{c65f5d23-8695-4206-b065-1274a6dbf03a}=Alt+F,none,varietyFaviourate
 {d03619b6-9b3c-48cc-9d9c-a2aadb485550}=,none,Search
+{ed47e6be-a1f9-4c57-84bf-19a1d2dfbfc5}=Alt+P,none,varietyPrevious
 
 [kmix]
 _k_friendly_name=Audio Volume
@@ -67,6 +70,8 @@ _k_friendly_name=
 
 [kwin]
 Activate Window Demanding Attention=Ctrl+Alt+A,Ctrl+Alt+A,Activate Window Demanding Attention
+ClearLastMouseMark=Meta+Shift+F12\tCtrl+Shift+X,Meta+Shift+F12,Clear Last Mouse Mark
+ClearMouseMarks=Meta+Shift+F11\tCtrl+Shift+C,Meta+Shift+F11,Clear All Mouse Marks
 Cube=Ctrl+F11,Ctrl+F11,Desktop Cube
 Cylinder=none,none,Desktop Cylinder
 Decrease Opacity=,none,Decrease Opacity of Active Window by 5 %
@@ -158,6 +163,7 @@ Switch to Screen 6=,none,Switch to Screen 6
 Switch to Screen 7=,none,Switch to Screen 7
 Toggle Night Color=,none,Toggle Night Color
 Toggle Window Raise/Lower=,none,Toggle Window Raise/Lower
+ToggleMouseClick=Meta+*,Meta+*,Toggle Mouse Click Effect
 Walk Through Desktop List=,none,Walk Through Desktop List
 Walk Through Desktop List (Reverse)=,none,Walk Through Desktop List (Reverse)
 Walk Through Desktops=,none,Walk Through Desktops
@@ -335,7 +341,7 @@ _launch=Print,Print,Launch Spectacle
 
 [org.kde.yakuake.desktop]
 _k_friendly_name=Yakuake
-_launch=,,Yakuake
+_launch=F8,,Yakuake
 
 [org_kde_powerdevil]
 Decrease Keyboard Brightness=Keyboard Brightness Down,Keyboard Brightness Down,Decrease Keyboard Brightness
@@ -351,7 +357,7 @@ Turn Off Screen=,none,Turn Off Screen
 _k_friendly_name=Power Management
 
 [plasmashell]
-_k_friendly_name=Activity switching
+_k_friendly_name=Latte Dock
 activate task manager entry 1=,Meta+1,Activate Task Manager Entry 1
 activate task manager entry 10=,Meta+0,Activate Task Manager Entry 10
 activate task manager entry 2=,Meta+2,Activate Task Manager Entry 2
@@ -362,7 +368,8 @@ activate task manager entry 6=,Meta+6,Activate Task Manager Entry 6
 activate task manager entry 7=,Meta+7,Activate Task Manager Entry 7
 activate task manager entry 8=,Meta+8,Activate Task Manager Entry 8
 activate task manager entry 9=,Meta+9,Activate Task Manager Entry 9
-activate widget 16=Alt+Space,none,Activate Menu 11 Widget
+activate widget 16=,none,Activate Menu 11 Widget
+activate widget 3=Alt+Space,none,Activate Menu 11 Widget
 manage activities=,Meta+Q,Show Activity Switcher
 next activity=Meta+Tab,Meta+Tab,Walk through activities
 previous activity=Meta+Shift+Tab,Meta+Shift+Tab,Walk through activities (Reverse)
@@ -381,15 +388,6 @@ kcm-users=,,Users
 powerdevilprofilesconfig=,,Energy Saving
 screenlocker=,,Screen Locking
 
-[variety.desktop]
-History=,,History
-Next=Alt+N,,Next
-PauseResume=,,Pause / Resume
-Preferences=,,Preferences
-Previous=Alt+Shift+N,,Previous
-_k_friendly_name=Variety
-_launch=,,Variety
-
 [yakuake]
 _k_friendly_name=Yakuake
-toggle-window-state=F8,F12,Open/Retract Yakuake
+toggle-window-state=F12,F12,Open/Retract Yakuake

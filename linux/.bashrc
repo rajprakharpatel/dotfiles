@@ -269,6 +269,7 @@ alias personal='cp -Rf /personal/* ~'
 
 [[ -f ~/.bashrc-personal ]] && . "$HOME/.bashrc-personal"
 
+alias fay="yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk \"{print \$2}\")' | xargs -ro  yay -S"
 # reporting tools - install when not installed
 # install neofetch
 neofetch

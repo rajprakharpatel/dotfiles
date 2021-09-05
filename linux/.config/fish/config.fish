@@ -213,6 +213,7 @@ alias jctl="journalctl -p 3 -xb"
 #Recent Installed Packages
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 
+alias fay="yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk \"{print \$2}\")' | xargs -ro  yay -S"
 ## Import colorscheme from 'wal' asynchronously
 # if type "wal" >> /dev/null 2>&1
    # cat ~/.cache/wal/sequences

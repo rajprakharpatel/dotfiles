@@ -23,7 +23,7 @@ export PATH="/usr/x86_64-w64-mingw32/bin:$PATH"
 export PATH="$HOME/.config/nvim/scripts:$PATH"
 export PATH="$HOME/.luarocks/bin:$PATH"
 export PATH="$HOME/.local/share/gem/ruby/2.7.0/bin:$PATH"
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # ln=:\  ex=:\ fi=:\ add below for links icon not necessary as a different color

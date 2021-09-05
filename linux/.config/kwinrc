@@ -23,7 +23,7 @@ Rows=2
 
 [Effect-Blur]
 BlurStrength=4
-NoiseStrength=6
+NoiseStrength=10
 
 [Effect-CoverSwitch]
 TabBox=true
@@ -67,6 +67,7 @@ CommandTitlebarWheel=Above/Below
 Active=true
 LatitudeAuto=26.4969
 LongitudeAuto=80.3246
+Mode=Constant
 NightTemperature=4400
 
 [Plugins]
@@ -79,7 +80,7 @@ diminactiveEnabled=true
 fallapartEnabled=true
 flipswitchEnabled=true
 force-decorations-gtk3Enabled=false
-forceblurEnabled=false
+forceblurEnabled=true
 glideEnabled=true
 hide-titlesEnabled=false
 highlightwindowEnabled=true
@@ -88,11 +89,11 @@ kwin4_effect_dimscreenEnabled=true
 kwin4_effect_eyeonscreenEnabled=true
 kwin4_effect_fadeEnabled=false
 kwin4_effect_squashEnabled=false
-kwin4_effect_translucencyEnabled=false
 kwin4_effect_windowapertureEnabled=false
 lattewindowcolorsEnabled=false
 magiclampEnabled=true
 minimizeallEnabled=false
+mousemarkEnabled=true
 slideEnabled=false
 slidebackEnabled=true
 synchronizeskipswitcherEnabled=false
@@ -102,7 +103,7 @@ wobblywindowsEnabled=true
 [Script-forceblur]
 blurExceptMatching=true
 blurMatching=false
-patterns=Peek
+patterns=Peek\nyakuake
 
 [Script-krohnkite]
 directionalKeyDwm=false
@@ -111,7 +112,7 @@ enableFloatingLayout=true
 enableQuarterLayout=true
 limitTileWidth=true
 pollMouseXdotool=true
-screenGapBottom=25
+screenGapBottom=35
 screenGapLeft=5
 screenGapRight=5
 screenGapTop=5
@@ -131,5 +132,7 @@ FocusStealingPreventionLevel=2
 SnapOnlyWhenOverlapping=true
 
 [org.kde.kdecoration2]
-ButtonsOnLeft=XAI
-ButtonsOnRight=
+ButtonsOnLeft=MFBS
+ButtonsOnRight=IAX
+library=org.kde.kwin.aurorae
+theme=__aurorae__svg__Sweet-Dark

@@ -6,12 +6,13 @@
 [init]
 	defaultBranch = main
 [diff]
-    tool = nvr
+	tool = nvr
 [difftool "nvr"]
-    cmd = nvr -s -d $LOCAL $REMOTE
+  #cmd = nvr -s -d $LOCAL $REMOTE -c "DiffviewOpen"
+  cmd = nvr -s -c "DiffviewOpen"
 [merge]
-    tool = nvr
+	tool = nvr
 [mergetool "nvr"]
-    cmd = nvr -s -d $LOCAL $BASE $REMOTE $MERGED -c 'wincmd J | wincmd ='
+	cmd = nvr -s -d $LOCAL $BASE $REMOTE $MERGED -c 'wincmd J | wincmd ='
 [core]
 	editor = nvr --remote-wait-silent
