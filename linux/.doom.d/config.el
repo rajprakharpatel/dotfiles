@@ -59,7 +59,7 @@
                              (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
 
   (let* ((variable-tuple
-          (cond ((x-list-fonts "ETBembo")         '(:font "ETBembo"))
+          (cond ((x-list-fonts "SauceCodePro Nerd Font")         '(:font "SauceCodePro Nerd Font"))
                 ((x-list-fonts "Source Sans Pro") '(:font "Source Sans Pro"))
                 ((x-list-fonts "Lucida Grande")   '(:font "Lucida Grande"))
                 ((x-list-fonts "Verdana")         '(:font "Verdana"))
@@ -75,15 +75,15 @@
      `(org-level-6 ((t (,@headline ,@variable-tuple))))
      `(org-level-5 ((t (,@headline ,@variable-tuple))))
      `(org-level-4 ((t (,@headline ,@variable-tuple :height 1.1))))
-     `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.25))))
-     `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.5))))
-     `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.75))))
+     `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.2))))
+     `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.3))))
+     `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.5))))
      `(org-document-title ((t (,@headline ,@variable-tuple :height 2.0 :underline nil))))))
 
 (custom-theme-set-faces
   'user
-  '(variable-pitch ((t (:family "ETBembo" :height 180 :weight thin))))
-  '(fixed-pitch ((t ( :family "Hack Nerd Font" :height 160)))))
+  '(variable-pitch ((t (:family "SauceCodePro Nerd Font" :height 180 :weight thin))))
+  '(fixed-pitch ((t ( :family "FantasqueSansMono Nerd Font" :height 160)))))
 
 (add-hook 'org-mode-hook 'variable-pitch-mode)
 (add-hook 'org-mode-hook 'visual-line-mode)
@@ -103,18 +103,13 @@
   '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
   '(org-verbatim ((t (:inherit (shadow fixed-pitch))))))
 
-;(use-package! org-bullets
-;  :config
-;  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+(defun org-export-output-file-name-modified (orig-fun extension &optional subtreep pub-dir)
+  (unless pub-dir
+    (setq pub-dir "exported-org-files")
+    (unless (file-directory-p pub-dir)
+      (make-directory pub-dir)))
+  (apply orig-fun extension subtreep pub-dir nil))
+(advice-add 'org-export-output-file-name :around #'org-export-output-file-name-modified)
 
-;(use-package! org-roam
-;  :ensure t
-;  :init
-;  (setq org-roam-v2-ack t)
-;  :custom
-;  (org-roam-directory "~/org/Notes")
-;  :bind (("C-c n l" . org-roam-buffer-toggle)
-;         ("C-c n f" . org-roam-node-find)
-;         ("C-c n i" . org-roam-node-insert))
-;  :config
-;  (org-roam-setup))
+(provide 'config)
+;;; config.el ends here

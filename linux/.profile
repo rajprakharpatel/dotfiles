@@ -7,6 +7,7 @@ alias nn=nvim
 alias tk=task
 alias lc=lfcd
 
+export FONTCONFIG_PATH=/etc/fonts/
 export LC_CTYPE="en_IN.utf8"
 export SDKMAN_DIR="$HOME/.sdkman"
 export AMD_VULKAN_ICD=RADV

@@ -2,3 +2,4 @@ xset s off
 xset -dpms
 xset s noblank
 xset r rate 230 50
+export PATH="$HOME/.local/bin:$PATH"
