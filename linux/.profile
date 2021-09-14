@@ -6,7 +6,9 @@ alias :e=vim
 alias nn=nvim
 alias tk=task
 alias lc=lfcd
+alias sk=taskwarrior-tui
 
+export TERM=alacritty
 export FONTCONFIG_PATH=/etc/fonts/
 export LC_CTYPE="en_IN.utf8"
 export SDKMAN_DIR="$HOME/.sdkman"

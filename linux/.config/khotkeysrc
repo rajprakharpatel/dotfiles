@@ -1107,6 +1107,10 @@ Key=Alt+F
 Type=SHORTCUT
 Uuid={c65f5d23-8695-4206-b065-1274a6dbf03a}
 
+[DirSelect Dialog]
+DirSelectDialog Size[$d]
+History Items[$d]
+
 [General]
 BrowserApplication[$d]
 ColorScheme[$d]
@@ -1159,6 +1163,10 @@ Sort directories first[$d]
 Sort reversed[$d]
 Speedbar Width[$d]
 View Style[$d]
+
+[KScreen]
+ScaleFactor[$d]
+ScreenScaleFactors[$d]
 
 [KShortcutsDialog Settings]
 Dialog Size[$d]
