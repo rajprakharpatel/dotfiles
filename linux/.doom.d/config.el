@@ -162,13 +162,50 @@
 (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch)
 
 ;; Automatically tangle our Emacs.org config file when we save it
-(defun efs/org-babel-tangle-config ()
+(defun rajp/org-babel-tangle-config ()
 (when (string-equal (buffer-file-name)
                 (expand-file-name "lorem/ipsum"))
 ;; Dynamic scoping to the rescue
 (let ((org-confirm-babel-evaluate nil))
 (org-babel-tangle))))
 
-(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'efs/org-babel-tangle-config)))
+(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'rajp/org-babel-tangle-config)))
+
+;; org-roam
+(after! org-roam
+      (setq org-id-extra-files (org-roam--list-all-files)))
+(defun org-html--reference (datum info &optional named-only)
+  "Return an appropriate reference for DATUM.
+
+DATUM is an element or a `target' type object.  INFO is the
+current export state, as a plist.
+
+When NAMED-ONLY is non-nil and DATUM has no NAME keyword, return
+nil.  This doesn't apply to headlines, inline tasks, radio
+targets and targets."
+  (let* ((type (org-element-type datum))
+	 (user-label
+	  (org-element-property
+	   (pcase type
+	     ((or `headline `inlinetask) :CUSTOM_ID)
+	     ((or `radio-target `target) :value)
+	     (_ :name))
+	   datum))
+         (user-label (or user-label
+                         (when-let ((path (org-element-property :ID datum)))
+                           (concat "ID-" path)))))
+    (cond
+     ((and user-label
+	   (or (plist-get info :html-prefer-user-labels)
+	       ;; Used CUSTOM_ID property unconditionally.
+	       (memq type '(headline inlinetask))))
+      user-label)
+     ((and named-only
+	   (not (memq type '(headline inlinetask radio-target target)))
+	   (not user-label))
+      nil)
+     (t
+      (org-export-get-reference datum info)))))
+
 (provide 'config)
 ;;; config.el ends here

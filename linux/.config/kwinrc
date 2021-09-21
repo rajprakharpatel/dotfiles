@@ -56,6 +56,9 @@ MoveResize=88
 [ElectricBorders]
 BottomLeft=ShowDesktop
 
+[KDE]
+AnimationDurationFactor=0.25
+
 [ModifierOnlyShortcuts]
 Meta=org.kde.plasmashell,/PlasmaShell,org.kde.PlasmaShell,activateLauncherMenu
 

@@ -373,6 +373,8 @@ activate widget 30=none,none,Activate Latte Tasks Widget
 activate widget 31=none,none,Activate Activity Pager Widget
 activate widget 33=,none,Activate Application Launcher Widget
 activate widget 57=none,none,Activate Icons-only Task Manager Widget
+activate widget 58=none,none,Activate Activity Pager Widget
+activate widget 67=,none,Activate Application Launcher Widget
 activate widget 9=,none,Activate Application Launcher Widget
 clear-history=none,none,Clear Clipboard History
 clipboard_action=,Ctrl+Alt+X,Enable Clipboard Actions
@@ -402,4 +404,4 @@ screenlocker=,,Screen Locking
 
 [yakuake]
 _k_friendly_name=Yakuake
-toggle-window-state=F12,F12,Open/Retract Yakuake
+toggle-window-state=none,F12,Open/Retract Yakuake

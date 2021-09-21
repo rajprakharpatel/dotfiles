@@ -18,8 +18,8 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export MAIL=kmail
 export TERM=xterm
 export LC_CTYPE="en_IN.utf8"
-export EDITOR=nvim
-export VISUAL="emacsclient -nc"
+export EDITOR=vim
+export VISUAL="nvim"
 export OPENER=dolphin
 export PATH="$HOME/.emacs.d/bin:$PATH"
 export PATH="/usr/x86_64-w64-mingw32/bin:$PATH"
@@ -28,6 +28,7 @@ export PATH="$HOME/.luarocks/bin:$PATH"
 export PATH="$HOME/.local/share/gem/ruby/2.7.0/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/go/bin/:$PATH"
 
 # ln=:\  ex=:\ fi=:\ add below for links icon not necessary as a different color
 # identifies links

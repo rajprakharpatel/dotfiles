@@ -136,7 +136,7 @@ font:
     #style: Bold Italic
 
     # Point size
-    size: 7.5
+    size: 10.5
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -583,3 +583,10 @@ colors:
     cursor: '0xffe8c0'
 
   # Normal colors
+  indexed_colors:
+    - {index: 16, color: '0x0086b3'}
+    - {index: 17, color: '0x333333'}
+    - {index: 18, color: '0xf5f5f5'}
+    - {index: 19, color: '0xc8c8fa'}
+    - {index: 20, color: '0xe8e8e8'}
+    - {index: 21, color: '0xffffff'}
