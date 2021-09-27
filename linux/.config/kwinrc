@@ -63,7 +63,9 @@ AnimationDurationFactor=0.25
 Meta=org.kde.plasmashell,/PlasmaShell,org.kde.PlasmaShell,activateLauncherMenu
 
 [MouseBindings]
+CommandActiveTitlebar2=Close
 CommandAllWheel=Above/Below
+CommandInactiveTitlebar2=Close
 CommandTitlebarWheel=Above/Below
 
 [NightColor]

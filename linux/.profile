@@ -21,6 +21,7 @@ export LC_CTYPE="en_IN.utf8"
 export EDITOR=vim
 export VISUAL="nvim"
 export OPENER=dolphin
+export HISTIGNORE='ls:cls:\:q:\:e:lf:lc:pwd'
 export PATH="$HOME/.emacs.d/bin:$PATH"
 export PATH="/usr/x86_64-w64-mingw32/bin:$PATH"
 export PATH="$HOME/.config/nvim/scripts:$PATH"

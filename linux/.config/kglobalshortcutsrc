@@ -376,6 +376,7 @@ activate widget 57=none,none,Activate Icons-only Task Manager Widget
 activate widget 58=none,none,Activate Activity Pager Widget
 activate widget 67=,none,Activate Application Launcher Widget
 activate widget 9=,none,Activate Application Launcher Widget
+activate widget 90=none,none,Activate NowPlaying Widget
 clear-history=none,none,Clear Clipboard History
 clipboard_action=,Ctrl+Alt+X,Enable Clipboard Actions
 cycleNextAction=none,none,Next History Item
