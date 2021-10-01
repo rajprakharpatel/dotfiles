@@ -29,6 +29,7 @@
     ~/.config/kglobalshortcutsrc: linux/.config/kglobalshortcutsrc
     ~/.config/khotkeysrc: linux/.config/khotkeysrc
     ~/.config/kwinrc: linux/.config/kwinrc
+    ~/.ideavimrc: linux/.ideavimrc
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]

@@ -53,56 +53,6 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-;; (setq org-hide-emphasis-markers t)
-;;  (font-lock-add-keywords 'org-mode
-;;                         '(("^ *\\([-]\\) "
-;;                              (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
-
-;; (let* ((variable-tuple
-;;         (cond ((x-list-fonts "SauceCodePro Nerd Font")         '(:font "SauceCodePro Nerd Font"))
-;;         ((x-list-fonts "Source Sans Pro") '(:font "Source Sans Pro"))
-;;         ((x-list-fonts "Lucida Grande")   '(:font "Lucida Grande"))
-;;         ((x-list-fonts "Verdana")         '(:font "Verdana"))
-;;         ((x-family-fonts "Sans Serif")    '(:family "Sans Serif"))
-;;         (nil (warn "Cannot find a Sans Serif Font.  Install Source Sans Pro."))))
-;;         (base-font-color     (face-foreground 'default nil 'default))
-;;         (headline           `(:inherit default :weight bold :foreground ,base-font-color)))
-
-;; (custom-theme-set-faces
-;; 'user
-;; `(org-level-8 ((t (,@headline ,@variable-tuple))))
-;; `(org-level-7 ((t (,@headline ,@variable-tuple))))
-;; `(org-level-6 ((t (,@headline ,@variable-tuple))))
-;; `(org-level-5 ((t (,@headline ,@variable-tuple))))
-;;      `(org-level-4 ((t (,@headline ,@variable-tuple :height 1.1))))
-;;      `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.2))))
-;;      `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.3))))
-;;      `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.5))))
-;;      `(org-document-title ((t (,@headline ,@variable-tuple :height 2.0 :underline nil))))))
-
-;; (custom-theme-set-faces
-;;   'user
-;;   '(variable-pitch ((t (:family "SauceCodePro Nerd Font" :height 180 :weight thin))))
-;;   '(fixed-pitch ((t ( :family "FantasqueSansMono Nerd Font" :height 160)))))
-
-;; (add-hook 'org-mode-hook 'variable-pitch-mode)
-;; (add-hook 'org-mode-hook 'visual-line-mode)
-
-;; (custom-theme-set-faces
-;;   'user
-;;   '(org-block ((t (:inherit fixed-pitch, :height 1))))
-;;   '(org-code ((t (:inherit (shadow fixed-pitch)))))
-;;   '(org-document-info ((t (:foreground "dark orange"))))
-;;   '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
-;;   '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
-;;   '(org-link ((t (:foreground "royal blue" :underline t))))
-;;   '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
-;;   '(org-property-value ((t (:inherit fixed-pitch))) t)
-;;   '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
-;;   '(org-table ((t (:inherit fixed-pitch :foreground "#83a598"))))
-;;   '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
-;;   '(org-verbatim ((t (:inherit (shadow fixed-pitch))))))
-
 (defun org-export-output-file-name-modified (orig-fun extension &optional subtreep pub-dir)
   (unless pub-dir
     (setq pub-dir "exported-org-files")
@@ -124,6 +74,7 @@
 ;;; org setup ----
 ;;; Replace list hyphen with dot
 (setq org-ellipsis " ▾")
+(setq org-hide-emphasis-markers t)
 (font-lock-add-keywords 'org-mode
                         '(("^ *\\([-]\\) "
                         (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
@@ -131,7 +82,8 @@
 (org-babel-do-load-languages
 'org-babel-load-languages
 '((emacs-lisp . t)
-(python . t)))
+  (python . t)
+  (lua . t)))
 
 (setq org-confirm-babel-evaluate nil)
 (push '("conf-unix" . conf-unix) org-src-lang-modes)
@@ -172,40 +124,30 @@
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'rajp/org-babel-tangle-config)))
 
 ;; org-roam
-(after! org-roam
-      (setq org-id-extra-files (org-roam--list-all-files)))
-(defun org-html--reference (datum info &optional named-only)
-  "Return an appropriate reference for DATUM.
+(setq org-id-extra-files (org-roam--list-all-files))
+(defun ngm/org-roam--backlinks-list (file)
+  (if (org-roam--org-roam-file-p file)
+      (--reduce-from
+       (concat acc (format "- [[file:%s][%s]]\n"
+                           (file-relative-name (car it) org-roam-directory)
+                           (org-roam--get-title-or-slug (car it))))
+       "" (org-roam-db-query [:select [from] :from links :where (= to $s1)] file))
+    ""))
 
-DATUM is an element or a `target' type object.  INFO is the
-current export state, as a plist.
+(defun ngm/org-export-preprocessor (backend)
+  (let ((links (ngm/org-roam--backlinks-list (buffer-file-name))))
+    (unless (string= links "")
+      (save-excursion
+        (goto-char (point-max))
+        (insert (concat "\n* Backlinks\n") links)))))
 
-When NAMED-ONLY is non-nil and DATUM has no NAME keyword, return
-nil.  This doesn't apply to headlines, inline tasks, radio
-targets and targets."
-  (let* ((type (org-element-type datum))
-	 (user-label
-	  (org-element-property
-	   (pcase type
-	     ((or `headline `inlinetask) :CUSTOM_ID)
-	     ((or `radio-target `target) :value)
-	     (_ :name))
-	   datum))
-         (user-label (or user-label
-                         (when-let ((path (org-element-property :ID datum)))
-                           (concat "ID-" path)))))
-    (cond
-     ((and user-label
-	   (or (plist-get info :html-prefer-user-labels)
-	       ;; Used CUSTOM_ID property unconditionally.
-	       (memq type '(headline inlinetask))))
-      user-label)
-     ((and named-only
-	   (not (memq type '(headline inlinetask radio-target target)))
-	   (not user-label))
-      nil)
-     (t
-      (org-export-get-reference datum info)))))
+(add-hook 'org-export-before-processing-hook 'ngm/org-export-preprocessor)
+
+; Org Mode
+(add-hook 'org-mode-hook (lambda nil
+          (auto-fill-mode 1)
+          (set-fill-column 78)))
+
 
 (provide 'config)
 ;;; config.el ends here
