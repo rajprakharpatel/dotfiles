@@ -24,3 +24,5 @@
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
+    - [mkdir -p ~/.doom.d]
+    - [mkdir -p ~/.config/fish ~/.config/alacritty]
