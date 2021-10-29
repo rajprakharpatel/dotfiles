@@ -551,42 +551,49 @@ key_bindings:
 #print_events: false
 
 colors:
-  # COLORSCHEME: falcon.yaml
+  # COLORSCHEME: aura.yml
   # Default colors
   primary:
-    background: '0x020221'
-    foreground: '0xb4b4b9'
+    background: '#15141b'
+    foreground: '#edecee'
 
-  # Colors the cursor will use if `custom_cursor_colors` is true
   normal:
-    black: '0x000004'
-    red: '0xff3600'
-    green: '0x718e3f'
-    yellow: '0xffc552'
-    blue: '0x635196'
-    magenta: '0xff761a'
-    cyan: '0x34bfa4'
-    white: '0xb4b4b9'
+    black: '#110f18'
+    red: '#ff6767'
+    green: '#61ffca'
+    yellow: '#ffca85'
+    blue: '#a277ff'
+    magenta: '#a277ff'
+    cyan: '#61ffca'
+    white: '#edecee'
 
   # Bright colors
   bright:
-    black: '0x020221'
-    red: '0xff8e78'
-    green: '0xb1bf75'
-    yellow: '0xffd392'
-    blue: '0x99a4bc'
-    magenta: '0xffb07b'
-    cyan: '0x8bccbf'
-    white: '0xf8f8ff'
+    black: '#4d4d4d'
+    red: '#ff6767'
+    green: '#61ffca'
+    yellow: '#ffca85'
+    blue: '#a277ff'
+    magenta: '#a277ff'
+    cyan: '#61ffca'
+    white: '#edecee'
   cursor:
-    text: '0x020221'
-    cursor: '0xffe8c0'
+    cursor: '#a277ff'
 
   # Normal colors
   indexed_colors:
-    - {index: 16, color: '0x0086b3'}
-    - {index: 17, color: '0x333333'}
-    - {index: 18, color: '0xf5f5f5'}
-    - {index: 19, color: '0xc8c8fa'}
-    - {index: 20, color: '0xe8e8e8'}
-    - {index: 21, color: '0xffffff'}
+    - {index: 16, color: '0xeb8500'}
+    - {index: 17, color: '0x826b28'}
+    - {index: 18, color: '0xc0c0c0'}
+    - {index: 19, color: '0xc0c0c0'}
+    - {index: 20, color: '0x808080'}
+    - {index: 21, color: '0x404040'}
+  dim:
+    black: '0x232323'
+    red: '0x74423f'
+    green: '0x5e6547'
+    yellow: '0x8b7653'
+    blue: '0x556b79'
+    magenta: '0x6e4962'
+    cyan: '0x5c8482'
+    white: '0x828282'

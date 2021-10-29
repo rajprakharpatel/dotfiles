@@ -70,8 +70,8 @@ _k_friendly_name=
 
 [kwin]
 Activate Window Demanding Attention=Ctrl+Alt+A,Ctrl+Alt+A,Activate Window Demanding Attention
-ClearLastMouseMark=Meta+Shift+F12\tCtrl+Shift+X,Meta+Shift+F12,Clear Last Mouse Mark
-ClearMouseMarks=Meta+Shift+F11\tCtrl+Shift+C,Meta+Shift+F11,Clear All Mouse Marks
+ClearLastMouseMark=Meta+Shift+F12\tAlt+X,Meta+Shift+F12,Clear Last Mouse Mark
+ClearMouseMarks=Meta+Shift+F11\tAlt+C,Meta+Shift+F11,Clear All Mouse Marks
 Cube=Ctrl+F11,Ctrl+F11,Desktop Cube
 Cylinder=none,none,Desktop Cylinder
 Decrease Opacity=,none,Decrease Opacity of Active Window by 5 %
@@ -183,10 +183,10 @@ Window Fullscreen=Meta+F,none,Make Window Fullscreen
 Window Grow Horizontal=,none,Pack Grow Window Horizontally
 Window Grow Vertical=,none,Pack Grow Window Vertically
 Window Lower=,none,Lower Window
-Window Maximize=Meta+PgUp,Meta+PgUp,Maximize Window
+Window Maximize=Meta+PgUp\t,Meta+PgUp,Maximize Window
 Window Maximize Horizontal=,none,Maximize Window Horizontally
 Window Maximize Vertical=,none,Maximize Window Vertically
-Window Minimize=Meta+PgDown,Meta+PgDown,Minimize Window
+Window Minimize=Meta+PgDown\tMeta+-,Meta+PgDown,Minimize Window
 Window Move=,none,Move Window
 Window No Border=,none,Hide Window Border
 Window On All Desktops=Meta+Shift+D,none,Keep Window on All Desktops
@@ -247,8 +247,8 @@ Window to Screen 7=,none,Window to Screen 7
 WindowGeometry=Ctrl+Shift+F11,Ctrl+Shift+F11,Toggle window geometry display (effect only)
 _k_friendly_name=KWin
 view_actual_size=Meta+Shift+A,Meta+0,Actual Size
-view_zoom_in=Meta+=,Meta+=,Zoom In
-view_zoom_out=Meta+-,Meta+-,Zoom Out
+view_zoom_in=Meta++,Meta+=,Zoom In
+view_zoom_out=Meta+_,Meta+-,Zoom Out
 
 [kwin][Global Shortcuts]
 _k_friendly_name=
@@ -274,12 +274,11 @@ activate entry 6=,Meta+6,Activate Entry 6
 activate entry 7=Meta+7,Meta+7,Activate Entry 7
 activate entry 8=Meta+8,Meta+8,Activate Entry 8
 activate entry 9=Meta+9,Meta+9,Activate Entry 9
-activate widget 40=Alt+F1,none,Activate Application Launcher Widget
 clear-history=,none,Clear Clipboard History
 clipboard_action=Ctrl+Alt+X,Ctrl+Alt+X,Enable Clipboard Actions
 cycleNextAction=,none,Next History Item
 cyclePrevAction=,none,Previous History Item
-edit_clipboard=,none,Edit Contents...
+edit_clipboard=,none,Edit Contents…
 new instance for entry 1=Meta+Ctrl+1,Meta+Ctrl+1,New Instance for Entry 1
 new instance for entry 10=Meta+Ctrl+0,Meta+Ctrl+0,New Instance for Entry 10
 new instance for entry 11=Meta+Ctrl+Z,Meta+Ctrl+Z,New Instance for Entry 11
@@ -303,7 +302,7 @@ repeat_action=Ctrl+Alt+R,Ctrl+Alt+R,Manually Invoke Action on Current Clipboard
 show latte global settings=,Meta+W,Show Latte Global Settings
 show latte view=Meta+`,Meta+`,Show Latte Dock/Panel
 show view settings=Meta+A,Meta+A,Cycle Through Dock/Panel Settings Windows
-show-barcode=,none,Show Barcode...
+show-barcode=,none,Show Barcode…
 show-on-mouse-pos=,Meta+V,Open Klipper at Mouse Position
 
 [mediacontrol]
@@ -377,17 +376,18 @@ activate widget 58=none,none,Activate Activity Pager Widget
 activate widget 67=,none,Activate Application Launcher Widget
 activate widget 9=,none,Activate Application Launcher Widget
 activate widget 90=none,none,Activate NowPlaying Widget
+activate widget 94=Alt+F1,none,Activate Application Launcher Widget
 clear-history=none,none,Clear Clipboard History
 clipboard_action=,Ctrl+Alt+X,Enable Clipboard Actions
 cycleNextAction=none,none,Next History Item
 cyclePrevAction=none,none,Previous History Item
-edit_clipboard=none,none,Edit Contents...
+edit_clipboard=none,none,Edit Contents…
 manage activities=,Meta+Q,Show Activity Switcher
 next activity=Meta+Tab,Meta+Tab,Walk through activities
 previous activity=Meta+Shift+Tab,Meta+Shift+Tab,Walk through activities (Reverse)
 repeat_action=,Ctrl+Alt+R,Manually Invoke Action on Current Clipboard
 show dashboard=Ctrl+F12,Ctrl+F12,Show Desktop
-show-barcode=none,none,Show Barcode...
+show-barcode=none,none,Show Barcode…
 show-on-mouse-pos=,Meta+V,Open Klipper at Mouse Position
 stop current activity=Meta+S,Meta+S,Stop Current Activity
 switch to next activity=,none,Switch to Next Activity

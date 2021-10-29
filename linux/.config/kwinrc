@@ -1,8 +1,7 @@
 [$Version]
-update_info=kwin.upd:replace-scalein-with-scale,kwin.upd:port-minimizeanimation-effect-to-js,kwin.upd:port-scale-effect-to-js,kwin.upd:port-dimscreen-effect-to-js,kwin.upd:auto-bordersize,kwin.upd:animation-speed,kwin.upd:desktop-grid-click-behavior,kwin.upd:no-swap-encourage
+update_info=kwin.upd:replace-scalein-with-scale,kwin.upd:port-minimizeanimation-effect-to-js,kwin.upd:port-scale-effect-to-js,kwin.upd:port-dimscreen-effect-to-js,kwin.upd:auto-bordersize,kwin.upd:animation-speed,kwin.upd:desktop-grid-click-behavior,kwin.upd:no-swap-encourage,kwin.upd:make-translucency-effect-disabled-by-default,kwin.upd:remove-flip-switch-effect,kwin.upd:remove-cover-switch-effect,kwin.upd:remove-cubeslide-effect,kwin.upd:remove-xrender-backend
 
 [Compositing]
-GLCore=true
 OpenGLIsUnsafe=false
 
 [Desktops]
@@ -30,6 +29,9 @@ TabBox=true
 zPosition=815
 
 [Effect-Cube]
+BorderActivate=1
+
+[Effect-DesktopGrid]
 BorderActivate=1
 
 [Effect-DimInactive]
@@ -76,11 +78,10 @@ Mode=Constant
 NightTemperature=4400
 
 [Plugins]
-blurEnabled=true
+blurEnabled=false
 contrastEnabled=true
 coverswitchEnabled=true
 cubeEnabled=true
-cubeslideEnabled=true
 diminactiveEnabled=true
 fallapartEnabled=true
 flipswitchEnabled=true
@@ -94,12 +95,12 @@ kwin4_effect_dimscreenEnabled=true
 kwin4_effect_eyeonscreenEnabled=true
 kwin4_effect_fadeEnabled=false
 kwin4_effect_squashEnabled=false
+kwin4_effect_translucencyEnabled=true
 kwin4_effect_windowapertureEnabled=false
 lattewindowcolorsEnabled=false
 magiclampEnabled=true
 minimizeallEnabled=false
 mousemarkEnabled=true
-slideEnabled=false
 slidebackEnabled=true
 synchronizeskipswitcherEnabled=false
 videowallEnabled=false
@@ -132,6 +133,7 @@ AutoRaise=true
 AutoRaiseInterval=350
 BorderlessMaximizedWindows=true
 DelayFocusInterval=0
+ElectricBorders=1
 FocusPolicy=FocusFollowsMouse
 FocusStealingPreventionLevel=2
 SnapOnlyWhenOverlapping=true

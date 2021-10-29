@@ -7,6 +7,9 @@ alias nn=nvim
 alias tk=task
 alias lc=lfcd
 alias sk=taskwarrior-tui
+alias lv=lvim
+alias winzip="zip -9 -y -r -q"
+alias mongo-azure="mongosh file-version-database.mongo.cosmos.azure.com:10255 -u file-version-database -p 5U57FfhLWY7vJ2CVBLBrSmjcGj1hyO6LtbWb69G1CC02RSVwJYjbdM67LgueqSGaoYFbyCrAt6bzIPfm2zsjPg== --ssl --sslAllowInvalidCertificates"
 
 export TERM=alacritty
 export FONTCONFIG_PATH=/etc/fonts/
@@ -30,6 +33,7 @@ export PATH="$HOME/.local/share/gem/ruby/2.7.0/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/go/bin/:$PATH"
+export COPILOT="574C-8175"
 
 # ln=:\  ex=:\ fi=:\ add below for links icon not necessary as a different color
 # identifies links
