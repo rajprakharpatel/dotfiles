@@ -124,7 +124,7 @@
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'rajp/org-babel-tangle-config)))
 
 ;; org-roam
-(setq org-id-extra-files (org-roam--list-all-files))
+;; (setq org-id-extra-files (org-roam--list-all-files))
 (defun ngm/org-roam--backlinks-list (file)
   (if (org-roam--org-roam-file-p file)
       (--reduce-from
@@ -148,6 +148,7 @@
           (auto-fill-mode 1)
           (set-fill-column 78)))
 
+(elcord-mode)
 
 (provide 'config)
 ;;; config.el ends here

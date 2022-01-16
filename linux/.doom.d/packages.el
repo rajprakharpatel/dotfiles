@@ -54,6 +54,7 @@
 ;;; Code:
 (package! simple-httpd)
 (package! tidy)
+(package! elcord)
 
 (provide 'packages)
 ;;; packages.el ends here

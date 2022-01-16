@@ -257,3 +257,4 @@ end
 # eval /opt/miniconda3/bin/conda "shell.fish" "hook" $argv | source
 # <<< conda initialize <<<
 
+# status --is-login; and status --is-interactive; and exec byobu-launcher
