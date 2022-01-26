@@ -17,6 +17,7 @@ window:
   #
   # Specified in number of columns/lines, not pixels.
   # If both are `0`, this setting is ignored.
+  opacity: 0.9
   dimensions:
     columns: 100
     lines: 30
@@ -89,7 +90,7 @@ scrolling:
 # Font configuration
 font:
   # Normal (roman) font face
-  size: 7.5
+  size: 8
   normal:
     # Font family
     #
@@ -275,7 +276,7 @@ font:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.8
+# window.opacity: 1
 
 #selection:
 #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
@@ -553,6 +554,7 @@ key_bindings:
 colors:
   # COLORSCHEME: aura.yml
   # Default colors
+  transparent_background_colors: true
   primary:
     background: '#15141b'
     foreground: '#edecee'

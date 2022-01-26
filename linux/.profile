@@ -33,6 +33,7 @@ export PATH="$HOME/.local/share/gem/ruby/2.7.0/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/go/bin/:$PATH"
+export PATH="$HOME/scripts/:$PATH"
 export COPILOT="574C-8175"
 
 # ln=:\  ex=:\ fi=:\ add below for links icon not necessary as a different color
