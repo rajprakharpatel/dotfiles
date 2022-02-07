@@ -19,12 +19,14 @@ export AMD_VULKAN_ICD=RADV
 export BROWSER=brave
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export MAIL=kmail
-export TERM=xterm
 export LC_CTYPE="en_IN.utf8"
-export EDITOR=vim
+export EDITOR="nvim"
 export VISUAL="nvim"
 export OPENER=dolphin
 export HISTIGNORE='ls:cls:\:q:\:e:lf:lc:pwd'
+export COPILOT="574C-8175"
+
+# Path eviornment variable
 export PATH="$HOME/.emacs.d/bin:$PATH"
 export PATH="/usr/x86_64-w64-mingw32/bin:$PATH"
 export PATH="$HOME/.config/nvim/scripts:$PATH"
@@ -34,7 +36,6 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/go/bin/:$PATH"
 export PATH="$HOME/scripts/:$PATH"
-export COPILOT="574C-8175"
 
 # ln=:\  ex=:\ fi=:\ add below for links icon not necessary as a different color
 # identifies links
