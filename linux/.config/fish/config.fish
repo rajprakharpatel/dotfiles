@@ -34,9 +34,9 @@ end
 
 ## Starship prompt
 # if status --is-interactive
-  # source ("/usr/bin/starship" init fish --print-full-init | psub)
+    # source ("/usr/bin/starship" init fish --print-full-init | psub)
 # end
-# starship init fish | source
+starship init fish | source
 
 ## Functions
 # Functions needed for !! and !$ https://github.com/oh-my-fish/plugin-bang-bang
@@ -226,7 +226,7 @@ alias fay="yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk \
 if status --is-interactive && ! type -q floaterm
    # paleofetch
    # colorscript random | skip 1
-  pokemon-colorscripts -r
+   # pokemon-colorscripts -r
 end
 
 begin
