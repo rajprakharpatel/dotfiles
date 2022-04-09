@@ -149,6 +149,7 @@
           (set-fill-column 78)))
 
 (elcord-mode)
+(setq org-image-actual-width (list 550))
 
 (provide 'config)
 ;;; config.el ends here

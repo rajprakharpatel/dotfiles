@@ -9,7 +9,7 @@ alias lc=lfcd
 alias sk=taskwarrior-tui
 alias lv=lvim
 alias winzip="zip -9 -y -r -q"
-alias mongo-azure="mongosh file-version-database.mongo.cosmos.azure.com:10255 -u file-version-database -p 5U57FfhLWY7vJ2CVBLBrSmjcGj1hyO6LtbWb69G1CC02RSVwJYjbdM67LgueqSGaoYFbyCrAt6bzIPfm2zsjPg== --ssl --sslAllowInvalidCertificates"
+alias gitsuperclean='git reset --hard; git clean --force -d -x'
 
 export TERM=alacritty
 export FONTCONFIG_PATH=/etc/fonts/
@@ -36,6 +36,8 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/go/bin/:$PATH"
 export PATH="$HOME/scripts/:$PATH"
+export PATH="$HOME/.config/composer/vendor/bin/:$PATH"
+export PATH="$HOME/.sdkman/candidates/gradle/current/bin/:$PATH"
 
 # ln=:\  ex=:\ fi=:\ add below for links icon not necessary as a different color
 # identifies links

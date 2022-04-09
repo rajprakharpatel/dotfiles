@@ -1,5 +1,8 @@
+#!/usr/bin/sh
+
 xset s off
 xset -dpms
 xset s noblank
 xset r rate 230 50
 export PATH="$HOME/.local/bin:$PATH"
+xinput set-prop 12 "libinput Scroll Method Enabled" 0, 0, 1
