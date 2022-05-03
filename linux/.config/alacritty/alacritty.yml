@@ -17,7 +17,7 @@ window:
   #
   # Specified in number of columns/lines, not pixels.
   # If both are `0`, this setting is ignored.
-  opacity: 0.9
+  opacity: 0.99
   dimensions:
     columns: 100
     lines: 30
@@ -50,7 +50,7 @@ window:
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background, but no title bar buttons
-  decorations: full
+  decorations: none
 
   # Startup Mode (changes require restart)
   #
@@ -64,7 +64,7 @@ window:
   #startup_mode: Windowed
 
   # Window title
-  title: Alacritty@Garuda
+  title: Alacritty
 
   # Window class (Linux/BSD only):
   class:
@@ -346,7 +346,7 @@ shell:
 #winpty_backend: false
 
 # Send ESC (\x1b) before characters when alt is pressed.
-#alt_send_esc: true
+alt_send_esc: true
 
 mouse:
   # Click settings

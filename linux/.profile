@@ -10,6 +10,8 @@ alias sk=taskwarrior-tui
 alias lv=lvim
 alias winzip="zip -9 -y -r -q"
 alias gitsuperclean='git reset --hard; git clean --force -d -x'
+alias myip='curl ipinfo.io'
+
 
 export TERM=alacritty
 export FONTCONFIG_PATH=/etc/fonts/
@@ -25,6 +27,9 @@ export VISUAL="nvim"
 export OPENER=dolphin
 export HISTIGNORE='ls:cls:\:q:\:e:lf:lc:pwd'
 export COPILOT="574C-8175"
+export PYENV_ROOT="$HOME/.pyenv"
+export SSH_ENV="$HOME/.ssh/agent-environment"
+export NVM_DIR="$HOME/.nvm"
 
 # Path eviornment variable
 export PATH="$HOME/.emacs.d/bin:$PATH"
@@ -38,6 +43,7 @@ export PATH="$HOME/go/bin/:$PATH"
 export PATH="$HOME/scripts/:$PATH"
 export PATH="$HOME/.config/composer/vendor/bin/:$PATH"
 export PATH="$HOME/.sdkman/candidates/gradle/current/bin/:$PATH"
+export PATH="$PYENV_ROOT/shims:$PATH"
 
 # ln=:\  ex=:\ fi=:\ add below for links icon not necessary as a different color
 # identifies links

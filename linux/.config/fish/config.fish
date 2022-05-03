@@ -1,11 +1,11 @@
 ## Hide welcome message
 set fish_greeting
-set VIRTUAL_ENV_DISABLE_PROMPT "1"
+set VIRTUAL_ENV_DISABLE_PROMPT 1
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
 ## Export variable need for qt-theme
-if type "qtile" >> /dev/null 2>&1
-   set -x QT_QPA_PLATFORMTHEME "qt5ct"
+if type qtile >>/dev/null 2>&1
+    set -x QT_QPA_PLATFORMTHEME qt5ct
 end
 
 # Set settings for https://github.com/franciscolourenco/done
@@ -14,7 +14,7 @@ set -U __done_notification_urgency_level low
 
 ## Source .profile to apply its values
 if test -f ~/.profile
-  source ~/.profile
+    source ~/.profile
 end
 
 ## Add ~/.local/bin to PATH
@@ -34,45 +34,46 @@ end
 
 ## Starship prompt
 # if status --is-interactive
-  # source ("/usr/bin/starship" init fish --print-full-init | psub)
+# source ("/usr/bin/starship" init fish --print-full-init | psub)
 # end
 # starship init fish | source
 
 ## Functions
 # Functions needed for !! and !$ https://github.com/oh-my-fish/plugin-bang-bang
 function __history_previous_command
-  switch (commandline -t)
-  case "!"
-    commandline -t $history[1]; commandline -f repaint
-  case "*"
-    commandline -i !
-  end
+    switch (commandline -t)
+        case "!"
+            commandline -t $history[1]
+            commandline -f repaint
+        case "*"
+            commandline -i !
+    end
 end
 
 function __history_previous_command_arguments
-  switch (commandline -t)
-  case "!"
-    commandline -t ""
-    commandline -f history-token-search-backward
-  case "*"
-    commandline -i '$'
-  end
+    switch (commandline -t)
+        case "!"
+            commandline -t ""
+            commandline -f history-token-search-backward
+        case "*"
+            commandline -i '$'
+    end
 end
 
-if [ "$fish_key_bindings" = fish_vi_key_bindings ];
-  bind -Minsert ! __history_previous_command
-  bind -Minsert '$' __history_previous_command_arguments
+if [ "$fish_key_bindings" = fish_vi_key_bindings ]
+    bind -Minsert ! __history_previous_command
+    bind -Minsert '$' __history_previous_command_arguments
 else
-  bind ! __history_previous_command
-  bind '$' __history_previous_command_arguments
+    bind ! __history_previous_command
+    bind '$' __history_previous_command_arguments
 end
 
 function fish_user_key_bindings
-  fish_vi_key_bindings
-  bind -M insert \ck end-of-line
-  bind -M insert \cn forward-word
-  bind -M insert \ek history-token-search-backward
-  bind -M insert \ej history-token-search-forward
+    fish_vi_key_bindings
+    bind -M insert \ck end-of-line
+    bind -M insert \cn forward-word
+    bind -M insert \ek history-token-search-backward
+    bind -M insert \ej history-token-search-forward
 end
 
 # Function for printing a column (splits input on whitespace)
@@ -132,8 +133,8 @@ end
 function copy
     set count (count $argv | tr -d \n)
     if test "$count" = 2; and test -d "$argv[1]"
-	set from (echo $argv[1] | trim-right /)
-	set to (echo $argv[2])
+        set from (echo $argv[1] | trim-right /)
+        set to (echo $argv[2])
         command cp -r $from $to
     else
         command cp $argv
@@ -147,8 +148,8 @@ end
 # alias la='lsd -a --color=always --group-directories-first'  # all files and dirs
 # alias ll='lsd -l --color=always --group-directories-first'  # long format
 alias ls='lsd -al --color=always --group-dirs first' # preferred listing
-alias la='lsd -a --color=always --group-dirs first'  # all files and dirs
-alias ll='lsd -l --color=always --group-dirs first'  # long format
+alias la='lsd -a --color=always --group-dirs first' # all files and dirs
+alias ll='lsd -l --color=always --group-dirs first' # long format
 # alias lt='exa -aT --color=always --group-directories-first' # tree listing
 alias l.="lsd -a | egrep '^\.'"
 
@@ -180,15 +181,15 @@ alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias hw='hwinfo --short'                                   # Hardware Info
-alias big="expac -H M '%m\t%n' | sort -h | nl"              # Sort installed packages according to size in MB (expac must be installed)
-alias gitpkg='pacman -Q | grep -i "\-git" | wc -l'			# List amount of -git packages
+alias hw='hwinfo --short' # Hardware Info
+alias big="expac -H M '%m\t%n' | sort -h | nl" # Sort installed packages according to size in MB (expac must be installed)
+alias gitpkg='pacman -Q | grep -i "\-git" | wc -l' # List amount of -git packages
 
 # Get fastest mirrors 
-alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist" 
-alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist" 
-alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist" 
-alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist" 
+alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
+alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
+alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
+alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
 
 # Help people new to Arch
 alias apt='man pacman'
@@ -216,7 +217,7 @@ alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 alias fay="yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk \"{print \$2}\")' | xargs -ro  yay -S"
 ## Import colorscheme from 'wal' asynchronously
 # if type "wal" >> /dev/null 2>&1
-   # cat ~/.cache/wal/sequences
+# cat ~/.cache/wal/sequences
 # end
 
 # direnv hook fish | source
@@ -224,32 +225,32 @@ alias fay="yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk \
 
 ## Run fetch if session is interactive and not inside floaterm
 if status --is-interactive && ! type -q floaterm
-   # paleofetch
-   # colorscript random | skip 1
-  pokemon-colorscripts -r
+    # paleofetch
+    # colorscript random | skip 1
+    pokemon-colorscripts -r
 end
 
 begin
     set --local AUTOJUMP_PATH /usr/share/fish/completions/autojump.fish
     if test -e $AUTOJUMP_PATH
-      source $AUTOJUMP_PATH
+        source $AUTOJUMP_PATH
     end
 end
 
 # begin
-  # set --local SDK_PATH "$HOME/.sdkman/bin/sdkman-init.sh"
-  # if test -e $SDK_PATH
-    # bass source $SDK_PATH
-  # end
+# set --local SDK_PATH "$HOME/.sdkman/bin/sdkman-init.sh"
+# if test -e $SDK_PATH
+# bass source $SDK_PATH
+# end
 # end
 
 # begin
-  # if test -e "/usr/share/nvm/init-nvm.sh"
-    # bass source "/usr/share/nvm/init-nvm.sh"
-  # end
-  # function nvm
-    # bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
-  # end
+# if test -e "/usr/share/nvm/init-nvm.sh"
+# bass source "/usr/share/nvm/init-nvm.sh"
+# end
+# function nvm
+# bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
+# end
 # end
 
 # >>> conda initialize >>>
@@ -258,3 +259,8 @@ end
 # <<< conda initialize <<<
 
 # status --is-login; and status --is-interactive; and exec byobu-launcher
+
+# kubernetes completions
+if command -v kubectl >/dev/null
+    kubectl completion fish | source
+end
