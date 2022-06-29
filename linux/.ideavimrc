@@ -23,7 +23,6 @@ let g:argtextobj_pairs="[:],(:),<:>"
 set showmode
 set so=5
 set incsearch
-set rnu
 set ignorecase
 set smartcase
 set updatetime=50

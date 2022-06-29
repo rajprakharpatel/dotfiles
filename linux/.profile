@@ -11,6 +11,8 @@ alias lv=lvim
 alias winzip="zip -9 -y -r -q"
 alias gitsuperclean='git reset --hard; git clean --force -d -x'
 alias myip='curl ipinfo.io'
+alias glt='git log --oneline --decorate --graph --all'
+alias glta='git log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --all'
 
 
 export TERM=alacritty
@@ -20,7 +22,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 export AMD_VULKAN_ICD=RADV
 export BROWSER=brave
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
-export MAIL=kmail
+export MAIL=thunderbird
 export LC_CTYPE="en_IN.utf8"
 export EDITOR="nvim"
 export VISUAL="nvim"

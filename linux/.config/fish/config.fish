@@ -264,3 +264,7 @@ end
 if command -v kubectl >/dev/null
     kubectl completion fish | source
 end
+
+if command -v thefuck > /dev/null
+    thefuck --alias | source
+end
