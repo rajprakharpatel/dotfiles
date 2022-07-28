@@ -270,6 +270,7 @@ alias personal='cp -Rf /personal/* ~'
 [[ -f ~/.bashrc-personal ]] && . "$HOME/.bashrc-personal"
 
 alias fay="yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk \"{print \$2}\")' | xargs -ro  yay -S"
+alias showDS="loginctl show-session $(loginctl | grep $(whoami) | awk '{print $1}') -p Type"
 # reporting tools - install when not installed
 # install neofetch
 neofetch

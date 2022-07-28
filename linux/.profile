@@ -32,6 +32,7 @@ export COPILOT="574C-8175"
 export PYENV_ROOT="$HOME/.pyenv"
 export SSH_ENV="$HOME/.ssh/agent-environment"
 export NVM_DIR="$HOME/.nvm"
+export NODE_ENV="dev"
 
 # Path eviornment variable
 export PATH="$HOME/.emacs.d/bin:$PATH"
@@ -209,3 +210,7 @@ fi=:\
 *.pdf=:\
 *.nix=:\
 "
+
+
+# Added by Toolbox App
+export PATH="$PATH:/home/rajp/.local/share/JetBrains/Toolbox/scripts"

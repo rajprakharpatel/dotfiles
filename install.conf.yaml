@@ -30,6 +30,7 @@
     ~/.config/khotkeysrc: linux/.config/khotkeysrc
     ~/.config/kwinrc: linux/.config/kwinrc
     ~/.ideavimrc: linux/.ideavimrc
+    ~/.xinitrc: linux/.xinitrc
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
