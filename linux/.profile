@@ -15,7 +15,7 @@ alias glt='git log --oneline --decorate --graph --all'
 alias glta='git log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --all'
 
 
-export TERM=alacritty
+# export TERM=alacritty
 export FONTCONFIG_PATH=/etc/fonts/
 export LC_CTYPE="en_IN.utf8"
 export SDKMAN_DIR="$HOME/.sdkman"

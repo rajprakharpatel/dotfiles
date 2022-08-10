@@ -10,14 +10,14 @@ env:
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  TERM: xterm-256color
+  TERM: alacritty
 
 window:
   # Window dimensions (changes require restart)
   #
   # Specified in number of columns/lines, not pixels.
   # If both are `0`, this setting is ignored.
-  opacity: 0.80
+  opacity: 1.00
   dimensions:
     columns: 100
     lines: 30
@@ -325,15 +325,17 @@ live_config_reload: true
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 shell:
-  program: /usr/bin/fish
-  args:
-    - --login
+  program: /home/rajp/.local/bin/tmux_chooser
+  # args:
+  #   - --login
+  #   - --init-command
+  #   - "tmux attach || tmux"
 
 # Startup directory
 #
 # Directory the shell is started in. If this is unset, or `None`, the working
 # directory of the parent process will be used.
-#working_directory: None
+working_directory: /home/rajp
 
 # WinPTY backend (Windows only)
 #

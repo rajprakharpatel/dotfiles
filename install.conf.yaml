@@ -31,6 +31,7 @@
     ~/.config/kwinrc: linux/.config/kwinrc
     ~/.ideavimrc: linux/.ideavimrc
     ~/.xinitrc: linux/.xinitrc
+    ~/.tmux.conf: linux/.tmux.conf
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]

@@ -4,6 +4,5 @@ edc/bass
 jorgebucaran/nvm.fish
 joseluisq/gitnow
 jorgebucaran/autopair.fish
-acomagu/fish-async-prompt
 Gazorby/fish-abbreviation-tips
-ilancosman/tide
+ilancosman/tide@v5

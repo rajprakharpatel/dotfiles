@@ -144,9 +144,6 @@ end
 
 ## Useful aliases
 # Replace ls with exa or lsd or colorls
-# alias ls='lsd -al --color=always --group-directories-first' # preferred listing
-# alias la='lsd -a --color=always --group-directories-first'  # all files and dirs
-# alias ll='lsd -l --color=always --group-directories-first'  # long format
 alias ls='lsd -al --color=always --group-dirs first' # preferred listing
 alias la='lsd -a --color=always --group-dirs first' # all files and dirs
 alias ll='lsd -l --color=always --group-dirs first' # long format
@@ -237,6 +234,30 @@ begin
     end
 end
 
+######################
+#  custom functions  #
+######################
+
+function forget
+    set -l cmd (commandline | string collect)
+    printf "\nDo you want to forget '%s'? [Y/n]\n" $cmd
+    switch (read | tr A-Z a-z)
+        case n no
+            commandline -f repaint
+            return
+        case y yes ''
+            history delete --exact --case-sensitive -- $cmd
+            commandline ""
+            commandline -f repaint
+    end
+end
+
+###############
+#  Shortcuts  #
+###############
+
+bind -M insert \cg forget
+
 # begin
 # set --local SDK_PATH "$HOME/.sdkman/bin/sdkman-init.sh"
 # if test -e $SDK_PATH
@@ -259,6 +280,34 @@ end
 # <<< conda initialize <<<
 
 # status --is-login; and status --is-interactive; and exec byobu-launcher
+
+function tmux_chooser
+  if test "$TMUX" != ""
+    return
+  end
+
+  set session_count (tmux list-sessions | wc -l)
+  set output_names (tmux list-sessions -F\#S)
+  set i 1
+  echo "Choose the session to attach: "
+  for session in $output_names
+    echo "  $i - $session"
+    set i (math $i + 1)
+  end
+  echo "Or create a new session by entering a name for it"
+  read -P '> ' input
+  if test "$input" = ""
+    tmux
+  else if test "$input" = "nil"
+    return
+  else if begin ;
+          string match -r '^[0-9]+$' "$input" > /dev/null ;
+          and test "$input" -le "$session_count" ; end
+    tmux a -t "$output_names[$input]"
+  else
+    tmux new -s "$input"
+  end
+end
 
 # kubernetes completions
 if command -v kubectl >/dev/null
