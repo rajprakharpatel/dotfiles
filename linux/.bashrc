@@ -296,6 +296,6 @@ if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integr
 ############################
 #  Ensure tmux is running  #
 ############################
-if [[ ! -v TMUX && $TERM_PROGRAM != "vscode"  && $TERMINAL_EMULATOR != "JetBrains-JediTerm" ]]; then
-	tmux_chooser && exit
-fi
+# if [[ ! -v TMUX && $TERM_PROGRAM != "vscode"  && $TERMINAL_EMULATOR != "JetBrains-JediTerm" ]]; then
+# 	tmux_chooser && exit
+# fi
