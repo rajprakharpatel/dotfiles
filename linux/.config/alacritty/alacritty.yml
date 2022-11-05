@@ -73,11 +73,6 @@ window:
     # General application class
     general: Alacritty
 
-  # GTK theme variant (Linux/BSD only)
-  #
-  # Override the variant of the GTK theme. Commonly supported values are `dark` and `light`.
-  # Set this to `None` to use the default theme variant.
-  gtk_theme_variant: dark
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -286,6 +281,7 @@ save_to_clipboard: true
 
 # Allow terminal applications to change Alacritty's window title.
 window.dynamic_title: true
+window.decorations_theme_variant: dark
 
 cursor:
   # Cursor style
