@@ -25,7 +25,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-dark+)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -53,68 +53,103 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+(defun org-export-output-file-name-modified (orig-fun extension &optional subtreep pub-dir)
+  (unless pub-dir
+    (setq pub-dir "exported-org-files")
+    (unless (file-directory-p pub-dir)
+      (make-directory pub-dir)))
+  (apply orig-fun extension subtreep pub-dir nil))
+(advice-add 'org-export-output-file-name :around #'org-export-output-file-name-modified)
+
+;; package configurations
+(setq centaur-tabs-style "slant")
+
+;;; Fix junk characters in shell-mode
+(add-hook 'shell-mode-hook
+          'ansi-color-for-comint-mode-on)
+
+(evil-global-set-key 'motion "j" 'evil-next-visual-line)
+(evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+
+;;; org setup ----
+;;; Replace list hyphen with dot
+(setq org-ellipsis " ▾")
 (setq org-hide-emphasis-markers t)
- (font-lock-add-keywords 'org-mode
-                          '(("^ *\\([-]\\) "
-                             (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+(font-lock-add-keywords 'org-mode
+                        '(("^ *\\([-]\\) "
+                        (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
 
-  (let* ((variable-tuple
-          (cond ((x-list-fonts "ETBembo")         '(:font "ETBembo"))
-                ((x-list-fonts "Source Sans Pro") '(:font "Source Sans Pro"))
-                ((x-list-fonts "Lucida Grande")   '(:font "Lucida Grande"))
-                ((x-list-fonts "Verdana")         '(:font "Verdana"))
-                ((x-family-fonts "Sans Serif")    '(:family "Sans Serif"))
-                (nil (warn "Cannot find a Sans Serif Font.  Install Source Sans Pro."))))
-         (base-font-color     (face-foreground 'default nil 'default))
-         (headline           `(:inherit default :weight bold :foreground ,base-font-color)))
+(org-babel-do-load-languages
+'org-babel-load-languages
+'((emacs-lisp . t)
+  (python . t)
+  (lua . t)))
 
-    (custom-theme-set-faces
-     'user
-     `(org-level-8 ((t (,@headline ,@variable-tuple))))
-     `(org-level-7 ((t (,@headline ,@variable-tuple))))
-     `(org-level-6 ((t (,@headline ,@variable-tuple))))
-     `(org-level-5 ((t (,@headline ,@variable-tuple))))
-     `(org-level-4 ((t (,@headline ,@variable-tuple :height 1.1))))
-     `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.25))))
-     `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.5))))
-     `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.75))))
-     `(org-document-title ((t (,@headline ,@variable-tuple :height 2.0 :underline nil))))))
+(setq org-confirm-babel-evaluate nil)
+(push '("conf-unix" . conf-unix) org-src-lang-modes)
 
-(custom-theme-set-faces
-  'user
-  '(variable-pitch ((t (:family "ETBembo" :height 180 :weight thin))))
-  '(fixed-pitch ((t ( :family "Hack Nerd Font" :height 160)))))
+(require 'org-tempo)
+(add-to-list 'org-structure-template-alist '("sh" . "src shell"))
+(add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+(add-to-list 'org-structure-template-alist '("py" . "src python"))
+;; Set faces for heading levels
+(dolist (face '((org-level-1 . 1.2)
+                (org-level-2 . 1.1)
+                (org-level-3 . 1.05)
+                (org-level-4 . 1.0)
+                (org-level-5 . 1.1)
+                (org-level-6 . 1.1)
+                (org-level-7 . 1.1)
+                (org-level-8 . 1.1)))
+(set-face-attribute (car face) nil :font "Cantarell" :weight 'regular :height (cdr face)))
 
-(add-hook 'org-mode-hook 'variable-pitch-mode)
-(add-hook 'org-mode-hook 'visual-line-mode)
+;; Ensure that anything that should be fixed-pitch in Org files appears that way
+(set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
+(set-face-attribute 'org-code nil   :inherit '(shadow fixed-pitch))
+(set-face-attribute 'org-table nil   :inherit '(shadow fixed-pitch))
+(set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
+;; (set-face-attribute 'org-link nil :inherit 'fixed-pitch)
+(set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
+(set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
+(set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch)
 
-(custom-theme-set-faces
-  'user
-  '(org-block ((t (:inherit fixed-pitch, :height 1))))
-  '(org-code ((t (:inherit (shadow fixed-pitch)))))
-  '(org-document-info ((t (:foreground "dark orange"))))
-  '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
-  '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
-  '(org-link ((t (:foreground "royal blue" :underline t))))
-  '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
-  '(org-property-value ((t (:inherit fixed-pitch))) t)
-  '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
-  '(org-table ((t (:inherit fixed-pitch :foreground "#83a598"))))
-  '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
-  '(org-verbatim ((t (:inherit (shadow fixed-pitch))))))
+;; Automatically tangle our Emacs.org config file when we save it
+(defun rajp/org-babel-tangle-config ()
+(when (string-equal (buffer-file-name)
+                (expand-file-name "lorem/ipsum"))
+;; Dynamic scoping to the rescue
+(let ((org-confirm-babel-evaluate nil))
+(org-babel-tangle))))
 
-;(use-package! org-bullets
-;  :config
-;  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'rajp/org-babel-tangle-config)))
 
-;(use-package! org-roam
-;  :ensure t
-;  :init
-;  (setq org-roam-v2-ack t)
-;  :custom
-;  (org-roam-directory "~/org/Notes")
-;  :bind (("C-c n l" . org-roam-buffer-toggle)
-;         ("C-c n f" . org-roam-node-find)
-;         ("C-c n i" . org-roam-node-insert))
-;  :config
-;  (org-roam-setup))
+;; org-roam
+;; (setq org-id-extra-files (org-roam--list-all-files))
+(defun ngm/org-roam--backlinks-list (file)
+  (if (org-roam--org-roam-file-p file)
+      (--reduce-from
+       (concat acc (format "- [[file:%s][%s]]\n"
+                           (file-relative-name (car it) org-roam-directory)
+                           (org-roam--get-title-or-slug (car it))))
+       "" (org-roam-db-query [:select [from] :from links :where (= to $s1)] file))
+    ""))
+
+(defun ngm/org-export-preprocessor (backend)
+  (let ((links (ngm/org-roam--backlinks-list (buffer-file-name))))
+    (unless (string= links "")
+      (save-excursion
+        (goto-char (point-max))
+        (insert (concat "\n* Backlinks\n") links)))))
+
+(add-hook 'org-export-before-processing-hook 'ngm/org-export-preprocessor)
+
+; Org Mode
+(add-hook 'org-mode-hook (lambda nil
+          (auto-fill-mode 1)
+          (set-fill-column 78)))
+
+(elcord-mode)
+(setq org-image-actual-width (list 550))
+
+(provide 'config)
+;;; config.el ends here

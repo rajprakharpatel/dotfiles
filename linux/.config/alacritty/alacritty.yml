@@ -3,23 +3,24 @@
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
-env:
+# env:
   # TERM variable
   #
   # This value is used to set the `$TERM` environment variable for
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  TERM: xterm-256color
+  # TERM: xterm-256color
 
 window:
   # Window dimensions (changes require restart)
   #
   # Specified in number of columns/lines, not pixels.
   # If both are `0`, this setting is ignored.
-  #dimensions:
-  #  columns: 0
-  #  lines: 0
+  opacity: 1.00
+  dimensions:
+    columns: 100
+    lines: 30
 
   # Window position (changes require restart)
   #
@@ -72,11 +73,6 @@ window:
     # General application class
     general: Alacritty
 
-  # GTK theme variant (Linux/BSD only)
-  #
-  # Override the variant of the GTK theme. Commonly supported values are `dark` and `light`.
-  # Set this to `None` to use the default theme variant.
-  gtk_theme_variant: dark
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -89,7 +85,7 @@ scrolling:
 # Font configuration
 font:
   # Normal (roman) font face
-  size: 7.3
+  size: 8
   normal:
     # Font family
     #
@@ -97,8 +93,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: SauceCodePro Nerd Font
-    style: Regular
+    family: FantasqueSansMono Nerd Font Mono
 
     # The `style` can be specified to pick a specific face.
     #style: Regular
@@ -109,8 +104,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: SauceCodePro Nerd Font
-    style: Bold
+    family: FantasqueSansMono Nerd Font Mono
 
     # The `style` can be specified to pick a specific face.
     #style: Bold
@@ -121,8 +115,7 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: SauceCodePro Nerd Font
-    style: Italic
+    family: FantasqueSansMono Nerd Font Mono
 
     # The `style` can be specified to pick a specific face.
     #style: Italic
@@ -133,21 +126,19 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: SauceCodePro Nerd Font
-    style: Bold Italic
+    family: FantasqueSansMono Nerd Font Mono
 
     # The `style` can be specified to pick a specific face.
     #style: Bold Italic
 
     # Point size
-    size: 7.5
+    size: 10.5
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
   #offset:
   #  x: 0
   #  y: 0
-
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the right,
   # increasing `y` moves the glyph upwards.
@@ -280,7 +271,7 @@ font:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: .77
+# window.opacity: 1
 
 #selection:
 #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
@@ -290,6 +281,7 @@ save_to_clipboard: true
 
 # Allow terminal applications to change Alacritty's window title.
 window.dynamic_title: true
+window.decorations_theme_variant: dark
 
 cursor:
   # Cursor style
@@ -329,15 +321,17 @@ live_config_reload: true
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 shell:
-  program: /usr/bin/fish
-  args:
-    - --login
+  program: /home/rajp/.local/bin/tmux_chooser
+  # args:
+  #   - --login
+  #   - --init-command
+  #   - "tmux attach || tmux"
 
 # Startup directory
 #
 # Directory the shell is started in. If this is unset, or `None`, the working
 # directory of the parent process will be used.
-#working_directory: None
+working_directory: /home/rajp
 
 # WinPTY backend (Windows only)
 #
@@ -350,7 +344,7 @@ shell:
 #winpty_backend: false
 
 # Send ESC (\x1b) before characters when alt is pressed.
-#alt_send_esc: true
+alt_send_esc: true
 
 mouse:
   # Click settings
@@ -525,15 +519,15 @@ mouse:
 # at once.
 key_bindings:
   # (Windows, Linux, and BSD only)
-  - { key: Escape, mods: Shift, action: ToggleViMode }
-  - { key: V, mods: Control|Shift, action: Paste }
-  - { key: C, mods: Control|Shift, action: Copy }
-  - { key: Insert, mods: Shift, action: PasteSelection }
-  - { key: Key0, mods: Control, action: ResetFontSize }
-  - { key: Equals, mods: Control, action: IncreaseFontSize }
-  - { key: Plus, mods: Control, action: IncreaseFontSize }
-  - { key: Minus, mods: Control, action: DecreaseFontSize }
-  - { key: Minus, mods: Control, action: DecreaseFontSize }
+  - {key: Escape, mods: Shift, action: ToggleViMode}
+  - {key: V, mods: Control|Shift, action: Paste}
+  - {key: C, mods: Control|Alt, action: Copy}
+  - {key: Insert, mods: Shift, action: PasteSelection}
+  - {key: Key0, mods: Control, action: ResetFontSize}
+  - {key: Equals, mods: Control, action: IncreaseFontSize}
+  - {key: Plus, mods: Control, action: IncreaseFontSize}
+  - {key: Minus, mods: Control, action: DecreaseFontSize}
+
 #debug:
 # Display the time it takes to redraw each frame.
 #render_timer: false
@@ -555,28 +549,51 @@ key_bindings:
 # Print all received window events.
 #print_events: false
 
-# colors:
-# primary:
-# background: '0x0a1124'
-# foreground: '0xedc29a'
-# cursor:
-# text:       '0x0a1124'
-# cursor:     '0xedc29a'
-# normal:
-# black:      '0x0a1124'
-# red:        '0x63504E'
-# green:      '0xA33A4E'
-# yellow:     '0xEB3247'
-# blue:       '0xF35743'
-# magenta:    '0xF6A73B'
-# cyan:       '0xFAD42E'
-# white:      '0xedc29a'
-# bright:
-# black:      '0xa5876b'
-# red:        '0x63504E'
-# green:      '0xA33A4E'
-# yellow:     '0xEB3247'
-# blue:       '0xF35743'
-# magenta:    '0xF6A73B'
-# cyan:       '0xFAD42E'
-# white:      '0xedc29a'
+colors:
+  # COLORSCHEME: aura.yml
+  # Default colors
+  transparent_background_colors: true
+  primary:
+    background: '#15141b'
+    foreground: '#edecee'
+
+  normal:
+    black: '#110f18'
+    red: '#ff6767'
+    green: '#61ffca'
+    yellow: '#ffca85'
+    blue: '#a277ff'
+    magenta: '#a277ff'
+    cyan: '#61ffca'
+    white: '#edecee'
+
+  # Bright colors
+  bright:
+    black: '#4d4d4d'
+    red: '#ff6767'
+    green: '#61ffca'
+    yellow: '#ffca85'
+    blue: '#a277ff'
+    magenta: '#a277ff'
+    cyan: '#61ffca'
+    white: '#edecee'
+  cursor:
+    cursor: '#a277ff'
+
+  # Normal colors
+  indexed_colors:
+    - {index: 16, color: '0xeb8500'}
+    - {index: 17, color: '0x826b28'}
+    - {index: 18, color: '0xc0c0c0'}
+    - {index: 19, color: '0xc0c0c0'}
+    - {index: 20, color: '0x808080'}
+    - {index: 21, color: '0x404040'}
+  dim:
+    black: '0x232323'
+    red: '0x74423f'
+    green: '0x5e6547'
+    yellow: '0x8b7653'
+    blue: '0x556b79'
+    magenta: '0x6e4962'
+    cyan: '0x5c8482'
+    white: '0x828282'
