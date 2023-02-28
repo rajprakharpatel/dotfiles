@@ -61,8 +61,9 @@ _zlf_handler() {
 zle -N _zlf_handler
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/rajprakhar/.sdkman"
-[[ -s "/home/rajprakhar/.sdkman/bin/sdkman-init.sh" ]] && source "/home/rajprakhar/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 [[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
 
+[[ -s "/usr/share/nvm/init-nvm.sh" ]] && & source /usr/share/nvm/init-nvm.sh

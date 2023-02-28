@@ -115,8 +115,8 @@ cmd touch %touch "$@"
 map a push :touch<space>
 
 # define a custom 'rename' command without prompt for overwrite
-cmd rename %[ -e $1 ] && printf "file exists" || mv $f $1
-map r push :rename<space>
+# cmd rename %[ -e $1 ] && printf "file exists" || mv $f $1
+# map r push :rename<space>
 
 # make sure trash folder exists
 # %mkdir -p ~/.trash
@@ -127,14 +127,14 @@ map r push :rename<space>
 
 # trash-cli integration
 cmd trash %trash-put $fx
-# define a custom 'delete' command
-cmd delete ${{
-    set -f
-    printf "$fx\n"
-    printf "delete?[y/n]"
-    read ans
-    [ $ans = "y" ] && rm -rf $fx
-}}
+# define a custom 'delete' command(already exists)
+# cmd delete ${{
+    # set -f
+    # printf "$fx\n"
+    # printf "delete?[y/n]"
+    # read ans
+    # [ $ans = "y" ] && rm -rf $fx
+# }}
 
 # use '<delete>' key for either 'trash' or 'delete' command
 map <delete> trash

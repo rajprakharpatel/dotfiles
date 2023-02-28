@@ -1,24 +1,49 @@
 #!/bin/bash
 
-source ~/.profile
+source "$HOME/.profile"
 
-export LC_CTYPE="en_IN.utf8"
-export SDKMAN_DIR="/home/rajprakhar/.sdkman"
-[[ -s "/home/rajprakhar/.sdkman/bin/sdkman-init.sh" ]] && source "/home/rajprakhar/.sdkman/bin/sdkman-init.sh"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-eval "$(fasd --init auto)"
-_fasd_bash_hook_cmd_complete v m j o
+# eval "$(fasd --init auto)"
+# _fasd_bash_hook_cmd_complete v m j o
 
-source "$HOME/bash_completion.d/gradle-completion.bash"
-eval "$(direnv hook bash)"
+[[ -s "$HOME/bash_completion.d/gradle-completion.bash" ]] && source "$HOME/bash_completion.d/gradle-completion.bash"
+
+# eval "$(direnv hook bash)"
 
 if command -v floaterm &>/dev/null; then
-    fish
+  fish
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# SSH_ENV="$HOME/.ssh/agent-environment"
+
+function start_agent {
+  echo "Initialising new SSH agent..."
+  /usr/bin/ssh-agent | sed 's/^echo/#echo/' >"${SSH_ENV}"
+  echo succeeded
+  chmod 600 "${SSH_ENV}"
+  . "${SSH_ENV}" >/dev/null
+  /usr/bin/ssh-add
+}
+
+# Source SSH settings, if applicable
+
+if [ -f "${SSH_ENV}" ]; then
+  . "${SSH_ENV}" >/dev/null
+  #ps ${SSH_AGENT_PID} doesn't work under cywgin
+  ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ >/dev/null || {
+    start_agent
+  }
+else
+  start_agent
+fi
+
+# export NVM_DIR="$HOME/.nvm"
+[[ -s "/usr/share/nvm/init-nvm.sh" ]] && source /usr/share/nvm/init-nvm.sh
 
 [[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
 
+# Pyenv initialization
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init --path)"
+fi
