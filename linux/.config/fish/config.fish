@@ -317,3 +317,7 @@ end
 if command -v thefuck > /dev/null
     thefuck --alias | source
 end
+
+if command -v pyenv > /dev/null
+    pyenv init - | source
+end
