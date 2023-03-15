@@ -66,9 +66,25 @@ map O $mimeopen --ask $f
 # use either file extensions and/or mime types here. Below uses an editor for
 # text files and a file opener for the rest.
 cmd open ${{
-    case $(file --mime-type $f -b) in
-        text/*) $EDITOR $fx;;
-        *) for f in $fx; do setsid xdg-open $f > /dev/null 2> /dev/null & done;;
+    # case $(file --mime-type $f -b) in
+        # text/*) $EDITOR $fx;;
+        # *) for f in $fx; do setsid xdg-open $f > /dev/null 2> /dev/null & done;;
+    # esac
+    case "$f" in
+        *.tar.bz|*.tar.bz2|*.tbz|*.tbz2|*.tar.gz|*.tgz|*.tar.xz|*.txz|*.zip|*.rar|*.iso)
+            mntdir="$f-archivemount"
+            [ ! -d "$mntdir" ] && {
+                mkdir "$mntdir"
+                archivemount "$f" "$mntdir"
+                echo "$mntdir" >> "/tmp/__lf_archivemount_$id"
+            }
+            lf -remote "send $id cd \"$mntdir\""
+            lf -remote "send $id reload"
+            ;;
+        *)
+            for f in $fx; do
+                $OPENER $f > /dev/null 2> /dev/null &
+            done;;
     esac
 }}
 
@@ -333,6 +349,19 @@ cmd fzf_jump ${{
 }}
 map <c-f> :fzf_jump
 
+# Combining fzf and ripfrep
+cmd fzf_search ${{
+    res="$( \
+        RG_PREFIX="rg --column --line-number --no-heading --color=always \
+            --smart-case "
+        FZF_DEFAULT_COMMAND="$RG_PREFIX ''" \
+            fzf --bind "change:reload:$RG_PREFIX {q} || true" \
+            --ansi --layout=reverse --header 'Search in files' \
+            | cut -d':' -f1
+    )"
+    [ ! -z "$res" ] && lf -remote "send $id select \"$res\""
+}}
+map gs :fzf_search
 
 # Some zsh config which i am never going to use
 cmd zle-cd %printf 'cd %q && zle reset-prompt\n' "$PWD" >&$ZLE_FIFO
@@ -357,3 +386,13 @@ cmd zle-init :{{
 
 &[[ -n "$ZLE_FIFO" ]] && lf -remote "send $id zle-init"
 
+# zoxide integration
+cmd z %{{
+	result="$(zoxide query --exclude $PWD $@)"
+	lf -remote "send $id cd $result"
+}}
+
+cmd zi ${{
+	result="$(zoxide query -i)"
+	lf -remote "send $id cd $result"
+}}

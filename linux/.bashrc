@@ -225,9 +225,6 @@ alias probe="sudo -E hw-probe -all -upload"
 alias ssn="sudo shutdown now"
 alias sr="sudo reboot"
 
-#update betterlockscreen images
-alias bls="betterlockscreen -u /usr/share/backgrounds/arcolinux/"
-
 #give the list of all installed desktops - xsessions desktops
 alias xd="ls /usr/share/xsessions"
 
@@ -261,16 +258,44 @@ ex ()
 #remove
 alias rmgitcache="rm -r ~/.cache/git"
 
-#moving your personal files and folders from /personal to ~
-alias personal='cp -Rf /personal/* ~'
-
 #create a file called .bashrc-personal and put all your personal aliases
 #in there. They will not be overwritten by skel.
 
 [[ -f ~/.bashrc-personal ]] && . "$HOME/.bashrc-personal"
 
 alias fay="yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk \"{print \$2}\")' | xargs -ro  yay -S"
+#update betterlockscreen images
+alias bls="betterlockscreen -u /usr/share/backgrounds/arcolinux/"
+
 alias showDS="loginctl show-session $(loginctl | grep $(whoami) | awk '{print $1}') -p Type"
+#update betterlockscreen images
+alias bls="betterlockscreen -u /usr/share/backgrounds/arcolinux/"
+
+lfcd() {
+    tmp="$(mktemp)"
+    fid="$(mktemp)"
+    lf -command '$printf $id > '"$fid"'' -last-dir-path="$tmp" "$@"
+    if="$(cat "$fid")"
+    archivemount_dir="/tmp/__lf_archivemount_$id"
+    if [ -f "$archivemount_dir" ]; then
+        cat "$archivemount_dir" | \
+            while read -r line; do
+                sudo umount "$line"
+                rmdir "$line"
+            done
+        rm -f "$archivemount_dir"
+    fi
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp"
+        if [ -d "$dir" ]; then
+            if [ "$dir" != "$(pwd)" ]; then
+                cd "$dir"
+            fi
+        fi
+    fi
+}
+
 # reporting tools - install when not installed
 # install neofetch
 neofetch
@@ -299,3 +324,8 @@ if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integr
 # if [[ ! -v TMUX && $TERM_PROGRAM != "vscode"  && $TERMINAL_EMULATOR != "JetBrains-JediTerm" ]]; then
 # 	tmux_chooser && exit
 # fi
+
+# zoxide integration
+if command -v "zoxide" > /dev/null
+    then eval "$(zoxide init --cmd j bash)"
+fi

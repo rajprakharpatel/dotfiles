@@ -321,11 +321,11 @@ live_config_reload: true
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 shell:
-  program: /home/rajp/.local/bin/tmux_chooser
-  # args:
-  #   - --login
-  #   - --init-command
-  #   - "tmux attach || tmux"
+  program: /usr/bin/fish
+  args:
+    - --login
+    # - --init-command
+    # - "tmux attach || tmux"
 
 # Startup directory
 #

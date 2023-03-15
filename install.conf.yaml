@@ -4,6 +4,13 @@
 
 - clean: ["~"]
 
+- create:
+    - ~/.config/alacritty
+    - ~/.config/fish
+    - ~/.config/fish/conf.d
+    - ~/.config/lf
+    - ~/.doom.d
+
 - link:
     ~/.bashrc: linux/.bashrc
     ~/.zshrc: linux/.zshrc
@@ -15,6 +22,7 @@
     ~/.config/alacritty/alacritty.yml: linux/.config/alacritty/alacritty.yml
     # ~/.config/fish/functions/fish_prompt.fish: linux/.config/fish/functions/fish_prompt.fish
     ~/.config/fish/config.fish: linux/.config/fish/config.fish
+    ~/.config/fish/conf.d/profile.fish: linux/.config/fish/conf.d/profile.fish
     ~/.config/fish/fish_plugins: linux/.config/fish/fish_plugins
     ~/.config/lf/lfrc: linux/.config/lf/lfrc
     # ~/.config/i3/config: linux/.config/i3/config

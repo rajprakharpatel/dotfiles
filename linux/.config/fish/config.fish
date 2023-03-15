@@ -1,4 +1,4 @@
-## Hide welcome message
+﻿## Hide welcome message
 set fish_greeting
 set VIRTUAL_ENV_DISABLE_PROMPT 1
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
@@ -11,11 +11,6 @@ end
 # Set settings for https://github.com/franciscolourenco/done
 set -U __done_min_cmd_duration 10000
 set -U __done_notification_urgency_level low
-
-## Source .profile to apply its values
-if test -f ~/.profile
-    source ~/.profile
-end
 
 ## Add ~/.local/bin to PATH
 if test -d ~/.local/bin
@@ -320,4 +315,8 @@ end
 
 if command -v pyenv > /dev/null
     pyenv init - | source
+end
+
+if command -v zoxide > /dev/null
+   zoxide init --cmd j fish | source
 end

@@ -17,6 +17,7 @@ alias glta='git log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %C
 
 # export TERM=alacritty
 export LC_ALL="en_IN.utf8"
+export LANG="en_IN.utf8"
 export LANGUAGE="en_IN.utf8"
 export FONTCONFIG_PATH=/etc/fonts/
 export LC_CTYPE="en_IN.utf8"
