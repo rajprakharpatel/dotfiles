@@ -43,4 +43,4 @@
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
-    - [pacman -Qe > ~/dotfiles/linux/pac.list]
+    - [pacman -Qe > ~/dotfiles/linux/pac.list, Updating Installed package list]

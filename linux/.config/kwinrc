@@ -53,11 +53,29 @@ Drag=85
 Stiffness=10
 WobblynessLevel=1
 
+[Effect-blur]
+BlurStrength=5
+NoiseStrength=4
+
+[Effect-diminactive]
+DimFullScreen=false
+Strength=10
+
 [Effect-kwin4_effect_translucency]
 MoveResize=88
 
+[Effect-magiclamp]
+AnimationDuration=60
+
+[Effect-overview]
+BorderActivate=1
+
+[Effect-windowview]
+BorderActivate=5
+BorderActivateAll=3
+
 [ElectricBorders]
-BottomLeft=ShowDesktop
+TopLeft=ApplicationLauncher
 
 [KDE]
 AnimationDurationFactor=0.25
@@ -79,7 +97,7 @@ Mode=Constant
 NightTemperature=4400
 
 [Plugins]
-blurEnabled=false
+blurEnabled=true
 contrastEnabled=true
 coverswitchEnabled=true
 cubeEnabled=true
@@ -87,7 +105,7 @@ diminactiveEnabled=true
 fallapartEnabled=true
 flipswitchEnabled=true
 force-decorations-gtk3Enabled=false
-forceblurEnabled=false
+forceblurEnabled=true
 glideEnabled=true
 hide-titlesEnabled=false
 highlightwindowEnabled=true
@@ -126,8 +144,22 @@ screenGapTop=5
 tileLayoutGap=5
 
 [TabBox]
-BorderActivate=9
 TouchBorderActivate=9
+
+[Tiling]
+padding=4
+
+[Tiling][213a9620-187e-58a6-b80b-85d8fb95dfce]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][4656e9c7-29d2-5198-aef7-e64495a298e9]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][5b7a5ba4-43cc-5910-8e98-f358f9d54b43]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][de817c6e-fb52-5a07-9b7b-a6ba354e98c5]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Windows]
 AutoRaise=true
@@ -135,12 +167,9 @@ AutoRaiseInterval=350
 BorderlessMaximizedWindows=true
 DelayFocusInterval=0
 ElectricBorders=1
-FocusPolicy=FocusFollowsMouse
 FocusStealingPreventionLevel=2
 SnapOnlyWhenOverlapping=true
 
 [org.kde.kdecoration2]
 ButtonsOnLeft=MFBS
 ButtonsOnRight=IAX
-library=org.kde.kwin.aurorae
-theme=__aurorae__svg__Sweet-Dark

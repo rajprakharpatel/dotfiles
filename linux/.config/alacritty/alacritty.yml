@@ -93,7 +93,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: FantasqueSansMono Nerd Font Mono
+    family: Hack
 
     # The `style` can be specified to pick a specific face.
     #style: Regular

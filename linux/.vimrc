@@ -8,6 +8,7 @@
 " set UTF encoding
 set updatetime=50
 set enc=utf-8
+scriptencoding utf-8
 set noswapfile
 set nobackup
 set fenc=utf-8
@@ -41,6 +42,7 @@ set so=5
 "let left right keys to switch to different line at end of line
 set whichwrap=<,>,[,]
 " display tabs as '>---' and trailing spaces as '-'
+set list
 set listchars=tab:>-,trail:-
 "let terminal detect mouse input
 set mouse=a
