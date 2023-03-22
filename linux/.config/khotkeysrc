@@ -1022,7 +1022,7 @@ Type=GESTURE
 [Data_4]
 Comment=Comment
 DataCount=3
-Enabled=true
+Enabled=false
 Name=variety
 SystemGroup=0
 Type=ACTION_DATA_GROUP
