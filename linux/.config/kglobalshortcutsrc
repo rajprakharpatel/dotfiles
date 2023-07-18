@@ -1,3 +1,6 @@
+[$Version]
+update_info=bismuth_shortcuts_category.upd:bismuth-shortcuts-category,bismuth_shortcuts_from_kwin.upd:bismuth-shortcuts-from-kwin
+
 [ActivityManager]
 _k_friendly_name=Activity Manager
 switch-to-activity-0aadd59d-9271-49bb-93ac-f9f9393dcc68=none,none,Switch to activity "Default"
@@ -11,11 +14,49 @@ _launch=Alt+Shift+T,none,Alacritty
 
 [KDE Keyboard Layout Switcher]
 Switch keyboard layout to English (India, with rupee)=none,none,Switch keyboard layout to English (India\\, with rupee)
-Switch to Next Keyboard Layout=none,none,Switch to Next Keyboard Layout
+Switch to Next Keyboard Layout=none,Meta+Alt+K,Switch to Next Keyboard Layout
 _k_friendly_name=Keyboard Layout Switcher
 
 [KDE Keyboard Layout Switcher][Global Shortcuts]
 _k_friendly_name=
+
+[bismuth]
+_k_friendly_name=Window Tiling
+decrease_master_size=none,,Decrease Master Area Size
+decrease_master_win_count=none,Meta+[,Decrease Master Area Window Count
+decrease_window_height=none,Meta+Ctrl+K,Decrease Window Height
+decrease_window_width=none,Meta+Ctrl+H,Decrease Window Width
+focus_bottom_window=none,Meta+J,Focus Bottom Window
+focus_left_window=none,Meta+H,Focus Left Window
+focus_next_window=none,,Focus Next Window
+focus_prev_window=none,,Focus Previous Window
+focus_right_window=none,Meta+L,Focus Right Window
+focus_upper_window=none,Meta+K,Focus Upper Window
+increase_master_size=none,,Increase Master Area Size
+increase_master_win_count=none,Meta+],Increase Master Area Window Count
+increase_window_height=none,Meta+Ctrl+J,Increase Window Height
+increase_window_width=none,Meta+Ctrl+L,Increase Window Width
+move_window_to_bottom_pos=none,Meta+Shift+J,Move Window Down
+move_window_to_left_pos=none,Meta+Shift+H,Move Window Left
+move_window_to_next_pos=none,,Move Window to the Next Position
+move_window_to_prev_pos=none,,Move Window to the Previous Position
+move_window_to_right_pos=none,Meta+Shift+L,Move Window Right
+move_window_to_upper_pos=none,Meta+Shift+K,Move Window Up
+next_layout=none,Meta+\\\\,Switch to the Next Layout
+prev_layout=none,Meta+|,Switch to the Previous Layout
+push_window_to_master=none,Meta+Return,Push Active Window to Master Area
+rotate=none,Meta+R,Rotate
+rotate_part=none,Meta+Shift+R,Rotate Part
+rotate_reverse=none,,Rotate (Reverse)
+toggle_float_layout=none,Meta+Shift+F,Toggle Floating Layout
+toggle_monocle_layout=none,Meta+M,Toggle Monocle Layout
+toggle_quarter_layout=none,,Toggle Quarter Layout
+toggle_spiral_layout=none,,Toggle Spiral Layout
+toggle_spread_layout=none,,Toggle Spread Layout
+toggle_stair_layout=none,,Toggle Stair Layout
+toggle_three_column_layout=none,,Toggle Three Column Layout
+toggle_tile_layout=none,Meta+T,Toggle Tile Layout
+toggle_window_floating=Meta+Space,Meta+F,Toggle Active Window Floating
 
 [brave-browser.desktop]
 _k_friendly_name=Brave
@@ -43,11 +84,7 @@ display=Display\tMeta+P,Display\tMeta+P,Switch Display
 
 [khotkeys]
 _k_friendly_name=Custom Shortcuts Service
-{333be27b-9a95-47f0-968f-8199b2e75c8f}=Ctrl+Alt+T,none,Launch Konsole
-{54407f70-bed2-4777-ba58-0d85f1b65636}=Alt+N,none,varietyNext
-{c65f5d23-8695-4206-b065-1274a6dbf03a}=Alt+F,none,varietyFaviourate
 {d03619b6-9b3c-48cc-9d9c-a2aadb485550}=none,none,Search
-{ed47e6be-a1f9-4c57-84bf-19a1d2dfbfc5}=Alt+P,none,varietyPrevious
 
 [kitty.desktop]
 _k_friendly_name=kitty
@@ -93,23 +130,23 @@ Kill Window=Ctrl+Alt+Esc,Meta+Ctrl+Esc,Kill Window
 Krohnkite: Cycle Layout=none,none,
 Krohnkite: Decrease=Meta+D,none,
 Krohnkite: Down/Next=none,none,
-Krohnkite: Float=Meta+Space,none,
-Krohnkite: Float All=Meta+Shift+Space,none,
+Krohnkite: Float=none,none,
+Krohnkite: Float All=none,none,
 Krohnkite: Floating Layout=Meta+Shift+F,none,
 Krohnkite: Grow Height=Meta+Ctrl+J,none,
 Krohnkite: Grow Width=Meta+Ctrl+L,none,
 Krohnkite: Increase=Meta+I,none,
 Krohnkite: Left=none,none,
 Krohnkite: Monocle Layout=none,none,
-Krohnkite: Move Down/Next=Meta+Shift+J,none,
-Krohnkite: Move Left=Meta+Shift+H,none,
-Krohnkite: Move Right=Meta+Shift+L,none,
-Krohnkite: Move Up/Prev=Meta+Shift+K,none,
-Krohnkite: Next Layout=Meta+\\\\,none,
-Krohnkite: Previous Layout=Meta+|,none,
+Krohnkite: Move Down/Next=none,none,
+Krohnkite: Move Left=none,none,
+Krohnkite: Move Right=none,none,
+Krohnkite: Move Up/Prev=none,none,
+Krohnkite: Next Layout=none,none,
+Krohnkite: Previous Layout=none,none,
 Krohnkite: Quarter Layout=none,none,
 Krohnkite: Right=none,none,
-Krohnkite: Rotate=Meta+R,none,
+Krohnkite: Rotate=none,none,
 Krohnkite: Rotate Part=Meta+Shift+R,none,
 Krohnkite: Set master=Meta+M,none,
 Krohnkite: Shrink Height=Meta+Ctrl+K,none,
@@ -119,6 +156,7 @@ Krohnkite: Stair Layout=none,none,
 Krohnkite: Three Column Layout=none,none,
 Krohnkite: Tile Layout=Meta+T,none,
 Krohnkite: Up/Prev=none,none,
+Move Tablet to Next Output=none,none,Move the tablet to the next output
 MoveMouseToCenter=Meta+F6,Meta+F6,Move Mouse to Center
 MoveMouseToFocus=Meta+F5,Meta+F5,Move Mouse to Focus
 MoveZoomDown=none,none,Move Zoomed Area Downwards
@@ -281,7 +319,7 @@ activate entry 12=Meta+X,Meta+X,Activate Entry 12
 activate entry 13=Meta+C,Meta+C,Activate Entry 13
 activate entry 14=Meta+V,Meta+V,Activate Entry 14
 activate entry 15=none,Meta+B,Activate Entry 15
-activate entry 16=Meta+N,Meta+N,Activate Entry 16
+activate entry 16=none,Meta+N,Activate Entry 16
 activate entry 17=none,Meta+M,Activate Entry 17
 activate entry 18=Meta+\\,,Meta+\\,,Activate Entry 18
 activate entry 19=none,Meta+.,Activate Entry 19
@@ -335,6 +373,10 @@ playpausemedia=Media Play,Media Play,Play/Pause media playback
 previousmedia=Media Previous,Media Previous,Media playback previous
 stopmedia=Media Stop,Media Stop,Stop media playback
 
+[neovide.desktop]
+_k_friendly_name=Neovide (nvim)
+_launch=Meta+N,none,Neovide (nvim)
+
 [org.kde.dolphin.desktop]
 _k_friendly_name=Dolphin
 _launch=Meta+E,Meta+E,Dolphin
@@ -342,6 +384,12 @@ _launch=Meta+E,Meta+E,Dolphin
 [org.kde.kcalc.desktop]
 _k_friendly_name=KCalc
 _launch=Launch (1),Launch (1),KCalc
+
+[org.kde.konsole.desktop]
+NewTab=none,none,Open a New Tab
+NewWindow=none,none,Open a New Window
+_k_friendly_name=Konsole
+_launch=Ctrl+Alt+T,none,Konsole
 
 [org.kde.krunner.desktop]
 RunClipboard=Alt+Shift+F2,Alt+Shift+F2,Run command on clipboard contents
@@ -396,11 +444,14 @@ activate widget 19=Alt+F1,none,Activate Application Launcher Widget
 activate widget 30=none,none,Activate Latte Tasks Widget
 activate widget 31=none,none,Activate Activity Pager Widget
 activate widget 33=none,none,Activate Application Launcher Widget
+activate widget 45=none,none,Activate Application Launcher Widget
 activate widget 57=none,none,Activate Icons-only Task Manager Widget
 activate widget 58=none,none,Activate Activity Pager Widget
 activate widget 67=none,none,Activate Application Launcher Widget
+activate widget 70=none,none,Activate Application Launcher Widget
 activate widget 9=none,none,Activate Application Launcher Widget
 activate widget 90=none,none,Activate NowPlaying Widget
+activate widget 93=none,none,Activate Application Launcher Widget
 clear-history=none,,Clear Clipboard History
 clipboard_action=none,Meta+Ctrl+X,Automatic Action Popup Menu
 cycle-panels=Meta+Alt+P,Meta+Alt+P,Move keyboard focus between panels

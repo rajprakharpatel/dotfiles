@@ -1,5 +1,5 @@
 [$Version]
-update_info=kwin.upd:replace-scalein-with-scale,kwin.upd:port-minimizeanimation-effect-to-js,kwin.upd:port-scale-effect-to-js,kwin.upd:port-dimscreen-effect-to-js,kwin.upd:auto-bordersize,kwin.upd:animation-speed,kwin.upd:desktop-grid-click-behavior,kwin.upd:no-swap-encourage,kwin.upd:make-translucency-effect-disabled-by-default,kwin.upd:remove-flip-switch-effect,kwin.upd:remove-cover-switch-effect,kwin.upd:remove-cubeslide-effect,kwin.upd:remove-xrender-backend
+update_info=kwin.upd:replace-scalein-with-scale,kwin.upd:port-minimizeanimation-effect-to-js,kwin.upd:port-scale-effect-to-js,kwin.upd:port-dimscreen-effect-to-js,kwin.upd:auto-bordersize,kwin.upd:animation-speed,kwin.upd:desktop-grid-click-behavior,kwin.upd:no-swap-encourage,kwin.upd:make-translucency-effect-disabled-by-default,kwin.upd:remove-flip-switch-effect,kwin.upd:remove-cover-switch-effect,kwin.upd:remove-cubeslide-effect,kwin.upd:remove-xrender-backend,bismuth_new_logger.upd:bismuth-new-logger
 
 [Compositing]
 GLCore=true
@@ -94,13 +94,15 @@ Active=true
 LatitudeAuto=26.4969
 LongitudeAuto=80.3246
 Mode=Constant
-NightTemperature=4400
+NightTemperature=3300
 
 [Plugins]
+bismuthEnabled=true
 blurEnabled=true
 contrastEnabled=true
 coverswitchEnabled=true
 cubeEnabled=true
+desktopchangeosdEnabled=false
 diminactiveEnabled=true
 fallapartEnabled=true
 flipswitchEnabled=true
@@ -109,7 +111,7 @@ forceblurEnabled=true
 glideEnabled=true
 hide-titlesEnabled=false
 highlightwindowEnabled=true
-krohnkiteEnabled=true
+krohnkiteEnabled=false
 kwin4_effect_dimscreenEnabled=true
 kwin4_effect_eyeonscreenEnabled=true
 kwin4_effect_fadeEnabled=false
@@ -124,6 +126,15 @@ slidebackEnabled=true
 synchronizeskipswitcherEnabled=false
 videowallEnabled=false
 wobblywindowsEnabled=true
+
+[Script-bismuth]
+limitTileWidth=true
+noTileBorder=true
+screenGapBottom=5
+screenGapLeft=5
+screenGapRight=5
+screenGapTop=5
+tileLayoutGap=5
 
 [Script-forceblur]
 blurExceptMatching=true
@@ -152,13 +163,25 @@ padding=4
 [Tiling][213a9620-187e-58a6-b80b-85d8fb95dfce]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
+[Tiling][44bea82b-2de0-5111-957d-06ed811de8d0]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
 [Tiling][4656e9c7-29d2-5198-aef7-e64495a298e9]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][5b7a5ba4-43cc-5910-8e98-f358f9d54b43]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
+[Tiling][c3eec7e7-cc04-5998-9c65-7e0a2e30da90]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
 [Tiling][de817c6e-fb52-5a07-9b7b-a6ba354e98c5]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][e496d242-983e-5356-997b-d3370c656115]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][fc9b9063-23da-5c64-b4cf-4f2a7775987b]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Windows]
@@ -169,6 +192,9 @@ DelayFocusInterval=0
 ElectricBorders=1
 FocusStealingPreventionLevel=2
 SnapOnlyWhenOverlapping=true
+
+[Xwayland]
+Scale=1
 
 [org.kde.kdecoration2]
 ButtonsOnLeft=MFBS

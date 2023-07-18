@@ -1,4 +1,7 @@
 #!/bin/sh
+################
+#  ~/.profile  #
+################
 
 alias :q=exit
 alias cls=clear
@@ -13,7 +16,7 @@ alias gitsuperclean='git reset --hard; git clean --force -d -x'
 alias myip='curl ipinfo.io'
 alias glt='git log --oneline --decorate --graph --all'
 alias glta='git log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --all'
-
+alias listMonoFonts='fc-list : family spacing outline scalable | grep -e spacing=100 -e spacing=90 | grep -e outline=True | grep -e scalable=True'
 
 # export TERM=alacritty
 export LC_ALL="en_IN.utf8"
