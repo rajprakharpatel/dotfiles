@@ -26,6 +26,7 @@ set shiftwidth=4     " indent also with 4 spaces
 set expandtab        " expand tabs to spaces
 set textwidth=79
 set colorcolumn=80
+colorscheme habamax
 " turn syntax highlighting on
 set t_Co=256
 syntax on
@@ -191,3 +192,9 @@ function MyDiff()
 endfunction
 autocmd StdinReadPre * let s:std_in=1
 
+augroup Mkdir
+  autocmd!
+  autocmd BufWritePre * call mkdir(expand("<afile>:p:h"), "p")
+augroup END
+
+nnoremap <Leader>m :call mkdir(expand("%:p:h"), "p")<CR>

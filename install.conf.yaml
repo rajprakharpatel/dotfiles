@@ -4,6 +4,14 @@
 
 - clean: ["~"]
 
+- create:
+    - ~/.config/alacritty
+    - ~/.config/fish
+    - ~/.config/fish/conf.d
+    - ~/.config/lf
+    - ~/.doom.d
+    - ~/.config/kitty
+
 - link:
     ~/.bashrc: linux/.bashrc
     ~/.zshrc: linux/.zshrc
@@ -17,22 +25,15 @@
     ~/.config/fish/config.fish: linux/.config/fish/config.fish
     ~/.config/fish/fish_plugins: linux/.config/fish/fish_plugins
     ~/.config/lf/lfrc: linux/.config/lf/lfrc
-    # ~/.config/i3/config: linux/.config/i3/config
-    # ~/.config/polybar/config: linux/.config/polybar/config
     ~/.config/starship.toml: linux/.config/starship.toml
-    ~/.gitconfig: linux/.gitconfig
+    # ~/.gitconfig: linux/.gitconfig
     ~/.doom.d/config.el: linux/.doom.d/config.el
     ~/.doom.d/init.el: linux/.doom.d/init.el
     ~/.doom.d/packages.el: linux/.doom.d/packages.el
-    ~/.gitconfig: linux/.gitconfig
-    ~/.xprofile: linux/.xprofile
-    ~/.config/kglobalshortcutsrc: linux/.config/kglobalshortcutsrc
-    ~/.config/khotkeysrc: linux/.config/khotkeysrc
-    ~/.config/kwinrc: linux/.config/kwinrc
     ~/.ideavimrc: linux/.ideavimrc
-    ~/.xinitrc: linux/.xinitrc
     ~/.tmux.conf: linux/.tmux.conf
+    ~/.config/kitty/kitty.conf: linux/.config/kitty/kitty.conf
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
-    - [pacman -Qe > ~/dotfiles/linux/pac.list]
+    - [git submodule foreach git pull origin master, Update submodules]

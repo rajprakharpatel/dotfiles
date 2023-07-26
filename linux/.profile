@@ -1,5 +1,8 @@
 #!/bin/sh
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# alias edfstab="sudo sh -c "echo `blkid <Path of the LV> | awk '{print $2}' | sed 's/\"//g'` <Mount point of the LV> <File system type of the LV> defaults 0 0 >> /etc/fstab""
 alias :q=exit
 alias cls=clear
 alias :e=vim
@@ -13,6 +16,8 @@ alias gitsuperclean='git reset --hard; git clean --force -d -x'
 alias myip='curl ipinfo.io'
 alias glt='git log --oneline --decorate --graph --all'
 alias glta='git log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --all'
+alias pa='source $HOME/ppec-venv/bin/activate'
+alias paf='source $HOME/ppec-venv/bin/activate.fish'
 
 
 # export TERM=alacritty
@@ -35,6 +40,8 @@ export NVM_DIR="$HOME/.nvm"
 export NODE_ENV="dev"
 
 # Path eviornment variable
+export PATH="/usr/local/bin:$PATH"
+export PATH="/opt/bin:$PATH"
 export PATH="$HOME/.emacs.d/bin:$PATH"
 export PATH="/usr/x86_64-w64-mingw32/bin:$PATH"
 export PATH="$HOME/.config/nvim/scripts:$PATH"
