@@ -13,26 +13,26 @@
     - ~/.config/kitty
 
 - link:
-    ~/.bashrc: linux/.bashrc
-    ~/.zshrc: linux/.zshrc
-    ~/.vimrc: linux/.vimrc
-    ~/.profile: linux/.profile
-    ~/.bash_profile: linux/.bash_profile
-    ~/.bashrc-personal: linux/.bashrc-personal
-    ~/.zshrc-personal: linux/.zshrc-personal
-    ~/.config/alacritty/alacritty.yml: linux/.config/alacritty/alacritty.yml
-    # ~/.config/fish/functions/fish_prompt.fish: linux/.config/fish/functions/fish_prompt.fish
-    ~/.config/fish/config.fish: linux/.config/fish/config.fish
-    ~/.config/fish/fish_plugins: linux/.config/fish/fish_plugins
-    ~/.config/lf/lfrc: linux/.config/lf/lfrc
-    ~/.config/starship.toml: linux/.config/starship.toml
-    # ~/.gitconfig: linux/.gitconfig
-    ~/.doom.d/config.el: linux/.doom.d/config.el
-    ~/.doom.d/init.el: linux/.doom.d/init.el
-    ~/.doom.d/packages.el: linux/.doom.d/packages.el
-    ~/.ideavimrc: linux/.ideavimrc
-    ~/.tmux.conf: linux/.tmux.conf
-    ~/.config/kitty/kitty.conf: linux/.config/kitty/kitty.conf
+    ~/.bashrc: user/.bashrc
+    ~/.zshrc: user/.zshrc
+    ~/.vimrc: user/.vimrc
+    ~/.profile: user/.profile
+    ~/.bash_profile: user/.bash_profile
+    ~/.bashrc-personal: user/.bashrc-personal
+    ~/.zshrc-personal: user/.zshrc-personal
+    ~/.config/alacritty/alacritty.yml: user/.config/alacritty/alacritty.yml
+    # ~/.config/fish/functions/fish_prompt.fish: user/.config/fish/functions/fish_prompt.fish
+    ~/.config/fish/config.fish: user/.config/fish/config.fish
+    ~/.config/fish/fish_plugins: user/.config/fish/fish_plugins
+    ~/.config/lf/lfrc: user/.config/lf/lfrc
+    ~/.config/starship.toml: user/.config/starship.toml
+    # ~/.gitconfig: user/.gitconfig
+    ~/.doom.d/config.el: user/.doom.d/config.el
+    ~/.doom.d/init.el: user/.doom.d/init.el
+    ~/.doom.d/packages.el: user/.doom.d/packages.el
+    ~/.ideavimrc: user/.ideavimrc
+    ~/.tmux.conf: user/.tmux.conf
+    ~/.config/kitty/kitty.conf: user/.config/kitty/kitty.conf
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
