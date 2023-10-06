@@ -233,6 +233,8 @@ begin
         source $AUTOJUMP_PATH
     end
 end
+[ -f /opt/homebrew/share/autojump/autojump.fish ]; and source /opt/homebrew/share/autojump/autojump.fish
+
 
 ######################
 #  custom functions  #

@@ -20,7 +20,7 @@ alias pa='source $HOME/ppec-venv/bin/activate'
 alias paf='source $HOME/ppec-venv/bin/activate.fish'
 
 
-# export TERM=alacritty
+export TERM=xterm-256color
 export FONTCONFIG_PATH=/etc/fonts/
 export LC_CTYPE="en_IN.utf8"
 export SDKMAN_DIR="$HOME/.sdkman"
@@ -40,6 +40,7 @@ export NVM_DIR="$HOME/.nvm"
 export NODE_ENV="dev"
 
 # Path eviornment variable
+export PATH="/opt/homebrew/opt/perl@5.18/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/opt/bin:$PATH"
 export PATH="$HOME/.emacs.d/bin:$PATH"

@@ -26,6 +26,8 @@ set shiftwidth=4     " indent also with 4 spaces
 set expandtab        " expand tabs to spaces
 set textwidth=79
 set colorcolumn=80
+set formatoptions-=t
+set nowrap
 colorscheme habamax
 " turn syntax highlighting on
 set t_Co=256
