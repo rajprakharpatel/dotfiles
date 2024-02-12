@@ -9,7 +9,7 @@
     - ~/.config/fish
     - ~/.config/fish/conf.d
     - ~/.config/lf
-    - ~/.doom.d
+    - ~/.config/doom
     - ~/.config/kitty
 
 - link:
@@ -27,9 +27,9 @@
     ~/.config/lf/lfrc: user/.config/lf/lfrc
     ~/.config/starship.toml: user/.config/starship.toml
     # ~/.gitconfig: user/.gitconfig
-    ~/.doom.d/config.el: user/.doom.d/config.el
-    ~/.doom.d/init.el: user/.doom.d/init.el
-    ~/.doom.d/packages.el: user/.doom.d/packages.el
+    ~/.config/doom/config.el: user/.config/doom/config.el
+    ~/.config/doom/init.el: user/.config/doom/init.el
+    ~/.config/doom/packages.el: user/.config/doom/packages.el
     ~/.ideavimrc: user/.ideavimrc
     ~/.tmux.conf: user/.tmux.conf
     ~/.config/kitty/kitty.conf: user/.config/kitty/kitty.conf
@@ -37,3 +37,4 @@
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
     - [git submodule foreach git pull origin master, Update submodules]
+    - [brew leaves > user/leaves.txt]

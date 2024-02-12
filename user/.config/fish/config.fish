@@ -31,6 +31,10 @@ if test -d ~/Applications/depot_tools
     end
 end
 
+if test -f /opt/homebrew/opt/asdf/libexec/asdf.fish
+    source /opt/homebrew/opt/asdf/libexec/asdf.fish
+end
+
 
 ## Starship prompt
 # if status --is-interactive
@@ -149,6 +153,7 @@ alias la='lsd -a --color=always --group-dirs first' # all files and dirs
 alias ll='lsd -l --color=always --group-dirs first' # long format
 # alias lt='exa -aT --color=always --group-directories-first' # tree listing
 alias l.="lsd -a | egrep '^\.'"
+alias hr 'history --merge'  # read and merge history from disk
 
 # Replace some more things with better alternatives
 [ ! -x /usr/bin/bat ] && [ -x /usr/bin/cat ] && alias cat='bat --style header --style rules --style snip --style changes --style header'
@@ -316,6 +321,6 @@ if command -v kubectl >/dev/null
     kubectl completion fish | source
 end
 
-if command -v thefuck > /dev/null
-    thefuck --alias | source
-end
+#if command -v thefuck > /dev/null
+    #thefuck --alias | source
+#end

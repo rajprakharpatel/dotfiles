@@ -68,6 +68,8 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 [[ -s "/usr/share/nvm/init-nvm.sh" ]] && source /usr/share/nvm/init-nvm.sh
 
+[[ -s "/opt/homebrew/opt/asdf/libexec/asdf.sh" ]] && source "/opt/homebrew/opt/asdf/libexec/asdf.sh"
+
 if command -v thefuck 1>/dev/null 2>&1; then
   eval $(thefuck --alias)
 fi
