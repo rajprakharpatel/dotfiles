@@ -15,15 +15,16 @@
 [[ $- != *i* ]] && return
 
 # Load starship prompt if starship is installed
-if  [ -x /usr/bin/starship ]; then
+STARSHIP="/opt/homebrew/bin/starship"
+if  [ -x $STARSHIP ]; then
     __main() {
         local major="${BASH_VERSINFO[0]}"
         local minor="${BASH_VERSINFO[1]}"
 
         if ((major > 4)) || { ((major == 4)) && ((minor >= 1)); }; then
-            source <("/usr/bin/starship" init bash --print-full-init)
+            source <($STARSHIP init bash --print-full-init)
         else
-            source /dev/stdin <<<"$("/usr/bin/starship" init bash --print-full-init)"
+            source /dev/stdin <<<"$($STARSHIP init bash --print-full-init)"
         fi
     }
     __main
@@ -154,7 +155,8 @@ alias mirrorxx="sudo reflector --age 6 --latest 20  --fastest 20 --threads 20 --
 alias vbm="sudo /usr/local/bin/arcolinux-vbox-share"
 
 #shopt
-shopt -s autocd # change to named directory
+# mac's bash doesn't have some of the options
+# shopt -s autocd # change to named directory
 shopt -s cdspell # autocorrects cd misspellings
 shopt -s cmdhist # save multi-line commands in history as single line
 shopt -s dotglob
@@ -298,7 +300,8 @@ lfcd() {
 
 # reporting tools - install when not installed
 # install neofetch
-neofetch
+
+[[ -x neofetch ]] && . neofetch
 # install screenfetch
 #screenfetch
 # install ufetch-git
@@ -329,3 +332,4 @@ if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integr
 if command -v "zoxide" > /dev/null
     then eval "$(zoxide init --cmd j bash)"
 fi
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

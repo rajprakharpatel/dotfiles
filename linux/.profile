@@ -3,6 +3,9 @@
 #  ~/.profile  #
 ################
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# alias edfstab="sudo sh -c "echo `blkid <Path of the LV> | awk '{print $2}' | sed 's/\"//g'` <Mount point of the LV> <File system type of the LV> defaults 0 0 >> /etc/fstab""
 alias :q=exit
 alias cls=clear
 alias :e=vim
@@ -41,6 +44,8 @@ export NVM_DIR="$HOME/.nvm"
 export NODE_ENV="dev"
 
 # Path eviornment variable
+export PATH="/usr/local/bin:$PATH"
+export PATH="/opt/bin:$PATH"
 export PATH="$HOME/.emacs.d/bin:$PATH"
 export PATH="/usr/x86_64-w64-mingw32/bin:$PATH"
 export PATH="$HOME/.config/nvim/scripts:$PATH"
