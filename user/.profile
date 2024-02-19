@@ -3,7 +3,6 @@
 #  ~/.profile  #
 ################
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # alias edfstab="sudo sh -c "echo `blkid <Path of the LV> | awk '{print $2}' | sed 's/\"//g'` <Mount point of the LV> <File system type of the LV> defaults 0 0 >> /etc/fstab""
 alias :q=exit
@@ -21,10 +20,10 @@ alias glt='git log --oneline --decorate --graph --all'
 alias glta='git log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --all'
 alias listMonoFonts='fc-list : family spacing outline scalable | grep -e spacing=100 -e spacing=90 | grep -e outline=True | grep -e scalable=True'
 
-# export TERM=alacritty
-export LC_ALL="en_IN.utf8"
-export LANG="en_IN.utf8"
-export LANGUAGE="en_IN.utf8"
+export LC_ALL="en_US.utf8"
+export LANG="en_US.utf8"
+export LANGUAGE="en_US.utf8"
+export TERM=xterm-256color
 export FONTCONFIG_PATH=/etc/fonts/
 export LC_CTYPE="en_IN.utf8"
 export SDKMAN_DIR="$HOME/.sdkman"
@@ -44,6 +43,7 @@ export NVM_DIR="$HOME/.nvm"
 export NODE_ENV="dev"
 
 # Path eviornment variable
+export PATH="/opt/homebrew/opt/perl@5.18/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/opt/bin:$PATH"
 export PATH="$HOME/.emacs.d/bin:$PATH"

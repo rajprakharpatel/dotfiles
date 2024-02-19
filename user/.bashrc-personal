@@ -41,9 +41,11 @@ fi
 # export NVM_DIR="$HOME/.nvm"
 [[ -s "/usr/share/nvm/init-nvm.sh" ]] && source /usr/share/nvm/init-nvm.sh
 
-[[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
-
 # Pyenv initialization
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init --path)"
+fi
+
+if command -v thefuck 1>/dev/null 2>&1; then
+  eval $(thefuck --alias)
 fi
