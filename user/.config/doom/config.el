@@ -77,13 +77,13 @@
 (setq org-hide-emphasis-markers t)
 (font-lock-add-keywords 'org-mode
                         '(("^ *\\([-]\\) "
-                        (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+                           (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
 
 (org-babel-do-load-languages
-'org-babel-load-languages
-'((emacs-lisp . t)
-  (python . t)
-  (lua . t)))
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (python . t)
+   (lua . t)))
 
 (setq org-confirm-babel-evaluate nil)
 (push '("conf-unix" . conf-unix) org-src-lang-modes)
@@ -101,7 +101,7 @@
                 (org-level-6 . 1.1)
                 (org-level-7 . 1.1)
                 (org-level-8 . 1.1)))
-(set-face-attribute (car face) nil :font "Cantarell" :weight 'regular :height (cdr face)))
+  (set-face-attribute (car face) nil :font "Cantarell" :weight 'regular :height (cdr face)))
 
 ;; Ensure that anything that should be fixed-pitch in Org files appears that way
 (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
@@ -115,11 +115,11 @@
 
 ;; Automatically tangle our Emacs.org config file when we save it
 (defun rajp/org-babel-tangle-config ()
-(when (string-equal (buffer-file-name)
-                (expand-file-name "lorem/ipsum"))
-;; Dynamic scoping to the rescue
-(let ((org-confirm-babel-evaluate nil))
-(org-babel-tangle))))
+  (when (string-equal (buffer-file-name)
+                      (expand-file-name "lorem/ipsum"))
+    ;; Dynamic scoping to the rescue
+    (let ((org-confirm-babel-evaluate nil))
+      (org-babel-tangle))))
 
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'rajp/org-babel-tangle-config)))
 
@@ -143,12 +143,12 @@
 
 (add-hook 'org-export-before-processing-hook 'ngm/org-export-preprocessor)
 
-; Org Mode
+                                        ; Org Mode
 (add-hook 'org-mode-hook (lambda nil
-          (auto-fill-mode 1)
-          (set-fill-column 78)))
+                           (auto-fill-mode 1)
+                           (set-fill-column 78)))
 
-(elcord-mode)
+;; (elcord-mode)
 (setq org-image-actual-width (list 550))
 
 (provide 'config)

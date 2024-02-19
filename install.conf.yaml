@@ -9,7 +9,7 @@
     - ~/.config/fish
     - ~/.config/fish/conf.d
     - ~/.config/lf
-    - ~/.doom.d
+    - ~/.config/doom
     - ~/.config/kitty
 
 - link:

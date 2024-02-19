@@ -247,3 +247,4 @@ augroup Mkdir
 augroup END
 
 nnoremap <Leader>m :call mkdir(expand("%:p:h"), "p")<CR>
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
