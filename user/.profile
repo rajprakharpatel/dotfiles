@@ -41,6 +41,7 @@ export COPILOT="574C-8175"
 export PYENV_ROOT="$HOME/.pyenv"
 export SSH_ENV="$HOME/.ssh/agent-environment"
 export NVM_DIR="$HOME/.nvm"
+export GOPATH="$HOME/go"
 export NODE_ENV="dev"
 export CLICOLOR_FORCE=1
 

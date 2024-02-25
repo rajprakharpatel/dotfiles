@@ -11,6 +11,7 @@
     - ~/.config/lf
     - ~/.config/doom
     - ~/.config/kitty
+    - ~/.config/wezterm
 
 - link:
     ~/.bashrc: user/.bashrc
@@ -21,6 +22,7 @@
     ~/.bashrc-personal: user/.bashrc-personal
     ~/.zshrc-personal: user/.zshrc-personal
     ~/.config/alacritty/alacritty.yml: user/.config/alacritty/alacritty.yml
+    ~/.config/wezterm/wezterm.lua: user/.config/wezterm/wezterm.lua
     # ~/.config/fish/functions/fish_prompt.fish: user/.config/fish/functions/fish_prompt.fish
     ~/.config/fish/config.fish: user/.config/fish/config.fish
     ~/.config/fish/fish_plugins: user/.config/fish/fish_plugins
