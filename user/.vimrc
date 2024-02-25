@@ -184,6 +184,7 @@ autocmd FileType conf,fstab,fish,yaml,taskrc        let b:comment_leader = '#'
 autocmd FileType tex                         let b:comment_leader = '%'
 autocmd FileType mail                        let b:comment_leader = '>'
 autocmd FileType vim                         let b:comment_leader = '"'
+autocmd FileType lua                         let b:comment_leader = '--'
 
 function! CommentToggle()
     execute ':silent! s/\([^ ]\)/' . escape(b:comment_leader,'\/') . ' \1/'

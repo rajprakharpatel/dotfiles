@@ -32,15 +32,10 @@ if  [ -x $STARSHIP ]; then
 fi
 export HISTCONTROL=ignoreboth:erasedups
 
+# Advanced command-not-found hook
+source /usr/share/doc/find-the-command/ftc.bash
+
 PS1='[\u@\h \W]\$ '
-
-if [ -d "$HOME/.bin" ] ;
-  then PATH="$HOME/.bin:$PATH"
-fi
-
-if [ -d "$HOME/.local/bin" ] ;
-  then PATH="$HOME/.local/bin:$PATH"
-fi
 
 #ignore upper and lowercase when TAB completion
 bind "set completion-ignore-case on"
@@ -56,16 +51,14 @@ alias l.="ls -A | egrep '^\.'"
 alias cd..='cd ..'
 alias pdw="pwd"
 alias udpate='sudo pacman -Syyu'
-alias upate='sudo pacman -Syyu'
-alias updte='sudo pacman -Syyu'
-alias updqte='sudo pacman -Syyu'
-alias upqll="yay -Syu --noconfirm"
 alias upal="yay -Syu --noconfirm"
 
 ## Colorize the grep command output for ease of use (good for log files)##
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
+
+[ ! -x /usr/bin/yay ] && [ -x /usr/bin/paru ] && alias yay='paru'
 
 #readable output
 alias df='df -h'
@@ -95,11 +88,6 @@ alias merge="xrdb -merge ~/.Xresources"
 # Aliases for software managment
 # pacman or pm
 alias pacman='sudo pacman --color auto'
-alias update='sudo pacman -Syyu'
-
-# yay as aur helper - updates everything
-alias pksyua="yay -Syu --noconfirm"
-alias upall="yay -Syu --noconfirm"
 
 #ps
 alias psa="ps auxf"
@@ -163,18 +151,6 @@ shopt -s dotglob
 shopt -s histappend # do not overwrite history
 shopt -s expand_aliases # expand aliases
 
-#youtube-dl
-alias yta-aac="youtube-dl --extract-audio --audio-format aac "
-alias yta-best="youtube-dl --extract-audio --audio-format best "
-alias yta-flac="youtube-dl --extract-audio --audio-format flac "
-alias yta-m4a="youtube-dl --extract-audio --audio-format m4a "
-alias yta-mp3="youtube-dl --extract-audio --audio-format mp3 "
-alias yta-opus="youtube-dl --extract-audio --audio-format opus "
-alias yta-vorbis="youtube-dl --extract-audio --audio-format vorbis "
-alias yta-wav="youtube-dl --extract-audio --audio-format wav "
-
-alias ytv-best="youtube-dl -f bestvideo+bestaudio "
-
 #Recent Installed Packages
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 alias riplong="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -3000 | nl"
@@ -230,6 +206,13 @@ alias sr="sudo reboot"
 #give the list of all installed desktops - xsessions desktops
 alias xd="ls /usr/share/xsessions"
 
+#easy cd
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+
 # # ex = EXtractor for all kinds of archives
 # # usage: ex <file>
 ex ()
@@ -266,12 +249,7 @@ alias rmgitcache="rm -r ~/.cache/git"
 [[ -f ~/.bashrc-personal ]] && . "$HOME/.bashrc-personal"
 
 alias fay="yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk \"{print \$2}\")' | xargs -ro  yay -S"
-#update betterlockscreen images
-alias bls="betterlockscreen -u /usr/share/backgrounds/arcolinux/"
-
 alias showDS="loginctl show-session $(loginctl | grep $(whoami) | awk '{print $1}') -p Type"
-#update betterlockscreen images
-alias bls="betterlockscreen -u /usr/share/backgrounds/arcolinux/"
 
 lfcd() {
     tmp="$(mktemp)"
@@ -325,11 +303,11 @@ if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integr
 #  Ensure tmux is running  #
 ############################
 # if [[ ! -v TMUX && $TERM_PROGRAM != "vscode"  && $TERMINAL_EMULATOR != "JetBrains-JediTerm" ]]; then
-# 	tmux_chooser && exit
+#   tmux_chooser && exit
 # fi
 
 # zoxide integration
 if command -v "zoxide" > /dev/null
-    then eval "$(zoxide init --cmd j bash)"
+    then eval "$(zoxide init bash)"
 fi
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

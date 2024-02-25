@@ -38,5 +38,5 @@
     - [git submodule update --init --recursive, Installing submodules]
     - [git submodule foreach git pull origin master, Update submodules]
     - [konsave -s dotbotAutoBackup -f, Backup kde config]
-    - [konsave -e dotbotAutoBackup -d ./linux -n dotbotAutoBackup$(date '+%F')]
-    - [pacman -Qe > ~/dotfiles/linux/pac.list, Updating Installed package list]
+    - [konsave -e dotbotAutoBackup -d ./user -n dotbotAutoBackup$(date '+%F')]
+    - [pacman -Qqe > ~/dotfiles/linux/pac.list, Updating Installed package list]
