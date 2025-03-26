@@ -1,4 +1,4 @@
-## Hide welcome message
+﻿## Hide welcome message
 set fish_greeting
 set VIRTUAL_ENV_DISABLE_PROMPT 1
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
@@ -12,11 +12,6 @@ end
 set -U __done_min_cmd_duration 10000
 set -U __done_notification_urgency_level low
 
-## Source .profile to apply its values
-if test -f ~/.profile
-    source ~/.profile
-end
-
 ## Add ~/.local/bin to PATH
 if test -d ~/.local/bin
     if not contains -- ~/.local/bin $PATH
@@ -29,6 +24,10 @@ if test -d ~/Applications/depot_tools
     if not contains -- ~/Applications/depot_tools $PATH
         set -p PATH ~/Applications/depot_tools
     end
+end
+
+if test -f /opt/homebrew/opt/asdf/libexec/asdf.fish
+    source /opt/homebrew/opt/asdf/libexec/asdf.fish
 end
 
 
@@ -149,6 +148,7 @@ alias la='lsd -a --color=always --group-dirs first' # all files and dirs
 alias ll='lsd -l --color=always --group-dirs first' # long format
 # alias lt='exa -aT --color=always --group-directories-first' # tree listing
 alias l.="lsd -a | egrep '^\.'"
+alias hr 'history --merge'  # read and merge history from disk
 
 # Replace some more things with better alternatives
 [ ! -x /usr/bin/bat ] && [ -x /usr/bin/cat ] && alias cat='bat --style header --style rules --style snip --style changes --style header'
@@ -234,6 +234,7 @@ begin
     end
 end
 
+
 ######################
 #  custom functions  #
 ######################
@@ -316,4 +317,12 @@ end
 
 if command -v thefuck > /dev/null
     thefuck --alias | source
+end
+
+if command -v pyenv > /dev/null
+    pyenv init - | source
+end
+
+if command -v zoxide > /dev/null
+   zoxide init --cmd j fish | source
 end

@@ -1,5 +1,10 @@
 #!/bin/sh
+################
+#  ~/.profile  #
+################
 
+
+# alias edfstab="sudo sh -c "echo `blkid <Path of the LV> | awk '{print $2}' | sed 's/\"//g'` <Mount point of the LV> <File system type of the LV> defaults 0 0 >> /etc/fstab""
 alias :q=exit
 alias cls=clear
 alias :e=vim
@@ -13,17 +18,20 @@ alias gitsuperclean='git reset --hard; git clean --force -d -x'
 alias myip='curl ipinfo.io'
 alias glt='git log --oneline --decorate --graph --all'
 alias glta='git log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --all'
+alias listMonoFonts='fc-list : family spacing outline scalable | grep -e spacing=100 -e spacing=90 | grep -e outline=True | grep -e scalable=True'
 
-
-# export TERM=alacritty
+export LC_ALL="en_US.utf8"
+export LANG="en_US.utf8"
+export LANGUAGE="en_US.utf8"
+export TERM=xterm-256color
 export FONTCONFIG_PATH=/etc/fonts/
-export LC_CTYPE="en_IN.utf8"
 export SDKMAN_DIR="$HOME/.sdkman"
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 export AMD_VULKAN_ICD=RADV
 export BROWSER=brave
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export MAIL=thunderbird
-export LC_CTYPE="en_IN.utf8"
 export EDITOR="nvim"
 export VISUAL="nvim"
 export OPENER=dolphin
@@ -32,9 +40,15 @@ export COPILOT="574C-8175"
 export PYENV_ROOT="$HOME/.pyenv"
 export SSH_ENV="$HOME/.ssh/agent-environment"
 export NVM_DIR="$HOME/.nvm"
+export GOPATH="$HOME/go"
 export NODE_ENV="dev"
+export CLICOLOR_FORCE=1
 
 # Path eviornment variable
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+export PATH="/opt/homebrew/opt/perl@5.18/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/opt/bin:$PATH"
 export PATH="$HOME/.emacs.d/bin:$PATH"
 export PATH="/usr/x86_64-w64-mingw32/bin:$PATH"
 export PATH="$HOME/.config/nvim/scripts:$PATH"
@@ -47,6 +61,8 @@ export PATH="$HOME/scripts/:$PATH"
 export PATH="$HOME/.config/composer/vendor/bin/:$PATH"
 export PATH="$HOME/.sdkman/candidates/gradle/current/bin/:$PATH"
 export PATH="$PYENV_ROOT/shims:$PATH"
+export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
+export PATH="$PATH:$HOME/.config/emacs/bin"
 
 # ln=:\  ex=:\ fi=:\ add below for links icon not necessary as a different color
 # identifies links
@@ -210,7 +226,3 @@ fi=:\
 *.pdf=:\
 *.nix=:\
 "
-
-
-# Added by Toolbox App
-export PATH="$PATH:/home/rajp/.local/share/JetBrains/Toolbox/scripts"

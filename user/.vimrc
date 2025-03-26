@@ -8,6 +8,7 @@
 " set UTF encoding
 set updatetime=50
 set enc=utf-8
+scriptencoding utf-8
 set noswapfile
 set nobackup
 set fenc=utf-8
@@ -26,6 +27,9 @@ set shiftwidth=4     " indent also with 4 spaces
 set expandtab        " expand tabs to spaces
 set textwidth=79
 set colorcolumn=80
+set formatoptions-=t
+set nowrap
+colorscheme habamax
 " turn syntax highlighting on
 set t_Co=256
 syntax on
@@ -41,9 +45,55 @@ set so=5
 "let left right keys to switch to different line at end of line
 set whichwrap=<,>,[,]
 " display tabs as '>---' and trailing spaces as '-'
+set list
 set listchars=tab:>-,trail:-
 "let terminal detect mouse input
 set mouse=a
+set ttymouse=sgr
+set balloonevalterm
+" Styled and colored underline support
+let &t_AU = "\e[58:5:%dm"
+let &t_8u = "\e[58:2:%lu:%lu:%lum"
+let &t_Us = "\e[4:2m"
+let &t_Cs = "\e[4:3m"
+let &t_ds = "\e[4:4m"
+let &t_Ds = "\e[4:5m"
+let &t_Ce = "\e[4:0m"
+" Strikethrough
+let &t_Ts = "\e[9m"
+let &t_Te = "\e[29m"
+" Truecolor support
+let &t_8f = "\e[38:2:%lu:%lu:%lum"
+let &t_8b = "\e[48:2:%lu:%lu:%lum"
+let &t_RF = "\e]10;?\e\\"
+let &t_RB = "\e]11;?\e\\"
+" Bracketed paste
+let &t_BE = "\e[?2004h"
+let &t_BD = "\e[?2004l"
+let &t_PS = "\e[200~"
+let &t_PE = "\e[201~"
+" Cursor control
+let &t_RC = "\e[?12$p"
+let &t_SH = "\e[%d q"
+let &t_RS = "\eP$q q\e\\"
+let &t_SI = "\e[5 q"
+let &t_SR = "\e[3 q"
+let &t_EI = "\e[1 q"
+let &t_VS = "\e[?12l"
+" Focus tracking
+let &t_fe = "\e[?1004h"
+let &t_fd = "\e[?1004l"
+execute "set <FocusGained>=\<Esc>[I"
+execute "set <FocusLost>=\<Esc>[O"
+" Window title
+let &t_ST = "\e[22;2t"
+let &t_RT = "\e[23;2t"
+
+" vim hardcodes background color erase even if the terminfo file does
+" not contain bce. This causes incorrect background rendering when
+" using a color theme with a background color in terminals such as
+" kitty that do not support background color erase.
+let &t_ut=''
 " set shellslash "plug doesn't worrk with this option set
 set showtabline=2
 
@@ -134,6 +184,7 @@ autocmd FileType conf,fstab,fish,yaml,taskrc        let b:comment_leader = '#'
 autocmd FileType tex                         let b:comment_leader = '%'
 autocmd FileType mail                        let b:comment_leader = '>'
 autocmd FileType vim                         let b:comment_leader = '"'
+autocmd FileType lua                         let b:comment_leader = '--'
 
 function! CommentToggle()
     execute ':silent! s/\([^ ]\)/' . escape(b:comment_leader,'\/') . ' \1/'
@@ -191,3 +242,10 @@ function MyDiff()
 endfunction
 autocmd StdinReadPre * let s:std_in=1
 
+augroup Mkdir
+  autocmd!
+  autocmd BufWritePre * call mkdir(expand("<afile>:p:h"), "p")
+augroup END
+
+nnoremap <Leader>m :call mkdir(expand("%:p:h"), "p")<CR>
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>

@@ -9,6 +9,10 @@ source "$HOME/.profile"
 
 [[ -s "$HOME/bash_completion.d/gradle-completion.bash" ]] && source "$HOME/bash_completion.d/gradle-completion.bash"
 
+[[ -s "/opt/homebrew/opt/asdf/libexec/asdf.sh" ]] && source "/opt/homebrew/opt/asdf/libexec/asdf.sh"
+
+[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+
 # eval "$(direnv hook bash)"
 
 if command -v floaterm &>/dev/null; then
@@ -41,9 +45,19 @@ fi
 # export NVM_DIR="$HOME/.nvm"
 [[ -s "/usr/share/nvm/init-nvm.sh" ]] && source /usr/share/nvm/init-nvm.sh
 
-[[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
-
 # Pyenv initialization
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init --path)"
 fi
+
+if command -v thefuck 1>/dev/null 2>&1; then
+  eval $(thefuck --alias)
+fi
+
+export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
+shopt -s histappend                      # append to history, don't overwrite it
+
+# Save and reload the history after each command finishes
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+
+touch2() { mkdir -p "$(dirname "$1")" && touch "$1" ; }
