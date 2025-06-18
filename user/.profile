@@ -46,9 +46,11 @@ export CLICOLOR_FORCE=1
 
 # Path eviornment variable
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+export PATH="$HOME/.atuin/bin:$PATH"
 export PATH="/opt/homebrew/opt/perl@5.18/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/opt/bin:$PATH"
+export PATH="$HOME/.bun/bin:$PATH"
 export PATH="$HOME/.emacs.d/bin:$PATH"
 export PATH="/usr/x86_64-w64-mingw32/bin:$PATH"
 export PATH="$HOME/.config/nvim/scripts:$PATH"

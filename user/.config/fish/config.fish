@@ -3,6 +3,8 @@ set fish_greeting
 set VIRTUAL_ENV_DISABLE_PROMPT 1
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
+source ~/.profile
+
 ## Export variable need for qt-theme
 if type qtile >>/dev/null 2>&1
     set -x QT_QPA_PLATFORMTHEME qt5ct
@@ -225,6 +227,12 @@ if status --is-interactive && ! type -q floaterm
     # paleofetch
     # colorscript random | skip 1
     pokemon-colorscripts -r
+    if command -v atuin > /dev/null 2>&1
+      atuin init fish | source
+    end
+    if command -v navi > /dev/null 2>&1
+      navi widget fish | source
+    end
 end
 
 begin
@@ -257,7 +265,7 @@ end
 #  Shortcuts  #
 ###############
 
-bind -M insert \cg forget
+bind -M insert \cf forget
 
 # begin
 # set --local SDK_PATH "$HOME/.sdkman/bin/sdkman-init.sh"
